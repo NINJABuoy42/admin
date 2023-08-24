@@ -1,14 +1,14 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:public/login.php');
+    header('location:../login.php');
     die;
 }
 $user = $_SESSION['user'];
 $title = 'Users';
 $portal = 'Users Detail';
-require __DIR__.'../includes/header.php';
-include('./db_conn/user.php');
+require './includes/header.php';
+include('../db_conn/user.php');
 $result = getUser();
 
 if (isset($_GET['delete'])) {

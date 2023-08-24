@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:login.php');
+    header('location:../login.php');
     die;
 }
 if ($_SESSION['role']!='admin') {
-    header('location:index.php');
+    header('location:../index.php');
     die;
 }
 
@@ -13,7 +13,7 @@ $user = $_SESSION['user'];
 $title = 'Dashboard';
 $portal="Admin Dashboard";
 include('./includes/header.php');
-include('./db_conn/user.php');
+include('../db_conn/user.php');
 ?>
 
 

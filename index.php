@@ -15,7 +15,7 @@ if ($user == 'verified') {
             header('location:registerDashboard.php');
             break;
         case 'admin':
-            header('location:admin.php');
+            header('location:admin/admin.php');
             break;
     }
 } else {
