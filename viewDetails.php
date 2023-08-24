@@ -111,7 +111,14 @@ $portal = "Doctors Dashboard";
                                                         <td class="d-flex justify-content-around">
                                                             <a class="btn btn-secondary" href="prescription.php?prescription_id=<?php echo $pateintD['prescription_id'].'&patient_id='.$pateintD['patient_id'] ?> " onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i class="fas fa-print"></i></a>
 
-                                                            <button type="click" class="btn btn-info"><i class="fas fa-edit"></i></button>
+                                                            <?php if($_SESSION['role']=='doctor'){
+                                                    ?>
+                                                <a class="btn btn-info"
+                                                    href="doctor/doctorportal.php?prescription_id=<?php echo $pateintD['prescription_id'].'&patient_id='.$pateintD['patient_id'] ?> "><i
+                                                        class="fas fa-edit"></i></a>
+
+                                                <?php
+                                                } ?>
                                                         </td>
                                                     </tr>
 

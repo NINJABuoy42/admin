@@ -19,9 +19,9 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
     <style>
     body {
         padding: 2rem;
-        height:842px;
-        
-        
+        height: 842px;
+
+
     }
 
     table,
@@ -31,43 +31,42 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         border-collapse: collapse;
         padding: 10px;
     }
-    
+
     .ta-center {
         text-align: center;
     }
-    
+
     .border {
         border: 1px solid black;
     }
-    
+
     .borderA {
         border: 1px solid black;
     }
-    
+
     .docSign {
         width: 100%;
-        text-align:end;
-        margin-top:4rem;
+        text-align: end;
+        margin-top: 4rem;
         padding-right: 4rem;
-        margin-bottom:2rem;
+        margin-bottom: 2rem;
     }
-    
+
     .btn {
         width: 80vw;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     button {
         margin: 1rem auto;
     }
-    
+
     footer {
         width: 100%;
         text-align: center;
     }
-    
     </style>
     <link href="css/print.css" rel="stylesheet" media="print">
 </head>
@@ -88,7 +87,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                     </div>
                 </td>
                 <td colspan="6">
-                    <img src="img/head.jpg" width="500" >
+                    <img src="img/head.jpg" width="500">
                 </td>
             </tr>
 
@@ -158,17 +157,17 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 <td colspan="2"><strong>Duration</strong></td>
             </tr>
             <tbody height="400px">
-                 <?php
+                <?php
                         while ($dataMedicine = mysqli_fetch_assoc($medicine)) {
             ?>
-            <tr>
-                <td colspan="2"><?php echo $dataMedicine['medicine_name']; ?></td>
-                <td colspan="2"><?php echo $dataMedicine['dosage']; ?></td>
-                <td colspan="2"><?php echo $dataMedicine['duration']; ?></td>
-            </tr>
-            <?php } ?>
+                <tr>
+                    <td colspan="2"><?php echo $dataMedicine['medicine_name']; ?></td>
+                    <td colspan="2"><?php echo $dataMedicine['dosage']; ?></td>
+                    <td colspan="2"><?php echo $dataMedicine['duration']; ?></td>
+                </tr>
+                <?php } ?>
             </tbody>
-           
+
 
 
         </table>
@@ -181,12 +180,14 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 </td>
             </tr>
             <?php } ?>
+            <?php if($dataPatient['refer_to']!=""){?>
             <tr>
                 <td><strong>Advice Given: </strong><?php echo $dataPatient['advice'] ?></td>
             </tr>
+            <?php } ?>
             <?php if($dataPatient['follow_up']!="0000-00-00"){?>
             <tr>
-                <td><strong>Next Follow up:</strong> <?php echo $dataPatient['follow_up'] ?></td>
+                <td><strong>Next Follow up: </strong> <?php echo $dataPatient['follow_up'] ?></td>
             </tr>
             <?php  } ?>
             <tr></tr>
