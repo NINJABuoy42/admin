@@ -23,7 +23,10 @@ function updatePrescription(){
             mysqli_query($GLOBALS['conn'],$sql);
         }
     }
+    
     if (isset($_POST['medName'])!='') {
+        $queryMed = "DELETE FROM `medicine` WHERE `prescription_id`={$prescription_id}";
+        mysqli_query($GLOBALS['conn'], $queryMed);
         $medDosage = $_POST['medDosage'];
         $medDuration = $_POST['medDuration'];
         foreach ($_POST['medName'] as $key => $value) {

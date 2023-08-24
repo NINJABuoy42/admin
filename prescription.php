@@ -112,7 +112,6 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 </td>
                 <td colspan="2"> <strong>Phone No: </strong>
                 </td>
-                <!-- <td colspan="3" rowspan="4" style="margin:0 auto"><img src="img/undraw_profile.svg" alt="" width="150"></td> -->
             </tr>
             <tr>
                 <td colspan="12"><strong>Address:</strong> Bongal Pukhuri, Jorhat, Assam</td>
@@ -121,6 +120,9 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         </table>
         <hr>
         <table width="100%" height="200px">
+            <tr>
+                <td></td>
+            </tr>
             <tr>
                 <td colspan="6"><strong>Chief Complaint: </strong><?php echo $dataPatient['cheif_complaint'] ?> </td>
             </tr>
