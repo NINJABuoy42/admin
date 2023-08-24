@@ -9,10 +9,10 @@ $role = $_SESSION['role'];
 if ($user == 'verified') {
     switch ($role) {
         case 'doctor':
-            header('location:doctorDashboard.php');
+            header('location:doctor/doctorDashboard.php');
             break;
         case 'register':
-            header('location:registerDashboard.php');
+            header('location:register/registerDashboard.php');
             break;
         case 'admin':
             header('location:admin/admin.php');

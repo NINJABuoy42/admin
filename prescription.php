@@ -15,14 +15,13 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
 <head>
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet" media="print">
     <title>Prescription</title>
     <style>
     body {
         padding: 2rem;
         height:842px;
-
-
+        
+        
     }
 
     table,
@@ -32,19 +31,19 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         border-collapse: collapse;
         padding: 10px;
     }
-
+    
     .ta-center {
         text-align: center;
     }
-
+    
     .border {
         border: 1px solid black;
     }
-
+    
     .borderA {
         border: 1px solid black;
     }
-
+    
     .docSign {
         width: 100%;
         text-align:end;
@@ -52,23 +51,25 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         padding-right: 4rem;
         margin-bottom:2rem;
     }
-
+    
     .btn {
         width: 80vw;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
+    
     button {
         margin: 1rem auto;
     }
-
+    
     footer {
         width: 100%;
         text-align: center;
     }
+    
     </style>
+    <link href="css/print.css" rel="stylesheet" media="print">
 </head>
 
 <body>
@@ -76,7 +77,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
     <div>
         <table width="100%" class="border" height="fit-content">
-            <tr class="border">
+            <tr class="border" id="heading">
                 <td colspan="6">
                     <div>
                         <h3><strong>Dr.Amrit Kumar Saikia</strong></h3>

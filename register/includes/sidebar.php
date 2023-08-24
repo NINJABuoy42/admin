@@ -36,7 +36,7 @@
         ?>
             <li class="nav-item">
 
-                <a class="nav-link collapsed" href="doctor/patientWaitingList.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="patientWaitingList.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-users" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Patient List</span>
                 </a>
@@ -63,7 +63,7 @@
                     <i class="fas fa-search" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Search</span>
                 </a>
-                <a class="nav-link collapsed" href="patientList.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="../patientList.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-file-prescription" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Prescription</span>
                 </a>

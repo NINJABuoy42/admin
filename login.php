@@ -4,8 +4,8 @@ if (isset($_SESSION['status'])) {
     header('location:index.php');
 }
 $title = 'Login';
-include(__DIR__ . '/includes/header.php');
-include('./db_conn/user.php');
+include('./includes/header.php');
+include('db_conn/user.php');
 
 if (isset($_POST['login'])) {
     $userName = $_POST['userName'];
@@ -56,9 +56,6 @@ if (isset($_POST['login'])) {
                                         <hr>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
                                     <div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>
                                     </div>
