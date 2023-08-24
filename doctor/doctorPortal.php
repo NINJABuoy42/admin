@@ -121,7 +121,6 @@ if (isset($_POST['save'])) {
                                 <div class="text-center mt-3 col-md-12">
                                     <!-- <button type="button" class="btn btn-warning" name="getpatienId" id="getpatienId">Generate ID</button> -->
                                     <button type="submit" class="btn btn-success" name="save" id="save">Save & Verify</button>
-                                    <button type="reset" class="btn btn-secondary" id="reset">Reset</button>
                                 </div>
                             </form><!-- End Multi Columns Form -->
 

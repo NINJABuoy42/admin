@@ -30,16 +30,8 @@
                             <label for="blood_pressure" class="form-label">Blood Pressure</label>
                             <input type="text" class="form-control" id="blood_pressure" name="blood_pressure">
                         </div>
-                        <div class="col-md-6">
-                            <label for="temperature" class="form-label">Temperature</label>
-                            <input type="text" class="form-control" id="temperature" name="temperature">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="referred_by" class="form-label">Referred By</label>
-                            <input type="text" class="form-control" id="referred_by" name="referred_by">
-                        </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="attending_doctor" class="form-label">Attending Doctor</label>
                             <select id="attending_doctor" class="form-control" name="attending_doctor">
                                 <?php

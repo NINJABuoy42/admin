@@ -48,7 +48,7 @@ $fetchedPrescription = fetchPrescription();
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered"  width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th class="w-15" >Prescription ID</th>
@@ -70,7 +70,13 @@ $fetchedPrescription = fetchPrescription();
                                                 <td><?php echo $prescription['attending_doctor'] ?></td>
                                                 <td><?php echo date("Y-m-d", strtotime($prescription['visit_date'])) ?></td>
                                                 <td class="d-flex justify-content-around">
-                                                <a class="btn btn-info" href="prescription.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> " onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i class="fas fa-print"></i></a>
+                                                <?php if($_SESSION['role']=='doctor'){
+                                                    ?>
+                                                <a class="btn btn-secondary" href="prescription.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> " onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i class="fas fa-print"></i></a>
+
+                                                    <?php
+                                                } ?>
+                                                <a class="btn btn-secondary" href="prescription.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> " onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i class="fas fa-print"></i></a>
                                                 </td>
                                             </tr>
                                             

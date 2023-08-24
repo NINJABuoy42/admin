@@ -13,6 +13,7 @@ include('./db_conn/apiRegister.php');
 include('./db_conn/apiDoctor.php');
 // $result = getPatientDetail();
 $fetchedPrescription = fetchWaitingPatient();
+$fetched = fetchPrescription();
 
 
 ?>
@@ -57,17 +58,58 @@ $fetchedPrescription = fetchWaitingPatient();
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php while ($prescription = mysqli_fetch_assoc($fetchedPrescription)) {
+                                        <?php while ($list = mysqli_fetch_assoc($fetchedPrescription)) {
                                             include('./includes/modals/__deleteModal.php');
                                         ?>
                                             <tr>
-                                                <td><?php echo $prescription['prescription_id'] ?></td>
+                                                <td><?php echo $list['prescription_id'] ?></td>
+                                                <td><?php echo $list['patient_id'] ?></td>
+                                                <td><?php echo $list['name'] ?></td>
+                                                <td><?php echo $list['attending_doctor'] ?></td>
+                                                <td><?php echo date("Y-m-d", strtotime($list['visit_date'])) ?></td>
+                                                <td class="d-flex justify-content-around">
+                                                <a class="btn btn-success" href="doctorPortal.php?prescription_id=<?php echo $list['prescription_id'].'&patient_id='.$list['patient_id'] ?> "><i class="fas fa-file-prescription"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                        <?php } ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Patient List : Prescribed</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-15" >Prescription ID</th>
+                                            <th class="w-15">Patient ID</th>
+                                            <th class="w-25">Name</th>
+                                            <th class="w-15">Prescribed By</th>
+                                            <th class="w-15">Visit Date</th>
+                                            <th class="w-15">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while ($prescription = mysqli_fetch_assoc($fetched)) {
+                                            include('./includes/modals/__deleteModal.php');
+                                        ?>
+                                            <tr>
+                                                <td ><?php echo $prescription['prescription_id'] ?></td>
                                                 <td><?php echo $prescription['patient_id'] ?></td>
                                                 <td><?php echo $prescription['name'] ?></td>
                                                 <td><?php echo $prescription['attending_doctor'] ?></td>
                                                 <td><?php echo date("Y-m-d", strtotime($prescription['visit_date'])) ?></td>
                                                 <td class="d-flex justify-content-around">
-                                                <a class="btn btn-info" href="doctorPortal.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "><i class="fas fa-file-prescription"></i></a>
+                                                <a class="btn btn-info" href="doctorPortal.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?>"><i class="fas fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                             
