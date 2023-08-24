@@ -110,7 +110,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 </td>
                 <td colspan="2"> <strong>Age: </strong> Y
                 </td>
-                <td colspan="2"> <strong>Phone No: </strong>
+                <td colspan="2"> <strong>Phone No: </strong
                 </td>
                 <!-- <td colspan="3" rowspan="4" style="margin:0 auto"><img src="img/undraw_profile.svg" alt="" width="150"></td> -->
             </tr>
