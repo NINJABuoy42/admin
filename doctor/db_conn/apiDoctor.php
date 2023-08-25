@@ -17,6 +17,8 @@ function updatePrescription(){
     mysqli_query($GLOBALS['conn'],$pSql) or die("SQL query failed");
     $prescription_id=$_POST['prescription_id'];
     $patient_id=$_POST['patient_id'];
+    $queryDiag = "DELETE FROM `diagnosis` WHERE `prescription_id`='{$prescription_id}'";
+    mysqli_query($GLOBALS['conn'], $queryDiag);
     if(isset($_POST['diagnosis'])!=''){
         foreach($_POST['diagnosis'] as $key => $value){
             $sql="INSERT INTO `diagnosis`(`prescription_id`,`patient_id`,`diagnosis`) VALUES ('{$prescription_id}','{$patient_id}','$value')";
@@ -24,9 +26,9 @@ function updatePrescription(){
         }
     }
     
+    $queryMed = "DELETE FROM `medicine` WHERE `prescription_id`='{$prescription_id}'";
+    mysqli_query($GLOBALS['conn'], $queryMed);
     if (isset($_POST['medName'])!='') {
-        $queryMed = "DELETE FROM `medicine` WHERE `prescription_id`={$prescription_id}";
-        mysqli_query($GLOBALS['conn'], $queryMed);
         $medDosage = $_POST['medDosage'];
         $medDuration = $_POST['medDuration'];
         foreach ($_POST['medName'] as $key => $value) {

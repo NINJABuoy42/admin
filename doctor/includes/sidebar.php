@@ -17,7 +17,7 @@
                     <i class="fas fa-users" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Patient List</span>
                 </a>
-                <a class="nav-link collapsed" href="patientDetails.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="../patientDetails.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-search" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Search</span>
                 </a>

@@ -15,6 +15,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
 <head>
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/print.css" rel="stylesheet" media="print">
     <title>Prescription</title>
     <style>
     body {
@@ -68,7 +69,6 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         text-align: center;
     }
     </style>
-    <link href="css/print.css" rel="stylesheet" media="print">
 </head>
 
 <body>
@@ -76,7 +76,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
     <div>
         <table width="100%" class="border" height="fit-content">
-            <tr class="border" id="heading">
+            <tr class="border">
                 <td colspan="6">
                     <div>
                         <h3><strong>Dr.Amrit Kumar Saikia</strong></h3>
@@ -120,9 +120,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         </table>
         <hr>
         <table width="100%" height="200px">
-            <tr>
-                <td></td>
-            </tr>
+
             <tr>
                 <td colspan="6"><strong>Chief Complaint: </strong><?php echo $dataPatient['cheif_complaint'] ?> </td>
             </tr>
@@ -158,7 +156,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 <td colspan="2"><strong>Dosage</strong></td>
                 <td colspan="2"><strong>Duration</strong></td>
             </tr>
-            <tbody height="400px">
+            <tbody style="height:400px;">
                 <?php
                         while ($dataMedicine = mysqli_fetch_assoc($medicine)) {
             ?>

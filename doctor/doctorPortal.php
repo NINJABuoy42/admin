@@ -77,7 +77,9 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                         <div class="input-group-append">
                                             <button class="btn btn-success" id="addField" type="button"><i
                                                     class="fas fa-plus"></i></button>
+
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
@@ -112,7 +114,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th class="w-50">Medicine Name</th>
+                                                <th class="w-25">Medicine Name</th>
                                                 <th class="w-25">Dosage</th>
                                                 <th class="w-25">Duration</th>
                                                 <th class="w-5">Action</th>
@@ -122,69 +124,106 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                             <tr>
                                                 <td class="w-50"><input type="text" class="form-control input"
                                                         id="medName" placeholder="Medicine name here..."></td>
-                                                <td class="w-25"><input type="text" class="form-control input"
-                                                        id='medDosage' placeholder="Dosage here ..."></td>
-                                                <td class="w-25"><input type="text" class="form-control input"
-                                                        id='medDuration' placeholder="Duration here ..."></td>
-                                                <th class="w-5"><button type="button" class="btn btn-success"
-                                                        id="add">ADD</button></th>
-                                            </tr>
+                                               
+                                                <td class="w-25">
+                                                    <div class="input-group mb-3">
+                                                    <input type="text" class="form-control input" id='medDosage'>
+                                                        <div class="input-group-append">
+                                                        <select id="insDosage" class="form-control" name="insDosage">
+                                                            <option value="Daily">Daily</option>
+                                                            <option value="Weekly">Weekly</option>
+                                                            <option value="Necessary">Necessary</option>
+                                                        </select>
+                                                        </div>
 
-                                        </tbody>
-                                    </table>
+                                                    </div>
+                                                </td>
+                                                <td class="w-25">
+                                                    <div class="input-group mb-3">
+                                                    <input type="text" class="form-control input" id='medDuration'>
+                                                        <div class="input-group-append">
+                                                        <select id="insDuration" class="form-control" name="insDuration">
+                                                            <option value="Day">Day</option>
+                                                            <option value="Week">Week</option>
+                                                            <option value="Month">Month</option>
+                                                        </select>
+                                                    </div>
+                                                    </div>
+                                                </td>
                                 </div>
+                                <th class="w-5"><button type="button" class="btn btn-success" id="add">ADD</button></th>
+                                </tr>
+                                <?php
+                        while ($dataMedicine = mysqli_fetch_assoc($medicine)) {?>
 
-                                <div class="col-md-12">
-                                    <label for="referTo" class="form-label">Refer To:</label>
-                                    <input type="text" class="form-control" id="referTo" name="referTo"
-                                        value="<?php echo $dataPatient['refer_to'] ?>">
-                                </div>
-                                <div class="col-md-10">
-                                    <label for="advice" class="form-label">Advice Given</label>
-                                    <input type="text" class="form-control" id="referTo" name="advice"
-                                        value="<?php echo $dataPatient['advice'] ?>">
-                                </div>
-                                <div class="col-md-2">
-                                    <label for="followUP" class="form-label">Next Follow-up</label>
-                                    <input type="date" class="form-control" id="followUP" name="followUP"
-                                        value="<?php echo $dataPatient['follow_up'] ?>">
-                                </div>
-                                <!-- ********** -->
+                                <td class="w-50"><input type="text" class="form-control input" name='medName[]'
+                                        value='<?php echo $dataMedicine['medicine_name']; ?>'></td>
+                                <td class="w-25"><input type="text" class="form-control input" name='medDosage[]'
+                                        value='<?php echo $dataMedicine['dosage']; ?>'>
+                                </td>
+                                <td class="w-25"><input type="text" class="form-control input" name='medDuration[]'
+                                        value='<?php echo $dataMedicine['duration']; ?>'></td>
+                                <td class="w-5"><button type="button" class="btn btn-danger"
+                                        onclick="this.closest('tr').remove();">REM</button></td>
+                                </tr>
+                                </tr>
                                 <?php } ?>
-                                <hr>
-                                <div class="text-center mt-3 col-md-12">
-                                    <!-- <button type="button" class="btn btn-warning" name="getpatienId" id="getpatienId">Generate ID</button> -->
-                                    <button type="submit" class="btn btn-success" name="save" id="save">Save &
-                                        Verify</button>
-                                </div>
-                            </form><!-- End Multi Columns Form -->
 
+                                </tbody>
+                                </table>
                         </div>
+
+                        <div class="col-md-12">
+                            <label for="referTo" class="form-label">Refer To:</label>
+                            <input type="text" class="form-control" id="referTo" name="referTo"
+                                value="<?php echo $dataPatient['refer_to'] ?>">
+                        </div>
+                        <div class="col-md-10">
+                            <label for="advice" class="form-label">Advice Given</label>
+                            <input type="text" class="form-control" id="referTo" name="advice"
+                                value="<?php echo $dataPatient['advice'] ?>">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="followUP" class="form-label">Next Follow-up</label>
+                            <input type="date" class="form-control" id="followUP" name="followUP"
+                                value="<?php echo $dataPatient['follow_up'] ?>">
+                        </div>
+                        <!-- ********** -->
+                        <?php } ?>
+                        <hr>
+                        <div class="text-center mt-3 col-md-12">
+                            <!-- <button type="button" class="btn btn-warning" name="getpatienId" id="getpatienId">Generate ID</button> -->
+                            <button type="submit" class="btn btn-success" name="save" id="save">Save &
+                                Verify</button>
+                        </div>
+                        </form><!-- End Multi Columns Form -->
+
                     </div>
-
-
-                    <?php
-                    include('./includes/footer.php'); ?>
                 </div>
+
+
+                <?php
+                    include('./includes/footer.php'); ?>
             </div>
-            <script>
-            $(document).ready(function() {
-                $("#add").on('click', (e) => {
-                    // console.log("add");
-                    html = `<tr>
+        </div>
+        <script>
+        $(document).ready(function() {
+            $("#add").on('click', (e) => {
+                // console.log("add");
+                html = `<tr>
                                     <td class="w-50"><input type="text" class="form-control input" name='medName[]' value='${$('#medName').val()}'></td>
-                                    <td class="w-25"><input type="text" class="form-control input" name='medDosage[]' value='${$('#medDosage').val()}'></td>
-                                    <td class="w-25"><input type="text" class="form-control input" name='medDuration[]' value='${$('#medDuration').val()}'></td>
+                                    <td class="w-25"><input type="text" class="form-control input" name='medDosage[]' value='${$('#medDosage').val()} x ${$('#insDosage').val()}'></td>
+                                    <td class="w-25"><input type="text" class="form-control input" name='medDuration[]' value='${$('#medDuration').val()} x ${$('#insDuration').val()}'></td>
                                     <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove();">REM</button></td>
                                 </tr>`;
-                    $('#medName').val('');
-                    $('#medDosage').val('');
-                    $('#medDuration').val('');
-                    $('#tBody').append(html);
+                $('#medName').val('');
+                $('#medDosage').val('');
+                $('#medDuration').val('');
+                $('#tBody').append(html);
 
-                })
-                $("#addField").on('click', (e) => {
-                    fieldHtml = `<li>
+            })
+            $("#addField").on('click', (e) => {
+                fieldHtml = `<li>
                         <div class="input-group mb-3">
                                     <input type="text" class="form-control" name="diagnosis[]" value='${$('#diagnosisF').val()}'>
                                         <div class="input-group-append">
@@ -192,8 +231,8 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                         </div>
                                         </div>
                                         </li>`;
-                    $('#diagnosisF').val("");
-                    $("#medDiagnosis").append(fieldHtml);
-                })
+                $('#diagnosisF').val("");
+                $("#medDiagnosis").append(fieldHtml);
             })
-            </script>
+        })
+        </script>
