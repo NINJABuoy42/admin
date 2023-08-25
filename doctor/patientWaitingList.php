@@ -1,16 +1,16 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:login.php');
+    header('location:../public/login.php');
     die;
 }
 $user = $_SESSION['user'];
 $portal = 'Patient Waiting List';
 $title = 'Waiting List';
-include('./includes/header.php');
+include('../includes/header.php');
 // include('./db_conn/user.php');
-include('./db_conn/apiRegister.php');
-include('./db_conn/apiDoctor.php');
+include('../db_conn/apiRegister.php');
+include('../db_conn/apiDoctor.php');
 // $result = getPatientDetail();
 $fetchedPrescription = fetchWaitingPatient();
 $fetched = fetchPrescription();
@@ -24,7 +24,7 @@ $fetched = fetchPrescription();
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -34,7 +34,7 @@ $fetched = fetchPrescription();
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -59,7 +59,7 @@ $fetched = fetchPrescription();
                                     </thead>
                                     <tbody>
                                         <?php while ($list = mysqli_fetch_assoc($fetchedPrescription)) {
-                                            include('./includes/modals/__deleteModal.php');
+                                            include('../includes/modals/__deleteModal.php');
                                         ?>
                                             <tr>
                                                 <td><?php echo $list['prescription_id'] ?></td>
@@ -81,7 +81,7 @@ $fetched = fetchPrescription();
 
                     </div>
                     <?php
-                    include('./includes/footer.php');
+                    include('../includes/footer.php');
                     ?>
 
                 </div>

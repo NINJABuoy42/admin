@@ -34,7 +34,7 @@ function login($userName, $password)
             $_SESSION["user"] = $row['fullName'];
             $_SESSION["userName"] = $row['userName'];
             $_SESSION["role"] = $row['role'];
-            header('location:index.php');
+            header('location:../public/index.php');
         } else {
             return "password incorrect";
         }

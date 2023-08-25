@@ -1,7 +1,7 @@
 <?php
 // include("./includes/header.php");
-require('db_conn/dbConn.php');
-include('./db_conn/apiDoctor.php');
+require('../db_conn/dbConn.php');
+include('../db_conn/apiDoctor.php');
 // include('./db_conn/user.php');
 
 if (!isset($_GET['prescription_id'])) {
@@ -14,8 +14,8 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 ?>
 
 <head>
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet" media="print">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/print.css" rel="stylesheet" media="print">
     <title>Prescription</title>
     <style>
     body {
@@ -87,7 +87,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                     </div>
                 </td>
                 <td colspan="6">
-                    <img src="img/head.jpg" width="500">
+                    <img src="../img/head.jpg" width="500">
                 </td>
             </tr>
 
@@ -148,7 +148,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <table width="100%">
             <tr>
                 <td colspan="6">
-                    <img src="img/Rx.svg" alt="" width="50px">
+                    <img src="../img/Rx.svg" alt="" width="50px">
                 </td>
             </tr>
             <tr class="border">

@@ -12,8 +12,8 @@ if (!isset($_SESSION['status'])) {
 
 $user = $_SESSION['user'];
 $title = 'Patient Detail';
-include('./includes/header.php');
-include('./db_conn/apiRegister.php');
+include('../includes/header.php');
+include('../db_conn/apiRegister.php');
 $portal="Patient Detail";
 
 if(!isset($_GET['patient_id'])){
@@ -38,22 +38,22 @@ $portal = "Doctors Dashboard";
 
 <body id="page-top">
     <div id="wrapper">
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
                 <div class="container-fluid">
                     <main id="main" class="main">
                         <?php
                         while ($patientDetail = mysqli_fetch_assoc($patientDetails)) {
-                            include('./includes/modals/__patientCheckIn.php');
+                            include('../includes/modals/__patientCheckIn.php');
 
                         ?>
                             <section class=" card section profile">
                                 <div class="d-flex flex-row justify-content-between flex-wrap">
                                     <div class="d-flex flex-column col-xl-6">
                                         <div class="card-body profile-card d-flex flex-column align-items-center">
-                                            <img src="img/undraw_profile.svg" class="rounded-circle" width="100">
+                                            <img src="../img/undraw_profile.svg" class="rounded-circle" width="100">
                                             <hr />
                                             <h5><strong>Patient ID: </strong><?php echo $patientDetail["patienId"]; ?></h5>
                                             <h5><?php echo $patientDetail["fullName"]; ?></h5>
@@ -114,7 +114,7 @@ $portal = "Doctors Dashboard";
                                                             <?php if($_SESSION['role']=='doctor'){
                                                     ?>
                                                 <a class="btn btn-info"
-                                                    href="doctor/doctorportal.php?prescription_id=<?php echo $pateintD['prescription_id'].'&patient_id='.$pateintD['patient_id'] ?> "><i
+                                                    href="../doctor/doctorportal.php?prescription_id=<?php echo $pateintD['prescription_id'].'&patient_id='.$pateintD['patient_id'] ?> "><i
                                                         class="fas fa-edit"></i></a>
 
                                                 <?php
@@ -132,7 +132,7 @@ $portal = "Doctors Dashboard";
                     </main>
                 <?php } ?>
                 <?php
-                include('./includes/footer.php'); ?>
+                include('../includes/footer.php'); ?>
                 </div>
             </div>
             <script>

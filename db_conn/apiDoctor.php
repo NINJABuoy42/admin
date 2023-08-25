@@ -1,5 +1,5 @@
 <?php
-require('db_conn/dbConn.php');
+require('../db_conn/dbConn.php');
 
 function getPrescriptiontDetails($prescription_id,$patientId){
     $sql = "SELECT * FROM prescription WHERE prescription_id='$prescription_id' and patient_id='$patientId'";

@@ -6,19 +6,19 @@ if (!isset($_SESSION['status'])) {
 }
 
 if ($_SESSION['role'] != 'doctor') {
-    header('location:index.php');
+    header('location:../public/index.php');
     die;
 }
 
 $user = $_SESSION['user'];
 $title = 'Dashboard';
-include('./includes/header.php');
+include('../includes/header.php');
 // include('./db_conn/user.php');
-include('db_conn/apiDoctor.php');
+include('../db_conn/apiDoctor.php');
 // include('./db_conn/dbConn.php');
 
 if(!isset($_GET['prescription_id'])){
-    header('location:204.php');
+    header('location:../public/204.php');
 }
 $dataPatients = getPrescriptiontDetails($_GET['prescription_id'], $_GET['patient_id']);
 
@@ -34,10 +34,10 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
 <body id="page-top">
     <div id="wrapper">
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?php include('./includes/nav.php'); ?>
+                <?php include('../includes/nav.php'); ?>
                 <div class="container-fluid">
 
                     <div class="card ">
@@ -203,7 +203,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
 
                 <?php
-                    include('./includes/footer.php'); ?>
+                    include('../includes/footer.php'); ?>
             </div>
         </div>
         <script>

@@ -1,5 +1,5 @@
 <?php
-require('db_conn/dbConn.php');
+require('../db_conn/dbConn.php');
 function viewPatientDetail($patienId)
 {
     $sql = "SELECT * FROM patient_details WHERE patienId='$patienId'";

@@ -1,6 +1,6 @@
 <?php
 $title = 'Register';
-include('./includes/header.php');
+include('../includes/header.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullName = $_POST['fullName'];
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '<div class="alert alert-danger" role="alert">Password Mismatch!! Enter the same password</div>';
         } 
         else {
-            include('./db_conn/user.php');
+            include('../db_conn/user.php');
             $msg=register($fullName,$userName,$pass);
             $err= '<div class="alert alert-danger" role="alert">'.$msg.'</div>';
             
@@ -72,10 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
         </div>
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="js/sb-admin-2.min.js"></script>
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../js/sb-admin-2.min.js"></script>
 </body>
 
 </html>

@@ -7,9 +7,9 @@ if (!isset($_SESSION['status'])) {
 $user = $_SESSION['user'];
 $title = 'Prescribed Patients';
 $portal = "Prescribed Patients List";
-include('./includes/header.php');
+include('../includes/header.php');
 // include('./db_conn/user.php');
-include('./db_conn/apiRegister.php');
+include('../db_conn/apiRegister.php');
 // $result = getPatientDetail();
 $fetchedPrescription = fetchPrescription();
 
@@ -26,7 +26,7 @@ $fetchedPrescription = fetchPrescription();
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -36,7 +36,7 @@ $fetchedPrescription = fetchPrescription();
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
 
 
 
@@ -61,7 +61,7 @@ $fetchedPrescription = fetchPrescription();
                                     </thead>
                                     <tbody>
                                         <?php while ($prescription = mysqli_fetch_assoc($fetchedPrescription)) {
-                                            include('./includes/modals/__deleteModal.php');
+                                            include('../includes/modals/__deleteModal.php');
                                         ?>
                                         <tr>
                                             <td><?php echo $prescription['prescription_id'] ?></td>
@@ -73,7 +73,7 @@ $fetchedPrescription = fetchPrescription();
                                                 <?php if($_SESSION['role']=='doctor'){
                                                     ?>
                                                 <a class="btn btn-info"
-                                                    href="doctor/doctorportal.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "><i
+                                                    href="../doctor/doctorportal.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "><i
                                                         class="fas fa-edit"></i></a>
 
                                                 <?php
@@ -94,7 +94,7 @@ $fetchedPrescription = fetchPrescription();
 
                     </div>
                     <?php
-                    include('./includes/footer.php');
+                    include('../includes/footer.php');
                     ?>
 
                 </div>
