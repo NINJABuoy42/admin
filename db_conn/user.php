@@ -1,5 +1,5 @@
 <?php
-require('db_conn/dbConn.php');
+require('../db_conn/dbConn.php');
 
 // function to register user in the database
 function register($fullName, $userName, $password)

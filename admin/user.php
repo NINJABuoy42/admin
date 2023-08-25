@@ -7,7 +7,7 @@ if (!isset($_SESSION['status'])) {
 $user = $_SESSION['user'];
 $title = 'Users';
 $portal = 'Users Detail';
-require './includes/header.php';
+require '../includes/header.php';
 include('../db_conn/user.php');
 $result = getUser();
 
@@ -28,7 +28,7 @@ if (isset($_POST['editRecord'])) {
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -38,7 +38,7 @@ if (isset($_POST['editRecord'])) {
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -63,8 +63,8 @@ if (isset($_POST['editRecord'])) {
                                     </thead>
                                     <tbody>
                                         <?php while ($rows = mysqli_fetch_assoc($result)) {
-                                            include('./includes/modals/__deleteModal.php');
-                                            include('./includes/modals/__editModal.php');
+                                            include('../includes/modals/__deleteModal.php');
+                                            include('../includes/modals/__editModal.php');
                                         ?>
                                             <tr>
                                                 <td><?php echo $rows['fullName'] ?></td>
@@ -89,7 +89,7 @@ if (isset($_POST['editRecord'])) {
 
                     </div>
                     <?php
-                    include('./includes/footer.php');
+                    include('../includes/footer.php');
                     ?>
 
                 </div>

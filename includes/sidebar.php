@@ -17,7 +17,7 @@
         case 'admin':
     ?>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="user.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="../admin/user.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-id-card-alt" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Users</span>
                 </a>
@@ -25,7 +25,7 @@
                     <i class="fas fa-user-md" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Doctors List</span>
                 </a>
-                <a class="nav-link collapsed" href="patientDetails.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="../public/patientDetails.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-search" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Search</span>
                 </a>

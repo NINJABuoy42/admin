@@ -7,8 +7,8 @@ if (!isset($_SESSION['status'])) {
 $user = $_SESSION['user'];
 $title = 'Search';
 $portal = "Search:  Patients List";
-include('./includes/header.php');
-include('./db_conn/user.php');
+include('../includes/header.php');
+include('../db_conn/user.php');
 $result = getPatientDetail();
 
 
@@ -24,7 +24,7 @@ if (isset($_GET['delete'])) {
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -34,7 +34,7 @@ if (isset($_GET['delete'])) {
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -59,7 +59,7 @@ if (isset($_GET['delete'])) {
                                     </thead>
                                     <tbody>
                                         <?php while ($rows = mysqli_fetch_assoc($result)) {
-                                            include('./includes/modals/__deleteModal.php');
+                                            include('../includes/modals/__deleteModal.php');
                                         ?>
                                             <tr>
                                                 <td><?php echo $rows['patienId'] ?></td>
@@ -83,7 +83,7 @@ if (isset($_GET['delete'])) {
 
                     </div>
                     <?php
-                    include('./includes/footer.php');
+                    include('../includes/footer.php');
                     ?>
 
                 </div>

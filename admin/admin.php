@@ -12,17 +12,17 @@ if ($_SESSION['role']!='admin') {
 $user = $_SESSION['user'];
 $title = 'Dashboard';
 $portal="Admin Dashboard";
-include('./includes/header.php');
+include('../includes/header.php');
 include('../db_conn/user.php');
 ?>
 
 
 <body id="page-top">
     <div id="wrapper">
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
                 <div class="container-fluid">
                     <!-- Content Row -->
                     <div class="row">
@@ -57,6 +57,6 @@ include('../db_conn/user.php');
 
 
                     <?php
-                    include('./includes/footer.php'); ?>
+                    include('../includes/footer.php'); ?>
                 </div>
             </div>
