@@ -47,6 +47,7 @@ $portal = "Doctors Dashboard";
                         <?php
                         while ($patientDetail = mysqli_fetch_assoc($patientDetails)) {
                             include('../includes/modals/__patientCheckIn.php');
+                            include('../includes/modals/__patientEdit.php');
 
                         ?>
                             <section class=" card section profile">
@@ -59,10 +60,12 @@ $portal = "Doctors Dashboard";
                                             <h5><?php echo $patientDetail["fullName"]; ?></h5>
                                             <h5><?php echo $patientDetail["age"]; ?>Y/<?php echo $patientDetail["gender"]; ?></h5>
                                         </div>
+                                        <?php if($_SESSION['role']=='register'){ ?>
                                         <div class=" d-flex flex-row justify-content-around">
                                             <button type="button" class="btn btn-success m-2 col" id="checkIn" data-toggle="modal" data-bs-target="#verticalycentered" data-target="#checkin"><i class="far fa-address-card mr-1"></i>Check In</button>
-                                            <button type="button" class="btn btn-info m-2 col" id="pEdit" data-toggle="modal"><i class="fas fa-edit mr-1"></i>EDIT</button>
+                                            <button type="button" class="btn btn-info m-2 col" id="paEdit" data-toggle="modal" data-bs-target="#verticalycentered" data-target="#pEdit"><i class="fas fa-edit mr-1"></i>EDIT</button>
                                         </div>
+                                        <?php } ?>
                                     </div>
 
                                     <div class="col-xl-6">

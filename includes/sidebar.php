@@ -55,15 +55,15 @@
         ?>
             <li class="nav-item">
 
-                <a class="nav-link collapsed" href="registrationPortal.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="../register/registrationPortal.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-user-edit" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Register</span>
                 </a>
-                <a class="nav-link collapsed" href="patientDetails.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="../public/patientDetails.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-search" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Search</span>
                 </a>
-                <a class="nav-link collapsed" href="patientList.php" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="../public/patientList.php" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-file-prescription" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Prescription</span>
                 </a>

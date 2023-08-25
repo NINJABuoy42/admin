@@ -105,6 +105,11 @@ $fetchedPrescription = fetchPrescription();
 
         </div>
     </div>
+    <script>
+    $('#dataTable').dataTable({
+        "ordering": false
+    });
+    </script>
 
     <!-- End of Content Wrapper -->
 

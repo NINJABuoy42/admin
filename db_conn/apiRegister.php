@@ -14,7 +14,7 @@ function viewPatientHistory($patienId)
     return $patientHistory;
 }
 function fetchPrescription(){
-    $sql = "SELECT * FROM prescription WHERE status='prescribed' ORDER BY prescribed_date DESC";
+    $sql = "SELECT * FROM prescription WHERE status='prescribed' ORDER BY  prescribed_date DESC";
     $prescription = mysqli_query($GLOBALS['conn'], $sql);
     return $prescription;
 }
@@ -51,7 +51,7 @@ function patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc)
         $pAddress = $rowP['address'];
         
     }
-    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`,`height`, `weight`, `blood_pressure`,`status`,`visit_date`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','checked_in',NOW())";
+    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`,`height`, `weight`, `blood_pressure`,`status`,`visit_date`,`follow_up`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','checked_in',NOW(),0000-00-00)";
     if (mysqli_query($GLOBALS['conn'], $sql)) {
         header("LOCATION:viewDetails.php?patient_id={$pId}");
     }

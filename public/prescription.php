@@ -120,6 +120,11 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         </table>
         <hr>
         <table width="100%" height="200px">
+            <tr>
+                <td colspan="3"><strong>Blood Pressure: </strong><?php echo $dataPatient['blood_pressure'] ?> mm Hg</td>
+                <td colspan="3"><strong>Height: </strong><?php echo $dataPatient['height'] ?> cms</td>
+                <td colspan="3"><strong>Weight: </strong><?php echo $dataPatient['weight'] ?> kgs</td>
+            </tr>
 
             <tr>
                 <td colspan="6"><strong>Chief Complaint: </strong><?php echo $dataPatient['cheif_complaint'] ?> </td>

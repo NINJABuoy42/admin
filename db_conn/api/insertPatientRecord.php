@@ -23,8 +23,8 @@ if (isset($_POST['proceed'])) {
     `address`, 
     `emName`, 
     `emRelation`, 
-    `emNumber`, 
-    `status`, 
+    `emNumber`
+    -- `status`, 
     ) VALUES (
     '{$newPID}',
     '{$user_id}',
@@ -39,12 +39,12 @@ if (isset($_POST['proceed'])) {
     '{$_POST['address']}',
     '{$_POST['emName']}',
     '{$_POST['emRelation']}',
-    '{$_POST['emNumber']}',
-    '{$_POST['status']}',
+    '{$_POST['emNumber']}'
+    -- '{$_POST['status']}',
    )";
     if (mysqli_query($conn, $sql)) {
         echo "success";
-        header("location:../../viewDetails.php?patient_id={$newPID}");
+        header("location:../../public/viewDetails.php?patient_id={$newPID}");
     } else {
         echo json_encode(array('message' => 'No record found. ', 'status' => false));
     }

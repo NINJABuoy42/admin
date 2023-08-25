@@ -1,20 +1,20 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:login.php');
+    header('location:../public/login.php');
     die;
 }
 
 if ($_SESSION['role']!='register') {
-    header('location:index.php');
+    header('location:../public/index.php');
     die;
 }
 
 $user = $_SESSION['user'];
 $title = 'Registration';
 $portal="Patient Registration";
-include('./includes/header.php');
-include('./db_conn/user.php');
+include('../includes/header.php');
+include('../db_conn/user.php');
 $data = mysqli_fetch_assoc(getUsers());
 $portal="Registration Dashboard";
 ?>
@@ -22,16 +22,16 @@ $portal="Registration Dashboard";
 
 <body id="page-top">
     <div id="wrapper" >
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
                 <div class="container-fluid">
                 <section class="section ">
       <div class="card ">
         <div class="card-body ">
           <!-- Multi Columns Form -->
-          <form class="row g-3 form-group" action="db_conn/api/insertPatientRecord.php" method="POST">
+          <form class="row g-3 form-group" action="../db_conn/api/insertPatientRecord.php" method="POST">
             <h5 class="card-title col-md-12">Patient's Details</h5>
             <div class="col-md-4">
               <label for="fullName" class="form-label">Full Name</label>
@@ -54,7 +54,7 @@ $portal="Registration Dashboard";
 
             <div class="col-md-4">
               <label for="phoneNumber" class="form-label">Phone no. <span>(without +91)</span></label>
-              <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" minlength="10" maxlength="10" required>
+              <input type="number" class="form-control" id="phoneNumber" name="phoneNumber"  required>
             </div>
             <div class="col-md-4">
               <label for="maritialStatus" class="form-label">Maritial Status</label>
@@ -86,15 +86,6 @@ $portal="Registration Dashboard";
               <label for="address" class="form-label">Address/ Village/ Locality</label>
               <input type="text" class="form-control" id="address" name="address">
             </div>
-            <!-- <div class="col-md-4">
-              <label for="policeStation" class="form-label">Police Station</label>
-              <input type="text" class="form-control" id="policeStation" name="policeStation" >
-            </div>
-            <div class="col-md-4">
-              <label for="postOffice" class="form-label">Post Office</label>
-              <input type="text" class="form-control" id="postOffice" name="postOffice" >
-            </div> -->
-            <!-- Emergengy contacts -->
             <hr>
             <h5 class="card-title col-md-12 mt-5">Emergengy Contact and Communication Information </h5>
             <div class="col-md-4">
@@ -107,7 +98,7 @@ $portal="Registration Dashboard";
             </div>
             <div class="col-md-4">
               <label for="emNumber" class="form-label"> Phone no. <span>(without +91)</span></label>
-              <input type="number" class="form-control" id="emNumber" name="emNumber" minlength="10" maxlength="10" >
+              <input type="number" class="form-control" id="emNumber" name="emNumber">
             </div>
             <hr />
               <div class="text-center mt-3 col-md-12">
@@ -122,6 +113,6 @@ $portal="Registration Dashboard";
     </section>
 
 <?php
-                    include('./includes/footer.php'); ?>
+                    include('../includes/footer.php'); ?>
                 </div>
             </div>

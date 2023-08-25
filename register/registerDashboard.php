@@ -1,26 +1,26 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:login.php');
+    header('location:../public/login.php');
     die;
 }
 if ($_SESSION['role']!='register') {
-    header('location:index.php');
+    header('location:../public/index.php');
     die;
 }
 $user = $_SESSION['user'];
 $title = "Dashboard";
 $portal = "Registration Dashboard";
-include('./includes/header.php');
+include('../includes/header.php');
 ?>
 
 
 <body id="page-top">
     <div id="wrapper">
-        <?php include('./includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <?php include('./includes/nav.php') ?>
+                <?php include('../includes/nav.php') ?>
                 <div class="container-fluid">
 
 
@@ -56,6 +56,6 @@ include('./includes/header.php');
 
 
                     <?php
-                    include('./includes/footer.php'); ?>
+                    include('../includes/footer.php'); ?>
                 </div>
             </div>

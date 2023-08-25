@@ -15,7 +15,7 @@
                             <input type="text" class="form-control" id="pId" name="pId" value="<?php echo $patientDetail["patienId"]; ?>" readonly>
                         </div>
                         <div class="col-md-6">
-                            <label for="pName" class="form-label">User Id</label>
+                            <label for="pName" class="form-label">Patient Name</label>
                             <input type="text" class="form-control" id="pName" name="pName" value="<?php echo $patientDetail["fullName"]; ?>" readonly>
                         </div>
                         <div class="col-md-6">
