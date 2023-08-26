@@ -43,9 +43,9 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                     <div class="card ">
                         <div class="card-body ">
                             <!-- Multi Columns Form -->
-                            <form class="row g-3 form-group" method="POST">
+                            <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) { ?>
+                            <form class="row g-3 form-group" method="<?php if($dataPatient['attending_doctor']==$user){echo 'POST';} ?>">
                                 <h5 class="card-title col-md-12">Diagnosis/Prescription </h5>
-                                <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) { ?>
                                 <div class="col-md-4">
                                     <label for="prescription_id" class="form-label">Prescription ID</label>
                                     <input type="text" class="form-control" id="prescription_id"

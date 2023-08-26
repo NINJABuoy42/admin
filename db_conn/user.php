@@ -14,7 +14,7 @@ function register($fullName, $userName, $password)
         }
         // die;
     } else {
-        return 'Email already exists';
+        return 'Username already exists';
     }
 
     // print_r('Data inserted successfully');
@@ -115,31 +115,8 @@ function getPrescription($prescription_id)
 function getDoctors()
 {
     $query = "SELECT user_id,fullName FROM users where role='doctor'";
-    $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
-    return $result;
+    $doc = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    return $doc;
 }
-// function patientCheckIn($referredBy, $pTemp, $pBP, $pWeight, $pHeight, $pId, $attendingDoc)
-// {
-//     $query = "SELECT COUNT(*) FROM prescription";
-//     $queryP ="SELECT fullName,age,gender,phoneNumber,address FROM patient_details";
-//     $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
-//     while ($row = $result->fetch_assoc()) {
-//         $newId = $row['COUNT(*)'] + 1;
-//         $newPID = "PSC-" . date("Y") . "/" . $newId;
-//     }
-//     $queryP ="SELECT fullName,age,gender,phoneNumber,address FROM patient_details";
-//     $resultP = mysqli_query($GLOBALS['conn'], $queryP) or die("SQL query failed");
-//     while ($rowP = $resultP->fetch_assoc()) {
-//         $pName = $rowP['fullName'];
-//         $pAge = $rowP['age'];
-//         $pGender = $rowP['gender'];
-//         $phone = $rowP['phoneNumber'];
-//         $pAddress = $rowP['address'];
-        
-//     }
-//     $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `referred_by`, `height`, `weight`, `blood_pressure`, `temperature`, `status`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$attendingDoc}','{$referredBy}','{$pHeight}','{$pWeight}','{$pBP}','{$pTemp}','checked_in')";
-//     if (mysqli_query($GLOBALS['conn'], $sql)) {
-//         header("LOCATION:viewDetails.php?patienId={$pId}");
-//     }
-// }
+
 ?>

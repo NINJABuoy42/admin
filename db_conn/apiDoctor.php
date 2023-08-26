@@ -50,3 +50,7 @@ function getMedicine($prescription_id,$patient_id){
     $medicine = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     return $medicine;
 }
+
+function fetchDoctors(){
+    $sql= "SELECT * FROM `doctors`"
+}

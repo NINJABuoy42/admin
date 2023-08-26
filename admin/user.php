@@ -19,6 +19,7 @@ if (isset($_POST['editRecord'])) {
     $status = $_POST['status'];
     $role = $_POST['role'];
     $user_id = $_POST['user_id'];
+    // $name = $_POST['fullName'];
     updateUser($user_id,$status,$role);}
 ?>
 
