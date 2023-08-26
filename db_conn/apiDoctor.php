@@ -7,7 +7,8 @@ function getPrescriptiontDetails($prescription_id,$patientId){
     return $dataPatients;
 }
 function fetchWaitingPatient(){
-    $sql = "SELECT * FROM prescription WHERE status='checked_in'";
+    $user=$_SESSION['user'];
+    $sql = "SELECT * FROM prescription WHERE status='checked_in' AND `attending_doctor` = '{$user}'";
     $prescription = mysqli_query($GLOBALS['conn'], $sql);
     return $prescription;
 }

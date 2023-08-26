@@ -121,7 +121,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <hr>
         <table width="100%">
             <tr>
-                <td colspan="3"><strong>Blood Pressure: </strong><?php echo $dataPatient['blood_pressure'] ?> mm Hg</td>
+                <td colspan="3"><strong>Blood Pressure: </strong><?php echo $dataPatient['blood_pressure'] ?> mmHg</td>
                 <td colspan="3"><strong>Height: </strong><?php echo $dataPatient['height'] ?> cms</td>
                 <td colspan="3"><strong>Weight: </strong><?php echo $dataPatient['weight'] ?> kgs</td>
             </tr>
@@ -153,7 +153,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
             </tr>
         </table>
 
-        <table width="100%">
+        <table width="100%" <?php if($medicine == ""){echo "height:'200px'";}?>>
             <tr>
                 <td colspan="6">
                     <img src="../img/Rx.svg" alt="" width="50px">

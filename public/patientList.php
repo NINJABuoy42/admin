@@ -70,7 +70,7 @@ $fetchedPrescription = fetchPrescription();
                                             <td><?php echo $prescription['attending_doctor'] ?></td>
                                             <td><?php echo date("Y-m-d", strtotime($prescription['visit_date'])) ?></td>
                                             <td class="d-flex justify-content-around">
-                                                <?php if($_SESSION['role']=='doctor'){
+                                                <?php if($_SESSION['role']=='doctor' && $prescription['attending_doctor']==$user ){
                                                     ?>
                                                 <a class="btn btn-info"
                                                     href="../doctor/doctorPortal.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "><i

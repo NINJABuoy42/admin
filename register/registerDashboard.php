@@ -35,7 +35,7 @@ include('../includes/header.php');
                             </a>
                         </div>
                         <div class=" card border-left-primary d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">
-                            <a class="btn" href="patientDetails.php">
+                            <a class="btn" href="../public/patientDetails.php">
                                 <div class=" card-body col-auto">
                                     <i class="fas fa-search fa-6x text-primary"></i>
                                 </div>
@@ -43,7 +43,7 @@ include('../includes/header.php');
                             </a>
                         </div>
                         <div class=" btn card border-left-info d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">
-                            <a class="btn" href="patientList.php">
+                            <a class="btn" href="../public/patientList.php">
                                 <div class=" card-body col-auto">
                                     <i class="fas fa-file-prescription fa-6x text-info"></i>
                                     <div class="col-auto text-lg font-weight-bold text-info text-uppercase mb-1">PRESCRIPTION</div>

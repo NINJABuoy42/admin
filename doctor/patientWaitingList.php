@@ -52,7 +52,7 @@ $fetched = fetchPrescription();
                                             <th class="w-15">Prescription ID</th>
                                             <th class="w-15">Patient ID</th>
                                             <th class="w-25">Name</th>
-                                            <th class="w-15">Prescribed By</th>
+                                            <!-- <th class="w-15">Prescribed By</th> -->
                                             <th class="w-15">Visit Date</th>
                                             <th class="w-15">Action</th>
                                         </tr>
@@ -65,7 +65,7 @@ $fetched = fetchPrescription();
                                                 <td><?php echo $list['prescription_id'] ?></td>
                                                 <td><?php echo $list['patient_id'] ?></td>
                                                 <td><?php echo $list['name'] ?></td>
-                                                <td><?php echo $list['attending_doctor'] ?></td>
+
                                                 <td><?php echo date("Y-m-d", strtotime($list['visit_date'])) ?></td>
                                                 <td class="d-flex justify-content-around">
                                                 <a class="btn btn-success" href="doctorPortal.php?prescription_id=<?php echo $list['prescription_id'].'&patient_id='.$list['patient_id'] ?> "><i class="fas fa-file-prescription"></i></a>
