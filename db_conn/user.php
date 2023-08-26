@@ -114,9 +114,31 @@ function getPrescription($prescription_id)
 
 function getDoctors()
 {
-    $query = "SELECT user_id,fullName FROM users where role='doctor'";
+    $query = "SELECT * FROM doctors";
     $doc = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
     return $doc;
+}
+function addDoc($docId){
+    $query = "SELECT * FROM users where user_id='{$docId}'";
+    $docP = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    while ($rowP = $docP->fetch_assoc()) {
+        $pName = $rowP['fullName'];  
+    }
+    $sql = "INSERT INTO `doctors`(`user_id`, `Name`) VALUES ('{$docId}','{$pName}')";
+    mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
+    header('location:../admin/docList.php');
+}
+
+function fetchDocs(){
+    $query = "SELECT * FROM doctors";
+    $docP = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    return $docP;
+}
+
+function updateDoc($docID,$docReg,$docQual,$docCurr,$docMail){
+    $sql="UPDATE `doctors` SET `regNo`='$docReg',`qualifications`='$docQual',`email`='$docMail',`current`='$docCurr' WHERE user_id='$docID'";
+    $docP = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
+    header('location:../admin/docList.php');
 }
 
 ?>

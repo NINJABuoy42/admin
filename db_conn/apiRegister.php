@@ -28,7 +28,7 @@ function getPrescription($prescription_id)
 
 function getDoctors()
 {
-    $query = "SELECT user_id,fullName FROM users where role='doctor'";
+    $query = "SELECT * FROM doctors ";
     $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
     return $result;
 }

@@ -51,6 +51,3 @@ function getMedicine($prescription_id,$patient_id){
     return $medicine;
 }
 
-function fetchDoctors(){
-    $sql= "SELECT * FROM `doctors`"
-}

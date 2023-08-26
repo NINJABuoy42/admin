@@ -37,7 +37,7 @@
                                 <?php
                                 $doctors = getDoctors();
                                 while ($doctor = mysqli_fetch_assoc($doctors)) { ?>
-                                    <option value="<?php echo $doctor["fullName"]; ?>" selected><?php echo $doctor["fullName"]; ?></option>
+                                    <option value="<?php echo $doctor["Name"]; ?>" selected><?php echo $doctor["Name"]; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
