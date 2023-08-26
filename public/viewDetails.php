@@ -117,7 +117,7 @@ $portal = "Doctors Dashboard";
                                                             <?php if($_SESSION['role']=='doctor'){
                                                     ?>
                                                 <a class="btn btn-info"
-                                                    href="../doctor/doctorportal.php?prescription_id=<?php echo $pateintD['prescription_id'].'&patient_id='.$pateintD['patient_id'] ?> "><i
+                                                    href="../doctor/doctorPortal.php?prescription_id=<?php echo $pateintD['prescription_id'].'&patient_id='.$pateintD['patient_id'] ?> "><i
                                                         class="fas fa-edit"></i></a>
 
                                                 <?php
