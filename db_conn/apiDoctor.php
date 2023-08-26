@@ -17,14 +17,16 @@ function updatePrescription(){
     mysqli_query($GLOBALS['conn'],$pSql) or die("SQL query failed");
     $prescription_id=$_POST['prescription_id'];
     $patient_id=$_POST['patient_id'];
-    $sql="INSERT INTO `diagnosis`(`prescription_id`,`patient_id`,`diagnosis`) VALUES ('{$prescription_id}','{$patient_id}','$value')";
-            mysqli_query($GLOBALS['conn'],$sql);
+    $sqlD="DELETE FROM `diagnosis` WHERE prescription_id ='{$prescription_id}' ";
+    mysqli_query($GLOBALS['conn'],$sqlD);
     if(isset($_POST['diagnosis'])!=''){
         foreach($_POST['diagnosis'] as $key => $value){
             $sql="INSERT INTO `diagnosis`(`prescription_id`,`patient_id`,`diagnosis`) VALUES ('{$prescription_id}','{$patient_id}','$value')";
             mysqli_query($GLOBALS['conn'],$sql);
         }
     }
+    $sqlM="DELETE FROM `medicine` WHERE prescription_id ='{$prescription_id}' ";
+    mysqli_query($GLOBALS['conn'],$sqlM);
     if (isset($_POST['medName'])!='') {
         $medDosage = $_POST['medDosage'];
         $medDuration = $_POST['medDuration'];
