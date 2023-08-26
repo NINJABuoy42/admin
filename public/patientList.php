@@ -62,6 +62,9 @@ $fetchedPrescription = fetchPrescription();
                                     <tbody>
                                         <?php while ($prescription = mysqli_fetch_assoc($fetchedPrescription)) {
                                             include('../includes/modals/__deleteModal.php');
+                                            if($prescription['attending_doctor']==$user || $_SESSION['role']=='register'){
+
+                                            
                                         ?>
                                         <tr>
                                             <td><?php echo $prescription['prescription_id'] ?></td>
@@ -70,14 +73,14 @@ $fetchedPrescription = fetchPrescription();
                                             <td><?php echo $prescription['attending_doctor'] ?></td>
                                             <td><?php echo date("Y-m-d", strtotime($prescription['visit_date'])) ?></td>
                                             <td class="d-flex justify-content-around">
-                                                <?php if($_SESSION['role']=='doctor' && $prescription['attending_doctor']==$user ){
+                                                <?php if($_SESSION['role']=='doctor' ){
                                                     ?>
                                                 <a class="btn btn-info"
                                                     href="../doctor/doctorPortal.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "><i
                                                         class="fas fa-edit"></i></a>
 
                                                 <?php
-                                                } ?>
+                                                } }?>
                                                 <a class="btn btn-secondary"
                                                     href="prescription.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "
                                                     onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i
