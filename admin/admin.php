@@ -35,7 +35,7 @@ include('../db_conn/user.php');
                             </a>
                         </div>
                         <div class=" card border-left-primary d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">
-                            <a class="btn" href="patientDetails.php">
+                            <a class="btn" href="../public/patientDetails.php">
                                 <div class=" card-body col-auto">
                                     <i class="fas fa-search fa-6x text-primary"></i>
                                 </div>

@@ -19,6 +19,8 @@
     <link href="../css/sb-admin-2.css" rel="stylesheet">
     <link href="../css/print.css" rel="stylesheet" media="print">
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/favicon.png">
 
     <title><?php echo $title; ?></title>
 </head>
