@@ -112,12 +112,12 @@ function getPrescription($prescription_id)
     return $result;
 }
 
-function getDoctors()
-{
-    $query = "SELECT * FROM doctors";
-    $doc = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
-    return $doc;
-}
+// function getDoctors()
+// {
+//     $query = "SELECT * FROM doctors";
+//     $doc = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+//     return $doc;
+// }
 function addDoc($docId){
     $query = "SELECT * FROM users where user_id='{$docId}'";
     $docP = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
@@ -140,5 +140,9 @@ function updateDoc($docID,$docReg,$docQual,$docCurr,$docMail){
     $docP = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     header('location:../admin/docList.php');
 }
-
+function getDoctors(){
+    $query = "SELECT * FROM users WHERE role='doctor'";
+    $docP = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    return $docP;
+}
 ?>

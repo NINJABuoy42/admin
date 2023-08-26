@@ -48,7 +48,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
     .docSign {
         width: 100%;
         text-align: end;
-        margin-top: 4rem;
+        margin-top: 200px;
         padding-right: 4rem;
         margin-bottom: 2rem;
     }
@@ -108,13 +108,13 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 </td>
                 <td colspan="2"> <strong>Gender: </strong><?php echo $dataPatient['gender'] ?>
                 </td>
-                <td colspan="2"> <strong>Age: </strong> Y
+                <td colspan="2"> <strong>Age: </strong><?php echo $dataPatient['age'] ?> Y
                 </td>
-                <td colspan="2"> <strong>Phone No: </strong>
+                <td colspan="2"> <strong>Phone No: </strong> +91 <?php echo $dataPatient['phone'] ?>
                 </td>
             </tr>
             <tr>
-                <td colspan="12"><strong>Address:</strong> Bongal Pukhuri, Jorhat, Assam</td>
+                <td colspan="12"><strong>Address:   </strong><?php echo $dataPatient['address']?></td>
 
             </tr>
         </table>
