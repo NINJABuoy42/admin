@@ -134,9 +134,23 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                                             <option value="Weekly">Weekly</option>
                                                             <option value="Necessary">Necessary</option>
                                                         </select>
-                                                        </div>
-
                                                     </div>
+                                                    
+                                                </div>
+                                                <select id="insType" class="form-control" name="insType">
+                                                    <option value="Before Meal">Before Meal</option>
+                                                    <option value="After Meal">After Meal</option>
+                                                    <option value="Morning">Morning</option>
+                                                    <option value="Morning Before Meal">Morning Before Meal</option>
+                                                    <option value="Morning After Meal">Morning After Meal</option>
+                                                    <option value="Afternoon">Afternoon</option>
+                                                    <option value="Afternoon Before Meal">Afternoon Before Meal</option>
+                                                    <option value="Afternoon After Meal">Afternoon After Meal</option>
+                                                    <option value="Night">Night</option>
+                                                    <option value="Night Before Meal">Night Before Meal</option>
+                                                    <option value="Night After Meal">Night After Meal</option>
+                                                    <option value="Anytime">Anytime</option>
+                                                </select>
                                                 </td>
                                                 <td class="w-25">
                                                     <div class="input-group mb-3">
@@ -147,6 +161,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                                             <option value="Week">Week</option>
                                                             <option value="Month">Month</option>
                                                         </select>
+                                                        
                                                     </div>
                                                     </div>
                                                 </td>
@@ -212,7 +227,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 // console.log("add");
                 html = `<tr>
                                     <td class="w-50"><input type="text" class="form-control input" name='medName[]' value='${$('#medName').val()}'></td>
-                                    <td class="w-25"><input type="text" class="form-control input" name='medDosage[]' value='${$('#medDosage').val()} x ${$('#insDosage').val()}'></td>
+                                    <td class="w-25"><input type="text" class="form-control input" name='medDosage[]' value='${$('#medDosage').val()} x ${$('#insDosage').val()} | ${$('#insType').val()}'></td>
                                     <td class="w-25"><input type="text" class="form-control input" name='medDuration[]' value='${$('#medDuration').val()} x ${$('#insDuration').val()}'></td>
                                     <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove();">REM</button></td>
                                 </tr>`;
