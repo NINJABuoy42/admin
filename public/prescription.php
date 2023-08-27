@@ -19,31 +19,14 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
     <title>Prescription</title>
     <style>
     body {
-        padding: 2rem;
+        padding: 3rem;
         height: 842px;
 
 
     }
 
-    table,
-    tr,
-    td {
-        /* border: 1px solid black; */
-        border-collapse: collapse;
-        padding: 10px;
-    }
 
-    .ta-center {
-        text-align: center;
-    }
 
-    .border {
-        border: 1px solid black;
-    }
-
-    .borderA {
-        border: 1px solid black;
-    }
 
     .docSign {
         width: 100%;
@@ -75,8 +58,8 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
 
     <div>
-        <table width="100%" class="border" height="fit-content">
-            <tr class="border">
+        <table width="100%" height="fit-content">
+            <tr>
                 <td colspan="6">
                     <div>
                         <h3><strong>Dr.Amrit Kumar Saikia</strong></h3>
@@ -90,117 +73,103 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                     <img src="../img/head.jpg" width="500">
                 </td>
             </tr>
-
-            <tr class="border">
-                <td colspan="4">
-                    <?php
-                    while ($dataPatient = mysqli_fetch_assoc($dataPatients)) {
-                    ?>
-                    <strong>Prescription ID:</strong><?php echo $dataPatient['prescription_id'] ?>
-
-                </td>
-                <td colspan="4"><strong>Patient ID: </strong><?php echo $dataPatient['patient_id'] ?></td>
-                <td colspan="4"><strong>Date: </strong><?php echo $dataPatient['visit_date'] ?></td>
-            </tr>
-
-            <tr class="border">
-                <td colspan="4"> <strong>Name: </strong><?php echo $dataPatient['name'] ?>
-                </td>
-                <td colspan="2"> <strong>Gender: </strong><?php echo $dataPatient['gender'] ?>
-                </td>
-                <td colspan="2"> <strong>Age: </strong><?php echo $dataPatient['age'] ?> Y
-                </td>
-                <td colspan="2"> <strong>Phone No: </strong> +91 <?php echo $dataPatient['phone'] ?>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="12"><strong>Address:   </strong><?php echo $dataPatient['address']?></td>
-
-            </tr>
         </table>
-        <hr>
-        <table width="100%">
-            <tr>
-                <td colspan="3"><strong>Blood Pressure: </strong><?php echo $dataPatient['blood_pressure'] ?> mmHg</td>
-                <td colspan="3"><strong>Height: </strong><?php echo $dataPatient['height'] ?> cms</td>
-                <td colspan="3"><strong>Weight: </strong><?php echo $dataPatient['weight'] ?> kgs</td>
-            </tr>
-        </table>
-        <hr>
-        <table width="100%" height="200px">
-
-            <tr>
-                <td colspan="6"><strong>Chief Complaint: </strong><?php echo $dataPatient['cheif_complaint'] ?> </td>
-            </tr>
-            <tr>
-                <td colspan="6"><strong>Diagnosis: </strong>
-                </td>
-            </tr>
-
-            <?php
-                        while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) {
-
-            ?>
-            <tr>
-                <td>
-                    <?php echo $dataDiagnosis['diagnosis']; ?>
-                </td>
-            </tr>
+        <hr class="border border-dark">
+        
+        <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) { ?>
+        <div class="row">
+            <div class="col col-sm-4">
+                <strong>Prescription ID: </strong><?php echo $dataPatient['prescription_id'] ?>
+            </div>
+            <div class="col col-sm-4">
+                <strong>Patient ID: </strong><?php echo $dataPatient['patient_id'] ?>
+            </div>
+            <div class="col col-sm-4">
+                <strong>Date: </strong> <?php echo $dataPatient['visit_date'] ?>
+            </div>
+        </div>
+        <hr class="border">
+        <div class="row">
+            <div class="col col-sm-4">
+                <strong>Name: </strong><?php echo $dataPatient['name'] ?>
+            </div>
+            <div class="col col-sm-4">
+                <strong>Age: </strong><?php echo $dataPatient['age'] ?> Y
+            </div>
+            <div class="col col-sm-4">
+                <strong>Gender: </strong><?php echo $dataPatient['gender'] ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-8">
+                <strong>Address: </strong><?php echo $dataPatient['address']?></td>
+            </div>
+            <div class="col col-sm-4">
+                <strong>Phone No: </strong><?php echo $dataPatient['phone'] ?>
+            </div>
+        </div>
+        <hr class="border  border-dark">
+        <div class="row">
+            <div class="col col-sm-8 text-break">
+                <strong>Chief Complaint: </strong><?php echo $dataPatient['cheif_complaint'] ?>
+            </div>
+            <div class="col col-md-4">
+                <div class="row"><strong class="mr-1">Blood Pressure:
+                    </strong><?php echo $dataPatient['blood_pressure'] ?>mmHH</div>
+                <div class="row"><strong class="mr-1">Height: </strong><?php echo $dataPatient['height'] ?>cm</div>
+                <div class="row"><strong class="mr-1">Weight: </strong><?php echo $dataPatient['weight'] ?>kg</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <strong>Diagnosis: </strong>
+            </div>
+            <div class="col col-sm-10">
+                <ol type="number">
+                    <?php while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) { ?>
+                    <li>
+                        <?php echo $dataDiagnosis['diagnosis']; ?>
+                    </li>
+                    <?php } ?>
+                </ol>
+            </div>
+        </div>
+        <hr class="border">
+        <div class="row">
+            <img src="../img/Rx.svg" alt="" width="50px">
+        </div>
+        <ol type="number">
+            <?php while ($dataMedicine = mysqli_fetch_assoc($medicine)) { ?>
+            <li>
+                <div class="row mt-4">
+                    <div class="col col-sm-6"><?php echo $dataMedicine['medicine_name']; ?></div>
+                    <div class="col col-sm-3"><?php echo $dataMedicine['dosage']; ?></div>
+                    <div class="col col-sm-3"><?php echo $dataMedicine['duration']; ?></div>
+                </div>
+            </li>
             <?php } ?>
+        </ol>
+        <hr class="border">
+        <?php if($dataPatient['refer_to']!=""){?>
+        <div class="row">
+            <div class="col-col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?></div>
+        </div>
+        <?php }
+        if($dataPatient['advice']!=""){?>
 
-            <tr>
-                <td colspan="6"><strong>Additional Notes: </strong><?php echo $dataPatient['note'] ?></td>
-            </tr>
-        </table>
-
-        <table width="100%" <?php if($medicine == ""){echo "height:'200px'";}?>>
-            <tr>
-                <td colspan="6">
-                    <img src="../img/Rx.svg" alt="" width="50px">
-                </td>
-            </tr>
-            <tr class="border">
-                <td colspan="2"><strong>Medicine Name</strong></td>
-                <td colspan="2"><strong>Dosage</strong></td>
-                <td colspan="2"><strong>Duration</strong></td>
-            </tr>
-            <tbody>
-                <?php
-                        while ($dataMedicine = mysqli_fetch_assoc($medicine)) {
-            ?>
-                <tr>
-                    <td colspan="2"><?php echo $dataMedicine['medicine_name']; ?></td>
-                    <td colspan="2"><?php echo $dataMedicine['dosage']; ?></td>
-                    <td colspan="2"><?php echo $dataMedicine['duration']; ?></td>
-                </tr>
-                <?php } ?>
-            </tbody>
+        <div class="row">
+            <div class="col-col-sm-12"> <strong class="mr-1">Advice Given: </strong><?php echo $dataPatient['advice'] ?></div>
+        </div>
+        <?php } if($dataPatient['follow_up']!="0000-00-00"){?>
+        <div class="row">
+            <div class="col-col-sm-12"> <strong class="mr-1">Follow up: </strong> <?php echo $dataPatient['follow_up'] ?></div>
+        </div>
+        <?php } 
+    } ?>
 
 
 
-        </table>
 
-        <table width="100%">
-            <?php if($dataPatient['refer_to']!=""){?>
-            <tr>
-                <td>
-                    <h5><strong>Refer To:<?php echo $dataPatient['refer_to'];?></strong></h5>
-                </td>
-            </tr>
-            <?php } ?>
-            <?php if($dataPatient['refer_to']!=""){?>
-            <tr>
-                <td><strong>Advice Given: </strong><?php echo $dataPatient['advice'] ?></td>
-            </tr>
-            <?php } ?>
-            <?php if($dataPatient['follow_up']!="0000-00-00"){?>
-            <tr>
-                <td><strong>Next Follow up: </strong> <?php echo $dataPatient['follow_up'] ?></td>
-            </tr>
-            <?php  } ?>
-            <tr></tr>
-        </table>
-        <?php } ?>
         <div class="docSign">
             <strong><span>Signature/Seal</span></strong>
         </div>
