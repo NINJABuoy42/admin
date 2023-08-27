@@ -62,7 +62,7 @@ $fetchedPrescription = fetchPrescription();
                                     <tbody>
                                         <?php while ($prescription = mysqli_fetch_assoc($fetchedPrescription)) {
                                             include('../includes/modals/__deleteModal.php');
-                                            if($prescription['attending_doctor']==$user || $_SESSION['role']=='register'){
+                                            if($prescription['doc_id']==$_SESSION['user_id'] || $_SESSION['role']=='register'){
 
                                             
                                         ?>
@@ -80,7 +80,7 @@ $fetchedPrescription = fetchPrescription();
                                                         class="fas fa-edit"></i></a>
 
                                                 <?php
-                                                } }?>
+                                                } ?>
                                                 <a class="btn btn-secondary"
                                                     href="prescription.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "
                                                     onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i
@@ -88,7 +88,7 @@ $fetchedPrescription = fetchPrescription();
                                             </td>
                                         </tr>
 
-                                        <?php } ?>
+                                        <?php }} ?>
 
                                     </tbody>
                                 </table>

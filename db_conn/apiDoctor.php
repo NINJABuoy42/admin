@@ -8,13 +8,13 @@ function getPrescriptiontDetails($prescription_id,$patientId){
 }
 function fetchWaitingPatient(){
     $user=$_SESSION['user'];
-    $sql = "SELECT * FROM prescription WHERE status='checked_in' AND `attending_doctor` = '{$user}'";
+    $sql = "SELECT * FROM prescription WHERE status='checked_in' AND `doc_id` = '{$_SESSION['user_id']}'";
     $prescription = mysqli_query($GLOBALS['conn'], $sql);
     return $prescription;
 }
 
 function updatePrescription(){
-    $pSql="UPDATE `prescription` SET `cheif_complaint`='{$_POST['cheifComplaints']}',`note`='{$_POST['note']}',`refer_to`='{$_POST['referTo']}',`advice`='{$_POST['advice']}',`follow_up`='{$_POST['followUP']}',`status`='prescribed' WHERE `prescription_id`='{$_POST['prescription_id']}' AND `patient_id`='{$_POST['patient_id']}' ";
+    $pSql="UPDATE `prescription` SET `cheif_complaint`='{$_POST['cheifComplaints']}',`note`='{$_POST['note']}',`refer_to`='{$_POST['referTo']}',`advice`='{$_POST['advice']}',`follow_up`='{$_POST['followUP']}',`height`='{$_POST['height']}',`weight`='{$_POST['weight']}',`blood_pressure`='{$_POST['blood_pressure']}',`status`='prescribed' WHERE `prescription_id`='{$_POST['prescription_id']}' AND `patient_id`='{$_POST['patient_id']}' ";
     mysqli_query($GLOBALS['conn'],$pSql) or die("SQL query failed");
     $prescription_id=$_POST['prescription_id'];
     $patient_id=$_POST['patient_id'];
@@ -51,3 +51,8 @@ function getMedicine($prescription_id,$patient_id){
     return $medicine;
 }
 
+function fetchDocs($id){
+    $query = "SELECT * FROM doctors WHERE `user_id`=$id";
+    $docP = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    return $docP;
+}

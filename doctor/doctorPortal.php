@@ -44,7 +44,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                         <div class="card-body ">
                             <!-- Multi Columns Form -->
                             <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) { ?>
-                            <form class="row g-3 form-group" method="<?php if($dataPatient['attending_doctor']==$user){echo 'POST';} ?>">
+                            <form class="row g-3 form-group" method="<?php if($dataPatient['doc_id']==$_SESSION['user_id']){echo 'POST';} ?>">
                                 <h5 class="card-title col-md-12">Diagnosis/Prescription </h5>
                                 <div class="col-md-4">
                                     <label for="prescription_id" class="form-label">Prescription ID</label>
@@ -61,6 +61,22 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="name"
                                         value="<?php echo $dataPatient['name'] ?>" name="name" readonly>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label for="blood_pressure" class="form-label">Blood Pressure(in mmHH)</label>
+                                    <input type="text" class="form-control" id="blood_pressure"
+                                        value="<?php echo $dataPatient['blood_pressure'] ?>" name="blood_pressure" >
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="height" class="form-label">Height(in cms)</label>
+                                    <input type="text" class="form-control" id="name"
+                                        value="<?php echo $dataPatient['height'] ?>" name="height" >
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="weight" class="form-label">Weight(in kgs)</label>
+                                    <input type="text" class="form-control" id="weight"
+                                        value="<?php echo $dataPatient['weight'] ?>" name="weight" >
                                 </div>
 
                                 <div class="col-md-12">

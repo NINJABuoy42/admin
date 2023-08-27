@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:../login.php');
+    header('location:../public/login.php');
     die;
 }
 if ($_SESSION['role']!='admin') {
-    header('location:../index.php');
+    header('location:../public/index.php');
     die;
 }
 
@@ -24,6 +24,7 @@ include('../db_conn/user.php');
             <div id="content">
                 <?php include('../includes/nav.php') ?>
                 <div class="container-fluid">
+                <?php include('../includes/status.php'); ?>
                     <!-- Content Row -->
                     <div class="row">
                         <div class=" card border-left-success d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">

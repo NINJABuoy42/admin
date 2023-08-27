@@ -30,7 +30,10 @@ if (isset($_POST['check_in'])) {
     $pWeight = $_POST['weight'];
     $pBP = $_POST['blood_pressure'];
     $attendingDoc = $_POST['attending_doctor'];
-    patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc);
+    if($attendingDoc!=""){
+        patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc);
+    }
+    header("location:../public/viewDetails.php?patient_id=$pId");
 }
 
 $portal = "Doctors Dashboard";

@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="Name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="Name" name="Name" readonly>
+                            <input type="text" class="form-control" id="Name" name="Name" >
                         </div>
                         <div class="col-md-12">
                             <label for="regNo" class="form-label">RegNo</label>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="qualification" class="form-label">Qualification</label>
-                            <input type="text" class="form-control" id="qualification" name="qualification" >
+                            <input type="text" class="form-control" id="qualification" name="qualification"  >
                         </div>
                         <div class="col-md-12">
                             <label for="current" class="form-label">Current</label>

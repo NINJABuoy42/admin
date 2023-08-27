@@ -23,6 +23,7 @@ $portal = "Doctor's Dashboard";
                 <?php include('../includes/nav.php') ?>
                 <div class="container-fluid">
 
+                <?php include('../includes/status.php'); ?>
 
                     <!-- Content Row -->
                     <div class="row">

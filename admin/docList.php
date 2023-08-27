@@ -13,7 +13,7 @@ $doctors = getDoctors();
 
 if (isset($_GET['delete'])) {
     $dels = $_GET['delete'];
-    deleteUser($dels);
+    deleteDoc($dels);
 }
 if (isset($_POST['editRecord'])) {
     $status = $_POST['status'];
@@ -27,11 +27,12 @@ if (isset($_POST['addDoc'])) {
 }
 if (isset($_POST['editDoc'])) {
     $docID=$_POST['user_id'];
+    $docName=$_POST['Name'];
     $docReg=$_POST['regNo'];
     $docQual=$_POST['qualification'];
     $docCurr=$_POST['current'];
     $docMail=$_POST['email'];
-    updateDoc($docID,$docReg,$docQual,$docCurr,$docMail);
+    updateDoc($docID,$docName,$docReg,$docQual,$docCurr,$docMail);
 
 }
 $docList= fetchDocs();
@@ -114,7 +115,7 @@ $docList= fetchDocs();
                                                     data-target="#docEdit">
                                                     <i class="fas fa-edit"></i>
                                                     <button type="click " class="del btn btn-danger"
-                                                        data-id="<?php echo $doc['Name'] ?>" data-toggle="modal"
+                                                        data-id="<?php echo $doc['user_id'] ?>" data-toggle="modal"
                                                         data-target="#deleteModal">
                                                         <i class="fas fa-trash"></i></button>
                                             </td>
@@ -142,7 +143,7 @@ $docList= fetchDocs();
     </div>
     <script>
     $(".del").on("click",function(e){
-        $("#deleteRecord").attr('href','user.php?delete='+$(this).attr('data-id'));
+        $("#deleteRecord").attr('href','docList.php?delete='+$(this).attr('data-id'));
         // console.log($(this).attr('data-id'));
     })
     $(".edit").on("click",function(e){

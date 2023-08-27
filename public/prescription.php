@@ -55,18 +55,22 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 </head>
 
 <body>
-
-
+    
+    
+    <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) {
+        $getDoc = fetchDocs($dataPatient['doc_id']); ?>
     <div>
         <table width="100%" height="fit-content">
             <tr>
                 <td colspan="6">
                     <div>
-                        <h3><strong>Dr.Amrit Kumar Saikia</strong></h3>
-                        <h6>MBBS,M.S. (General Surgery)</h6>
-                        <h6>MCh (Neurosurgery), NIMHANS, Bangalore</h6>
-                        <h6>Regd No. AMC: 15410</h6>
-                        <h6>E-Mail: amritkumarsaikia@gmail.com</h6>
+                        <?php while($doc = mysqli_fetch_assoc($getDoc)){ ?>
+                        <h3><strong><?php echo $doc['Name']; ?> </strong></h3>
+                        <h6><?php echo $doc['qualifications']; ?></h6>
+                        <h6><?php echo $doc['current']; ?></h6>
+                        <h6>Regd No.    <?php echo $doc['regNo']; ?></h6>
+                        <h6>E-Mail: <?php echo $doc['email']; ?></h6>
+                        <?php }?>
                     </div>
                 </td>
                 <td colspan="6">
@@ -76,7 +80,6 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         </table>
         <hr class="border border-dark">
         
-        <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) { ?>
         <div class="row">
             <div class="col col-sm-4">
                 <strong>Prescription ID: </strong><?php echo $dataPatient['prescription_id'] ?>

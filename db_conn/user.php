@@ -56,25 +56,9 @@ function getPatientDetail()
     $result = mysqli_query($GLOBALS['conn'], $sql);
     return $result;
 }
-function getUsers()
-{
-    $sql = "SELECT count(*) FROM users";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    return $result;
-}
-function getPatients()
-{
-    $sql = "SELECT count(*) FROM patient_details";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    return $result;
-}
-function getPrescribedPatient()
-{
-    $sql = "SELECT count(*) FROM prescription WHERE status='prescribed'";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    return $result;
-}
+// *****************************************************
 
+// ***********************************************
 function delete($del)
 {
     $query = "DELETE FROM patient_details WHERE patienId ='$del'";
@@ -85,7 +69,13 @@ function deleteUser($del)
 {
     $query = "DELETE FROM users WHERE userName ='$del'";
     mysqli_query($GLOBALS['conn'], $query);
-    header("LOCATION:user.php");
+    header("LOCATION:../admin/user.php");
+}
+function deleteDoc($del)
+{
+    $query = "DELETE FROM doctors WHERE user_id ='$del'";
+    mysqli_query($GLOBALS['conn'], $query);
+    header("location:../admin/docList.php");
 }
 function updateUser($user_id, $status, $role)
 {
@@ -93,24 +83,24 @@ function updateUser($user_id, $status, $role)
     mysqli_query($GLOBALS['conn'], $query);
     header("LOCATION:user.php");
 }
-function viewPatientDetail($patienId)
-{
-    $sql = "SELECT * FROM patient_details WHERE patienId='$patienId'";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    return $result;
-}
-function viewPatientHistory($patienId)
-{
-    $sql = "SELECT * FROM prescription WHERE patient_id='$patienId' ORDER BY visit_date DESC";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    return $result;
-}
-function getPrescription($prescription_id)
-{
-    $sql = "SELECT * FROM prescription WHERE prescription_id='$prescription_id'";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-    return $result;
-}
+// function viewPatientDetail($patienId)
+// {
+//     $sql = "SELECT * FROM patient_details WHERE patienId='$patienId'";
+//     $result = mysqli_query($GLOBALS['conn'], $sql);
+//     return $result;
+// }
+// function viewPatientHistory($patienId)
+// {
+//     $sql = "SELECT * FROM prescription WHERE patient_id='$patienId' ORDER BY visit_date DESC";
+//     $result = mysqli_query($GLOBALS['conn'], $sql);
+//     return $result;
+// }
+// function getPrescription($prescription_id)
+// {
+//     $sql = "SELECT * FROM prescription WHERE prescription_id='$prescription_id'";
+//     $result = mysqli_query($GLOBALS['conn'], $sql);
+//     return $result;
+// }
 
 // function getDoctors()
 // {
@@ -119,14 +109,20 @@ function getPrescription($prescription_id)
 //     return $doc;
 // }
 function addDoc($docId){
-    $query = "SELECT * FROM users where user_id='{$docId}'";
-    $docP = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
-    while ($rowP = $docP->fetch_assoc()) {
-        $pName = $rowP['fullName'];  
+    $sql = "SELECT * FROM doctors WHERE  user_id='$docId'";
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+    if (mysqli_num_rows($result) == 0) {
+        $query = "SELECT * FROM users where user_id='{$docId}'";
+        $docP = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+        while ($rowP = $docP->fetch_assoc()) {
+            $pName = $rowP['fullName'];  
+        }
+        $sql = "INSERT INTO `doctors`(`user_id`, `Name`) VALUES ('{$docId}','{$pName}')";
+        mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
+        header('location:../admin/docList.php');
+    } else {
+        header('location:../admin/docList.php');
     }
-    $sql = "INSERT INTO `doctors`(`user_id`, `Name`) VALUES ('{$docId}','{$pName}')";
-    mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
-    header('location:../admin/docList.php');
 }
 
 function fetchDocs(){
@@ -135,8 +131,8 @@ function fetchDocs(){
     return $docP;
 }
 
-function updateDoc($docID,$docReg,$docQual,$docCurr,$docMail){
-    $sql="UPDATE `doctors` SET `regNo`='$docReg',`qualifications`='$docQual',`email`='$docMail',`current`='$docCurr' WHERE user_id='$docID'";
+function updateDoc($docID,$docName,$docReg,$docQual,$docCurr,$docMail){
+    $sql="UPDATE `doctors` SET `Name`='$docName',`regNo`='$docReg',`qualifications`='$docQual',`email`='$docMail',`current`='$docCurr' WHERE user_id='$docID'";
     $docP = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     header('location:../admin/docList.php');
 }
