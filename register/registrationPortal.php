@@ -15,7 +15,6 @@ $title = 'Registration';
 $portal="Patient Registration";
 include('../includes/header.php');
 include('../db_conn/user.php');
-$data = mysqli_fetch_assoc(getUsers());
 $portal="Registration Dashboard";
 ?>
 
@@ -35,12 +34,12 @@ $portal="Registration Dashboard";
             <h5 class="card-title col-md-12">Patient's Details</h5>
             <div class="col-md-4">
               <label for="fullName" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="fullName" name="fullName" required>
+              <input autocomplete="off" type="text" class="form-control" id="fullName" name="fullName" required>
             </div>
             <!-- ********** -->
             <div class="col-md-2">
               <label for="age" class="form-label">Age</label>
-              <input type="number" class="form-control" id="age" name="age" required>
+              <input autocomplete="off" type="number" class="form-control" id="age" name="age" required>
             </div>
             <div class="col-md-2">
               <label for="gender" class="form-label">Gender</label>
@@ -54,7 +53,7 @@ $portal="Registration Dashboard";
 
             <div class="col-md-4">
               <label for="phoneNumber" class="form-label">Phone no. <span>(without +91)</span></label>
-              <input type="number" class="form-control" id="phoneNumber" name="phoneNumber"  required>
+              <input autocomplete="off" type="number" class="form-control" id="phoneNumber" name="phoneNumber"  required>
             </div>
             <div class="col-md-4">
               <label for="maritialStatus" class="form-label">Maritial Status</label>
@@ -72,33 +71,33 @@ $portal="Registration Dashboard";
 
             <div class="col-md-4">
               <label for="state" class="form-label">State</label>
-              <input type="text" class="form-control" id="state" name="state" >
+              <input autocomplete="off" type="text" class="form-control" id="state" name="state" >
             </div>
             <div class="col-md-4">
               <label for="district" class="form-label">District</label>
-              <input type="text" class="form-control" id="district" name="district" >
+              <input autocomplete="off" type="text" class="form-control" id="district" name="district" >
             </div>
             <div class="col-md-4">
               <label for="pinCode" class="form-label">Pincode</label>
-              <input type="number" class="form-control" id="pinCode" name="pinCode" maxlength="6" >
+              <input autocomplete="off" type="number" class="form-control" id="pinCode" name="pinCode" maxlength="6" >
             </div>
             <div class="col-12">
               <label for="address" class="form-label">Address/ Village/ Locality</label>
-              <input type="text" class="form-control" id="address" name="address">
+              <input autocomplete="off" type="text" class="form-control" id="address" name="address">
             </div>
             <hr>
             <h5 class="card-title col-md-12 mt-5">Emergengy Contact and Communication Information </h5>
             <div class="col-md-4">
               <label for="emName" class="form-label"> Name</label>
-              <input type="text" class="form-control" id="emName" name="emName" >
+              <input autocomplete="off" type="text" class="form-control" id="emName" name="emName" >
             </div>
             <div class="col-md-4">
               <label for="emRelation" class="form-label"> Relation</label>
-              <input type="text" class="form-control" id="emRelation" name="emRelation" >
+              <input autocomplete="off" type="text" class="form-control" id="emRelation" name="emRelation" >
             </div>
             <div class="col-md-4">
               <label for="emNumber" class="form-label"> Phone no. <span>(without +91)</span></label>
-              <input type="number" class="form-control" id="emNumber" name="emNumber">
+              <input autocomplete="off" type="number" class="form-control" id="emNumber" name="emNumber">
             </div>
             <hr />
               <div class="text-center mt-3 col-md-12">

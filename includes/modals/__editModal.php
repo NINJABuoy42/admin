@@ -12,11 +12,11 @@
                     <div class="row ">
                         <div class="col-md-12">
                             <label for="user_id" class="form-label">User Id</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id" readonly>
+                            <input autocomplete="off" type="text" class="form-control" id="user_id" name="user_id" readonly>
                         </div>
                         <div class="col-md-12">
                             <label for="fullName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="fullName" name="fullName" readonly>
+                            <input autocomplete="off" type="text" class="form-control" id="fullName" name="fullName" readonly>
                         </div>
                         <div class="col-md-12">
                             <label for="status" class="form-label">Status</label>

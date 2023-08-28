@@ -114,7 +114,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <hr class="border  border-dark">
         <div class="row">
             <div class="col col-sm-8 text-break">
-                <strong>Chief Complaint: </strong><?php echo $dataPatient['cheif_complaint'] ?>
+                <strong>Clinical Presentation: </strong><?php echo $dataPatient['clinical_presentation'] ?>
             </div>
             <div class="col col-md-4">
                 <div class="row"><strong class="mr-1">Blood Pressure:

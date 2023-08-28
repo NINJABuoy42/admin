@@ -40,12 +40,12 @@ if (isset($_POST['login'])) {
                                 </div>
                                 <form class="user" method="POST">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="userName"
+                                        <input autocomplete="off" type="text" class="form-control form-control-user" id="userName"
                                             name="userName" aria-describedby="email" placeholder="Enter Username..."
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password"
+                                        <input autocomplete="off" type="password" class="form-control form-control-user" id="password"
                                             name="password" placeholder="Password" required>
                                     </div>
 

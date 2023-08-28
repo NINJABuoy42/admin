@@ -12,15 +12,15 @@
                     <div class="row ">
                         <div class="col-md-6">
                             <label for="pId" class="form-label">Patient Id</label>
-                            <input type="text" class="form-control" id="pId" name="pId" value="<?php echo $patientDetail["patienId"]; ?>" readonly>
+                            <input autocomplete="off" type="text" class="form-control" id="pId" name="pId" value="<?php echo $patientDetail["patienId"]; ?>" readonly>
                         </div>
                         <div class="col-md-6">
                             <label for="pName" class="form-label">Patient Name</label>
-                            <input type="text" class="form-control" id="pName" name="pName" value="<?php echo $patientDetail["fullName"]; ?>">
+                            <input autocomplete="off" type="text" class="form-control" id="pName" name="pName" value="<?php echo $patientDetail["fullName"]; ?>">
                         </div>
                         <div class="col-md-6">
                             <label for="age" class="form-label">Age</label>
-                            <input type="text" class="form-control" id="age" name="age" value="<?php echo $patientDetail["age"]; ?>">
+                            <input autocomplete="off" type="text" class="form-control" id="age" name="age" value="<?php echo $patientDetail["age"]; ?>">
                         </div>
                         <div class="col-md-6">
                             <label for="gender" class="form-label">Gender</label>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="phoneNumber" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+                            <input autocomplete="off" type="text" class="form-control" id="phoneNumber" name="phoneNumber">
                         </div>
                         <div class="col-md-6">
                             <label for="maritialStatus" class="form-label">Maritial Status</label>
@@ -44,19 +44,19 @@
                         </div>
                         <div class="col-md-6">
                             <label for="state" class="form-label">State</label>
-                            <input type="text" class="form-control" id="state" name="state" value="<?php echo $patientDetail["state"]; ?>">
+                            <input autocomplete="off" type="text" class="form-control" id="state" name="state" value="<?php echo $patientDetail["state"]; ?>">
                         </div>
                         <div class="col-md-6">
                             <label for="district" class="form-label">District</label>
-                            <input type="text" class="form-control" id="district" name="district" value="<?php echo $patientDetail["district"]; ?>">
+                            <input autocomplete="off" type="text" class="form-control" id="district" name="district" value="<?php echo $patientDetail["district"]; ?>">
                         </div>
                         <div class="col-md-6">
                             <label for="pinCode" class="form-label">Pincode</label>
-                            <input type="text" class="form-control" id="pinCode" name="pinCode" value="<?php echo $patientDetail["pinCode"]; ?>">
+                            <input autocomplete="off" type="text" class="form-control" id="pinCode" name="pinCode" value="<?php echo $patientDetail["pinCode"]; ?>">
                         </div>
                         <div class="col-md-12">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" value="<?php echo $patientDetail["address"]; ?>">
+                            <input autocomplete="off" type="text" class="form-control" id="address" name="address" value="<?php echo $patientDetail["address"]; ?>">
                         </div>
                     </div>
                 </div>

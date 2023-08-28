@@ -36,20 +36,20 @@ if(isset($_POST['save'])){
                                 <h5 class="card-title">Diagnosis/Prescription </h5>
                                 <div class="col-md-12">
                                     <label for="referredBy" class="form-label">Referred By</label>
-                                    <input type="text" class="form-control" id="referredBy" name="referredBy">
+                                    <input autocomplete="off" type="text" class="form-control" id="referredBy" name="referredBy">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="medicalHistory" class="form-label">Past Medical History</label>
-                                    <input type="text" class="form-control" id="medicalHistory" name="medicalHistory">
+                                    <input autocomplete="off" type="text" class="form-control" id="medicalHistory" name="medicalHistory">
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="cheifComplaints" class="form-label">Chief Complaint</label>
-                                    <input type="text" class="form-control" id="cheifComplaints" name="cheifComplaints">
+                                    <label for="clinicalPresentation" class="form-label">Chief Complaint</label>
+                                    <input autocomplete="off" type="text" class="form-control" id="clinicalPresentation" name="clinicalPresentation">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="diagnosis" class="form-label">Diagnosis/Provisional Diagnosis
                                     </label>
-                                    <input type="text" class="form-control" id="diagnosis" name="diagnosis" >
+                                    <input autocomplete="off" type="text" class="form-control" id="diagnosis" name="diagnosis" >
                                 </div>
                                 <div class="col-md-12">
                                     <table class="table">
@@ -65,9 +65,9 @@ if(isset($_POST['save'])){
                                         <tbody id="tBody">
                                             <tr>
                                                 <td class="w-15">1</td>
-                                                <td class="w-50"><input type="text" class="form-control input" id="medName" ></td>
-                                                <td class="w-25"><input type="text" class="form-control input" id='medDosage'></td>
-                                                <td class="w-25"><input type="text" class="form-control input" id=medDosage></td>
+                                                <td class="w-50"><input autocomplete="off" type="text" class="form-control input" id="medName" ></td>
+                                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input" id='medDosage'></td>
+                                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input" id=medDosage></td>
                                                 <th class="w-5"><button type="button" class="btn btn-success" id="add">ADD</button></th>
                                             </tr>
                                         </tbody>
@@ -91,9 +91,9 @@ if(isset($_POST['save'])){
                         console.log("add");
                         html = `<tr>
                                     <td class="w-15">1</td>
-                                    <td class="w-50"><input type="text" class="form-control input" name='medName[]' value=${$('#medName').val()}></td>
-                                    <td class="w-25"><input type="text" class="form-control input" name='medDosage[]' value=${$('#medDosage').val()}></td>
-                                    <td class="w-25"><input type="text" class="form-control input" name='medDuration[]' value=${$('#medDuration').val()}></td>
+                                    <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='medName[]' value=${$('#medName').val()}></td>
+                                    <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDosage[]' value=${$('#medDosage').val()}></td>
+                                    <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDuration[]' value=${$('#medDuration').val()}></td>
                                     <td class="w-5"><button type="button" class="btn btn-danger rem" onclick="this.closest('tr').remove();">REM</button></td>
                                 </tr>`;
                                 $('#medName').val('');

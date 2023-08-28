@@ -12,27 +12,27 @@
                     <div class="row ">
                         <div class="col-md-12">
                             <label for="user_id" class="form-label">User Id</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id" readonly>
+                            <input autocomplete="off" type="text" class="form-control" id="user_id" name="user_id" readonly>
                         </div>
                         <div class="col-md-12">
                             <label for="Name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="Name" name="Name" >
+                            <input autocomplete="off" type="text" class="form-control" id="Name" name="Name" >
                         </div>
                         <div class="col-md-12">
                             <label for="regNo" class="form-label">RegNo</label>
-                            <input type="text" class="form-control" id="regNo" name="regNo" >
+                            <input autocomplete="off" type="text" class="form-control" id="regNo" name="regNo" >
                         </div>
                         <div class="col-md-12">
                             <label for="qualification" class="form-label">Qualification</label>
-                            <input type="text" class="form-control" id="qualification" name="qualification"  >
+                            <input autocomplete="off" type="text" class="form-control" id="qualification" name="qualification"  >
                         </div>
                         <div class="col-md-12">
                             <label for="current" class="form-label">Current</label>
-                            <input type="text" class="form-control" id="current" name="current" >
+                            <input autocomplete="off" type="text" class="form-control" id="current" name="current" >
                         </div>
                         <div class="col-md-12">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" >
+                            <input autocomplete="off" type="text" class="form-control" id="email" name="email" >
                         </div>
 
                         

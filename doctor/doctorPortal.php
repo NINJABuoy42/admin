@@ -48,47 +48,47 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                 <h5 class="card-title col-md-12">Diagnosis/Prescription </h5>
                                 <div class="col-md-4">
                                     <label for="prescription_id" class="form-label">Prescription ID</label>
-                                    <input type="text" class="form-control" id="prescription_id"
+                                    <input autocomplete="off" type="text" class="form-control" id="prescription_id"
                                         value="<?php echo $dataPatient['prescription_id'] ?>" name="prescription_id"
                                         readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="patient_id" class="form-label">Patient ID</label>
-                                    <input type="text" class="form-control" id="patient_id"
+                                    <input autocomplete="off" type="text" class="form-control" id="patient_id"
                                         value="<?php echo $dataPatient['patient_id'] ?>" name="patient_id" readonly>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name"
+                                    <input autocomplete="off" type="text" class="form-control" id="name"
                                         value="<?php echo $dataPatient['name'] ?>" name="name" readonly>
                                 </div>
                                 
                                 <div class="col-md-4">
                                     <label for="blood_pressure" class="form-label">Blood Pressure(in mmHH)</label>
-                                    <input type="text" class="form-control" id="blood_pressure"
+                                    <input autocomplete="off" type="text" class="form-control" id="blood_pressure"
                                         value="<?php echo $dataPatient['blood_pressure'] ?>" name="blood_pressure" >
                                 </div>
                                 <div class="col-md-4">
                                     <label for="height" class="form-label">Height(in cms)</label>
-                                    <input type="text" class="form-control" id="name"
+                                    <input autocomplete="off" type="text" class="form-control" id="name"
                                         value="<?php echo $dataPatient['height'] ?>" name="height" >
                                 </div>
                                 <div class="col-md-4">
                                     <label for="weight" class="form-label">Weight(in kgs)</label>
-                                    <input type="text" class="form-control" id="weight"
+                                    <input autocomplete="off" type="text" class="form-control" id="weight"
                                         value="<?php echo $dataPatient['weight'] ?>" name="weight" >
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="cheifComplaints" class="form-label">Chief Complaint</label>
-                                    <input type="text" class="form-control" id="cheifComplaints" name="cheifComplaints"
-                                        value="<?php echo $dataPatient['cheif_complaint'] ?>">
+                                    <label for="clinicalPresentation" class="form-label">Clinical Presentation</label>
+                                    <textarea  autocomplete="off" type="text" class="form-control" id="clinicalPresentation" name="clinicalPresentation"
+                                        value="<?php echo $dataPatient['clinical_presentation'] ?>"></textarea >
                                 </div>
                                 <div class="col-xl-12">
                                     <label for="diagnosis" class="form-label">Diagnosis/Provisional Diagnosis
                                     </label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="diagnosisF"
+                                        <input autocomplete="off" type="text" class="form-control" id="diagnosisF"
                                             placeholder="Diagnosis/Provisional Diagnosis here...">
                                         <div class="input-group-append">
                                             <button class="btn btn-success" id="addField" type="button"><i
@@ -104,7 +104,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                         while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) { ?>
                                         <li>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="diagnosis[]"
+                                                <input autocomplete="off" type="text" class="form-control" name="diagnosis[]"
                                                     value='<?php echo $dataDiagnosis['diagnosis']; ?>'>
                                                 <div class="input-group-append">
                                                     <button class="btn btn-danger" id="addField" type="button"
@@ -121,7 +121,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                 </div>
                                 <div class="col-md-12">
                                     <label for="note" class="form-label">Additional Notes</label>
-                                    <input type="text" class="form-control" id="note" name="note"
+                                    <input autocomplete="off" type="text" class="form-control" id="note" name="note"
                                         value="<?php echo $dataPatient['note'] ?>">
                                 </div>
 
@@ -138,12 +138,12 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                         </thead>
                                         <tbody id="tBody">
                                             <tr>
-                                                <td class="w-50"><input type="text" class="form-control input"
+                                                <td class="w-50"><input autocomplete="off" type="text" class="form-control input"
                                                         id="medName" placeholder="Medicine name here..."></td>
                                                
                                                 <td class="w-25">
                                                     <div class="input-group mb-3">
-                                                    <input type="text" class="form-control input" id='medDosage'>
+                                                    <input autocomplete="off" type="text" class="form-control input" id='medDosage'>
                                                         <div class="input-group-append">
                                                         <select id="insDosage" class="form-control" name="insDosage">
                                                             <option value="Daily">Daily</option>
@@ -170,7 +170,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                                 </td>
                                                 <td class="w-25">
                                                     <div class="input-group mb-3">
-                                                    <input type="text" class="form-control input" id='medDuration'>
+                                                    <input autocomplete="off" type="text" class="form-control input" id='medDuration'>
                                                         <div class="input-group-append">
                                                         <select id="insDuration" class="form-control" name="insDuration">
                                                             <option value="Day">Day</option>
@@ -187,12 +187,12 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                 <?php
                         while ($dataMedicine = mysqli_fetch_assoc($medicine)) {?>
 
-                                <td class="w-50"><input type="text" class="form-control input" name='medName[]'
+                                <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='medName[]'
                                         value='<?php echo $dataMedicine['medicine_name']; ?>'></td>
-                                <td class="w-25"><input type="text" class="form-control input" name='medDosage[]'
+                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDosage[]'
                                         value='<?php echo $dataMedicine['dosage']; ?>'>
                                 </td>
-                                <td class="w-25"><input type="text" class="form-control input" name='medDuration[]'
+                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDuration[]'
                                         value='<?php echo $dataMedicine['duration']; ?>'></td>
                                 <td class="w-5"><button type="button" class="btn btn-danger"
                                         onclick="this.closest('tr').remove();">REM</button></td>
@@ -206,17 +206,17 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
                         <div class="col-md-12">
                             <label for="referTo" class="form-label">Refer To:</label>
-                            <input type="text" class="form-control" id="referTo" name="referTo"
+                            <input autocomplete="off" type="text" class="form-control" id="referTo" name="referTo"
                                 value="<?php echo $dataPatient['refer_to'] ?>">
                         </div>
                         <div class="col-md-10">
                             <label for="advice" class="form-label">Advice Given</label>
-                            <input type="text" class="form-control" id="referTo" name="advice"
+                            <input autocomplete="off" type="text" class="form-control" id="referTo" name="advice"
                                 value="<?php echo $dataPatient['advice'] ?>">
                         </div>
                         <div class="col-md-2">
                             <label for="followUP" class="form-label">Next Follow-up</label>
-                            <input type="date" class="form-control" id="followUP" name="followUP"
+                            <input autocomplete="off" type="date" class="form-control" id="followUP" name="followUP"
                                 value="<?php echo $dataPatient['follow_up'] ?>">
                         </div>
                         <!-- ********** -->
@@ -242,9 +242,9 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
             $("#add").on('click', (e) => {
                 // console.log("add");
                 html = `<tr>
-                                    <td class="w-50"><input type="text" class="form-control input" name='medName[]' value='${$('#medName').val()}'></td>
-                                    <td class="w-25"><input type="text" class="form-control input" name='medDosage[]' value='${$('#medDosage').val()} x ${$('#insDosage').val()} | ${$('#insType').val()}'></td>
-                                    <td class="w-25"><input type="text" class="form-control input" name='medDuration[]' value='${$('#medDuration').val()} x ${$('#insDuration').val()}'></td>
+                                    <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='medName[]' value='${$('#medName').val()}'></td>
+                                    <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDosage[]' value='${$('#medDosage').val()} x ${$('#insDosage').val()} | ${$('#insType').val()}'></td>
+                                    <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDuration[]' value='${$('#medDuration').val()} x ${$('#insDuration').val()}'></td>
                                     <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove();">REM</button></td>
                                 </tr>`;
                 $('#medName').val('');
@@ -256,7 +256,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
             $("#addField").on('click', (e) => {
                 fieldHtml = `<li>
                         <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="diagnosis[]" value='${$('#diagnosisF').val()}'>
+                                    <input autocomplete="off" type="text" class="form-control" name="diagnosis[]" value='${$('#diagnosisF').val()}'>
                                         <div class="input-group-append">
                                             <button class="btn btn-danger" id="addField" type="button" onclick="this.closest('li').remove();"><i class="fas fa-minus"></i></button>
                                         </div>

@@ -36,7 +36,7 @@ function getDocCount(){
     return $count;
 }
 function getDocPatient($doc){
-    $sql = "SELECT count(*) FROM prescription WHERE doc_id='$doc'";
+    $sql = "SELECT count(*) FROM prescription WHERE doc_id='$doc' AND `status`='prescribed'";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     while ($row = $result->fetch_assoc()) {
         $count = $row['count(*)'];  
@@ -44,7 +44,7 @@ function getDocPatient($doc){
     return $count;
 }
 function getWaitingPatient($doc){
-    $sql = "SELECT count(*) FROM prescription WHERE doc_id='$doc' AND `status`='checked_in'";
+    $sql = "SELECT count(*) FROM prescription WHERE doc_id='$doc' AND status='checked_in'";
     $result = mysqli_query($GLOBALS['conn'], $sql);
     while ($row = $result->fetch_assoc()) {
         $count = $row['count(*)'];  
