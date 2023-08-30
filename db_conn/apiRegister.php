@@ -63,4 +63,10 @@ function patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc)
         header("LOCATION:viewDetails.php?patient_id={$pId}");
     }
 }
+
+function patientEdit($pId,$pName,$age,$gender,$phone,$mstatus,$state,$district,$pin,$address){
+    $sql="UPDATE `patient_details` SET `fullName`='{$pName}',`age`='{$age}',`gender`='{$gender}',`phoneNumber`='{$phone}',`maritialStatus`='{$mstatus}',`state`='{$state}',`district`='{$district}',`pinCode`='{$pin}',`address`='{$address}' WHERE patienId = '{$pId}';";
+    mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
+    header("LOCATION:viewDetails.php?patient_id={$pId}");
+}
 ?>

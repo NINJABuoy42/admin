@@ -7,7 +7,7 @@
                     <span aria-hidden="true">X</span>
                 </button>
             </div>
-            <form action="#" class="form-group" method="POST">
+            <form action="viewDetails.php"  class="form-group" method="POST">
                 <div class="modal-body">
                     <div class="row ">
                         <div class="col-md-6">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="phoneNumber" class="form-label">Phone Number</label>
-                            <input autocomplete="off" type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+                            <input autocomplete="off" type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="<?php echo $patientDetail["phoneNumber"]; ?>">
                         </div>
                         <div class="col-md-6">
                             <label for="maritialStatus" class="form-label">Maritial Status</label>

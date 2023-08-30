@@ -35,7 +35,20 @@ if (isset($_POST['check_in'])) {
     }
     header("location:../public/viewDetails.php?patient_id=$pId");
 }
+if(isset($_POST['p_Edit'])){
+    $pId = $_POST['pId'];
+    $pName = $_POST['pName'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $phone = $_POST['phoneNumber'];
+    $mstatus = $_POST['maritialStatus'];
+    $state = $_POST['state'];
+    $district = $_POST['district'];
+    $pin = $_POST['pinCode'];
+    $address = $_POST['address'];
+    patientEdit($pId,$pName,$age,$gender,$phone,$mstatus,$state,$district,$pin,$address);
 
+}
 $portal = "Doctors Dashboard";
 ?>
 
