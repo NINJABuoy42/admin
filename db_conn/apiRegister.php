@@ -58,7 +58,7 @@ function patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc)
     }
 
 
-    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `doc_id`,`height`, `weight`, `blood_pressure`,`status`,`visit_date`,`follow_up`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$docName}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','checked_in',NOW(),0000-00-00)";
+    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `doc_id`,`height`, `weight`, `blood_pressure`,`status`,`visit_date`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$docName}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','checked_in',NOW())";
     if (mysqli_query($GLOBALS['conn'], $sql)) {
         header("LOCATION:viewDetails.php?patient_id={$pId}");
     }

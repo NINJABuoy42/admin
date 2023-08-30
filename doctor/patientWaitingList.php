@@ -66,7 +66,7 @@ $fetched = fetchPrescription();
                                                 <td><?php echo $list['patient_id'] ?></td>
                                                 <td><?php echo $list['name'] ?></td>
 
-                                                <td><?php echo date("Y-m-d", strtotime($list['visit_date'])) ?></td>
+                                                <td><?php echo date("d-M-Y", strtotime($list['visit_date'])) ?></td>
                                                 <td class="d-flex justify-content-around">
                                                 <a class="btn btn-success" href="doctorPortal.php?prescription_id=<?php echo $list['prescription_id'].'&patient_id='.$list['patient_id'] ?> "><i class="fas fa-file-prescription"></i></a>
                                                 </td>

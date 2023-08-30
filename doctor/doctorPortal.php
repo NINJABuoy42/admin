@@ -44,7 +44,8 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                         <div class="card-body ">
                             <!-- Multi Columns Form -->
                             <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) { ?>
-                            <form class="row g-3 form-group" method="<?php if($dataPatient['doc_id']==$_SESSION['user_id']){echo 'POST';} ?>">
+                            <form class="row g-3 form-group"
+                                method="<?php if($dataPatient['doc_id']==$_SESSION['user_id']){echo 'POST';} ?>">
                                 <h5 class="card-title col-md-12">Diagnosis/Prescription </h5>
                                 <div class="col-md-4">
                                     <label for="prescription_id" class="form-label">Prescription ID</label>
@@ -62,27 +63,28 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                     <input autocomplete="off" type="text" class="form-control" id="name"
                                         value="<?php echo $dataPatient['name'] ?>" name="name" readonly>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <label for="blood_pressure" class="form-label">Blood Pressure(in mmHH)</label>
                                     <input autocomplete="off" type="text" class="form-control" id="blood_pressure"
-                                        value="<?php echo $dataPatient['blood_pressure'] ?>" name="blood_pressure" >
+                                        value="<?php echo $dataPatient['blood_pressure'] ?>" name="blood_pressure">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="height" class="form-label">Height(in cms)</label>
                                     <input autocomplete="off" type="text" class="form-control" id="name"
-                                        value="<?php echo $dataPatient['height'] ?>" name="height" >
+                                        value="<?php echo $dataPatient['height'] ?>" name="height">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="weight" class="form-label">Weight(in kgs)</label>
                                     <input autocomplete="off" type="text" class="form-control" id="weight"
-                                        value="<?php echo $dataPatient['weight'] ?>" name="weight" >
+                                        value="<?php echo $dataPatient['weight'] ?>" name="weight">
                                 </div>
 
                                 <div class="col-md-12">
                                     <label for="clinicalPresentation" class="form-label">Clinical Presentation</label>
-                                    <textarea  autocomplete="off" type="text" class="form-control" id="clinicalPresentation" name="clinicalPresentation"
-                                        value="<?php echo $dataPatient['clinical_presentation'] ?>"></textarea >
+                                    <textarea autocomplete="off" type="text" class="form-control"
+                                        id="clinicalPresentation" name="clinicalPresentation"
+                                        value="<?php echo $dataPatient['clinical_presentation'] ?>"></textarea>
                                 </div>
                                 <div class="col-xl-12">
                                     <label for="diagnosis" class="form-label">Diagnosis/Provisional Diagnosis
@@ -104,7 +106,8 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                         while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) { ?>
                                         <li>
                                             <div class="input-group mb-3">
-                                                <input autocomplete="off" type="text" class="form-control" name="diagnosis[]"
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="diagnosis[]"
                                                     value='<?php echo $dataDiagnosis['diagnosis']; ?>'>
                                                 <div class="input-group-append">
                                                     <button class="btn btn-danger" id="addField" type="button"
@@ -119,11 +122,13 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                         <?php } ?>
                                     </ol>
                                 </div>
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                     <label for="note" class="form-label">Additional Notes</label>
                                     <input autocomplete="off" type="text" class="form-control" id="note" name="note"
-                                        value="<?php echo $dataPatient['note'] ?>">
-                                </div>
+                                        value="
+                                        
+                                        ">
+                                </div> -->
 
 
                                 <div class="col-md-12">
@@ -138,47 +143,54 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                         </thead>
                                         <tbody id="tBody">
                                             <tr>
-                                                <td class="w-50"><input autocomplete="off" type="text" class="form-control input"
-                                                        id="medName" placeholder="Medicine name here..."></td>
-                                               
+                                                <td class="w-50"><input autocomplete="off" type="text"
+                                                        class="form-control input" id="medName"
+                                                        placeholder="Medicine name here..."></td>
+
                                                 <td class="w-25">
                                                     <div class="input-group mb-3">
-                                                    <input autocomplete="off" type="text" class="form-control input" id='medDosage'>
+                                                        <input autocomplete="off" type="text" class="form-control input"
+                                                            id='medDosage'>
                                                         <div class="input-group-append">
-                                                        <select id="insDosage" class="form-control" name="insDosage">
-                                                            <option value="Daily">Daily</option>
-                                                            <option value="Weekly">Weekly</option>
-                                                            <option value="Necessary">Necessary</option>
-                                                        </select>
+                                                            <select id="insDosage" class="form-control"
+                                                                name="insDosage">
+                                                                <option value="Daily">Daily</option>
+                                                                <option value="Weekly">Weekly</option>
+                                                                <option value="Necessary">Necessary</option>
+                                                            </select>
+                                                        </div>
+
                                                     </div>
-                                                    
-                                                </div>
-                                                <select id="insType" class="form-control" name="insType">
-                                                    <option value="Before Meal">Before Meal</option>
-                                                    <option value="After Meal">After Meal</option>
-                                                    <option value="Morning">Morning</option>
-                                                    <option value="Morning Before Meal">Morning Before Meal</option>
-                                                    <option value="Morning After Meal">Morning After Meal</option>
-                                                    <option value="Afternoon">Afternoon</option>
-                                                    <option value="Afternoon Before Meal">Afternoon Before Meal</option>
-                                                    <option value="Afternoon After Meal">Afternoon After Meal</option>
-                                                    <option value="Night">Night</option>
-                                                    <option value="Night Before Meal">Night Before Meal</option>
-                                                    <option value="Night After Meal">Night After Meal</option>
-                                                    <option value="Anytime">Anytime</option>
-                                                </select>
+                                                    <select id="insType" class="form-control" name="insType">
+                                                        <option value="Before Meal">Before Meal</option>
+                                                        <option value="After Meal">After Meal</option>
+                                                        <option value="Morning">Morning</option>
+                                                        <option value="Morning Before Meal">Morning Before Meal</option>
+                                                        <option value="Morning After Meal">Morning After Meal</option>
+                                                        <option value="Afternoon">Afternoon</option>
+                                                        <option value="Afternoon Before Meal">Afternoon Before Meal
+                                                        </option>
+                                                        <option value="Afternoon After Meal">Afternoon After Meal
+                                                        </option>
+                                                        <option value="Night">Night</option>
+                                                        <option value="Night Before Meal">Night Before Meal</option>
+                                                        <option value="Night After Meal">Night After Meal</option>
+                                                        <option value="Anytime">Anytime</option>
+                                                    </select>
                                                 </td>
                                                 <td class="w-25">
                                                     <div class="input-group mb-3">
-                                                    <input autocomplete="off" type="text" class="form-control input" id='medDuration'>
+                                                        <input autocomplete="off" type="text" class="form-control input"
+                                                            id='medDuration'>
                                                         <div class="input-group-append">
-                                                        <select id="insDuration" class="form-control" name="insDuration">
-                                                            <option value="Day">Day</option>
-                                                            <option value="Week">Week</option>
-                                                            <option value="Month">Month</option>
-                                                        </select>
-                                                        
-                                                    </div>
+                                                            <select id="insDuration" class="form-control"
+                                                                name="insDuration">
+                                                                <option value="Days">Days</option>
+                                                                <option value="Weeks">Weeks</option>
+                                                                <option value="Months">Months</option>
+                                                            </select>
+
+                                                        </div>
                                                     </div>
                                                 </td>
                                 </div>
@@ -187,13 +199,13 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                 <?php
                         while ($dataMedicine = mysqli_fetch_assoc($medicine)) {?>
 
-                                <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='medName[]'
-                                        value='<?php echo $dataMedicine['medicine_name']; ?>'></td>
-                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDosage[]'
-                                        value='<?php echo $dataMedicine['dosage']; ?>'>
+                                <td class="w-50"><input autocomplete="off" type="text" class="form-control input"
+                                        name='medName[]' value='<?php echo $dataMedicine['medicine_name']; ?>'></td>
+                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input"
+                                        name='medDosage[]' value='<?php echo $dataMedicine['dosage']; ?>'>
                                 </td>
-                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDuration[]'
-                                        value='<?php echo $dataMedicine['duration']; ?>'></td>
+                                <td class="w-25"><input autocomplete="off" type="text" class="form-control input"
+                                        name='medDuration[]' value='<?php echo $dataMedicine['duration']; ?>'></td>
                                 <td class="w-5"><button type="button" class="btn btn-danger"
                                         onclick="this.closest('tr').remove();">REM</button></td>
                                 </tr>
@@ -209,15 +221,22 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                             <input autocomplete="off" type="text" class="form-control" id="referTo" name="referTo"
                                 value="<?php echo $dataPatient['refer_to'] ?>">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <label for="advice" class="form-label">Advice Given</label>
                             <input autocomplete="off" type="text" class="form-control" id="referTo" name="advice"
                                 value="<?php echo $dataPatient['advice'] ?>">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <label for="followUP" class="form-label">Next Follow-up</label>
-                            <input autocomplete="off" type="date" class="form-control" id="followUP" name="followUP"
-                                value="<?php echo $dataPatient['follow_up'] ?>">
+                            <div class="input-group-append">
+                                <input autocomplete="off" type="text" class="form-control" id="follow_upD" name="follow_upD" value="<?php echo $dataPatient['follow_upD'] ?>">
+                                <select id="follow_upW" class="form-control" name="follow_upW">
+                                    <option selected value="">Select</option>
+                                    <option value="Day" <?php if($dataPatient['follow_upW']=="Day"){echo "selected";} ?>>Day</option>
+                                    <option value="Week" <?php if($dataPatient['follow_upW']=="Week"){echo "selected";} ?>>Week</option>
+                                    <option value="Month" <?php if($dataPatient['follow_upW']=="Month"){echo "selected";} ?>>Month</option>
+                                </select>
+                            </div>
                         </div>
                         <!-- ********** -->
                         <?php } ?>
@@ -265,5 +284,6 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 $('#diagnosisF').val("");
                 $("#medDiagnosis").append(fieldHtml);
             })
+           
         })
         </script>

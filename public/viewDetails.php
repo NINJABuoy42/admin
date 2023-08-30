@@ -17,7 +17,7 @@ include('../db_conn/apiRegister.php');
 $portal="Patient Detail";
 
 if(!isset($_GET['patient_id'])){
-    header('location:204.php');
+    // header('location:204.php');
 }
 
 $patient_id = $_GET['patient_id'];

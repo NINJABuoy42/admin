@@ -6,7 +6,7 @@ function register($fullName, $userName, $password)
 {
     $pass = password_hash($password, PASSWORD_BCRYPT);
     $sql = "SELECT * FROM users WHERE userName='$userName'";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql)or die("SQL query failed");
     if (mysqli_num_rows($result) == 0) {
         $query = "INSERT INTO users (fullName,userName,password,status) VALUES('$fullName','$userName','$pass','uverified')";
         if (mysqli_query($GLOBALS['conn'], $query)) {
@@ -23,7 +23,7 @@ function register($fullName, $userName, $password)
 function login($userName, $password)
 {
     $sql = "SELECT user_id,userName,password,fullName,role,status FROM users where userName='$userName'";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $hash = $row['password'];
@@ -47,13 +47,13 @@ function login($userName, $password)
 function getUser()
 {
     $sql = "SELECT user_id,fullName,userName,status,role,reg_date FROM users";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     return $result;
 }
 function getPatientDetail()
 {
     $sql = "SELECT patienId,fullName,age,phoneNumber,regDate FROM patient_details";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     return $result;
 }
 // *****************************************************
@@ -62,25 +62,33 @@ function getPatientDetail()
 function delete($del)
 {
     $query = "DELETE FROM patient_details WHERE patienId ='$del'";
-    mysqli_query($GLOBALS['conn'], $query);
+    mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
     header("LOCATION:patientDetails.php");
 }
 function deleteUser($del)
 {
     $query = "DELETE FROM users WHERE userName ='$del'";
-    mysqli_query($GLOBALS['conn'], $query);
+    mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
     header("LOCATION:../admin/user.php");
 }
 function deleteDoc($del)
 {
-    $query = "DELETE FROM doctors WHERE user_id ='$del'";
-    mysqli_query($GLOBALS['conn'], $query);
-    header("location:../admin/docList.php");
+    $sqlPrescCheck="SELECT COUNT(*) FROM prescription WHERE doc_id ='$del'";
+    $result = mysqli_query($GLOBALS['conn'], $sqlPrescCheck) or die("SQL query failed");
+    while ($row = $result->fetch_assoc()) {
+        $count = $row['COUNT(*)'];
+        if($count !=0){
+            header("location:../admin/docList.php");
+        }
+        $query = "DELETE FROM doctors WHERE user_id ='$del'";
+        mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+        header("location:../admin/docList.php");
+    }
 }
 function updateUser($user_id, $status, $role)
 {
     $query = "UPDATE users SET status='$status',role='$role' WHERE user_id=$user_id";
-    mysqli_query($GLOBALS['conn'], $query);
+    mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed") ;
     header("LOCATION:user.php");
 }
 // function viewPatientDetail($patienId)

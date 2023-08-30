@@ -66,10 +66,10 @@ if (isset($_GET['delete'])) {
                                                 <td><?php echo $rows['fullName'] ?></td>
                                                 <td><?php echo $rows['age'] ?></td>
                                                 <td><?php echo $rows['phoneNumber'] ?></td>
-                                                <td><?php echo $rows['regDate'] ?></td>
+                                                <td><?php echo date("d-M-Y", strtotime($rows['regDate'])) ?></td>
                                                 <td class="d-flex justify-content-around">
-                                                    <a><button type="click" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                                                        <i class="fas fa-trash"></i></button></a>
+                                                    <!-- <a><button type="click" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                                        <i class="fas fa-trash"></i></button></a> -->
                                                     <a type="button"  class="btn btn-info" href="viewDetails.php?patient_id=<?php echo $rows['patienId'] ?>"><i class="fas fa-edit"></i></a>
                                                 </td>
                                             </tr>

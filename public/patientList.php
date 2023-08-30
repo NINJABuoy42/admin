@@ -71,7 +71,7 @@ $fetchedPrescription = fetchPrescription();
                                             <td><?php echo $prescription['patient_id'] ?></td>
                                             <td><?php echo $prescription['name'] ?></td>
                                             <td><?php echo $prescription['attending_doctor'] ?></td>
-                                            <td><?php echo date("Y-m-d", strtotime($prescription['visit_date'])) ?></td>
+                                            <td><?php echo date("d-M-Y", strtotime($prescription['visit_date'])) ?></td>
                                             <td class="d-flex justify-content-around">
                                                 <?php if($_SESSION['role']=='doctor' ){
                                                     ?>

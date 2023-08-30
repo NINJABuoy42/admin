@@ -55,8 +55,8 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 </head>
 
 <body>
-    
-    
+
+
     <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) {
         $getDoc = fetchDocs($dataPatient['doc_id']); ?>
     <div>
@@ -68,7 +68,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                         <h3><strong><?php echo $doc['Name']; ?> </strong></h3>
                         <h6><?php echo $doc['qualifications']; ?></h6>
                         <h6><?php echo $doc['current']; ?></h6>
-                        <h6>Regd No.    <?php echo $doc['regNo']; ?></h6>
+                        <h6>Regd No. <?php echo $doc['regNo']; ?></h6>
                         <h6>E-Mail: <?php echo $doc['email']; ?></h6>
                         <?php }?>
                     </div>
@@ -79,7 +79,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
             </tr>
         </table>
         <hr class="border border-dark">
-        
+
         <div class="row">
             <div class="col col-sm-4">
                 <strong>Prescription ID: </strong><?php echo $dataPatient['prescription_id'] ?>
@@ -88,7 +88,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 <strong>Patient ID: </strong><?php echo $dataPatient['patient_id'] ?>
             </div>
             <div class="col col-sm-4">
-                <strong>Date: </strong> <?php echo $dataPatient['visit_date'] ?>
+                <strong>Date: </strong> <?php $date=strtotime($dataPatient['visit_date']); echo date('d-M-Y',$date);  ?>
             </div>
         </div>
         <hr class="border">
@@ -116,13 +116,14 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
             <div class="col col-sm-8 text-break">
                 <strong>Clinical Presentation: </strong><?php echo $dataPatient['clinical_presentation'] ?>
             </div>
-            <div class="col col-md-4">
+            <div class="col col-md-4  border-left-dark px-4">
                 <div class="row"><strong class="mr-1">Blood Pressure:
                     </strong><?php echo $dataPatient['blood_pressure'] ?>mmHH</div>
                 <div class="row"><strong class="mr-1">Height: </strong><?php echo $dataPatient['height'] ?>cm</div>
                 <div class="row"><strong class="mr-1">Weight: </strong><?php echo $dataPatient['weight'] ?>kg</div>
             </div>
         </div>
+        <br>
         <div class="row">
             <div class="col col-sm-2">
                 <strong>Diagnosis: </strong>
@@ -141,13 +142,25 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <div class="row">
             <img src="../img/Rx.svg" alt="" width="50px">
         </div>
+        <br>
+        <ul>
+            <li>
+                <div class="row">
+                    <div class="col col-sm-6"><strong>Medicine Nomenclature</strong></div>
+                    <div class="col col-sm-3"><strong>Dosage</strong></div>
+                    <div class="col col-sm-3"><Strong>Duration</Strong></div>
+                </div>
+            </li>
+        </ul>
+
+        <hr>
         <ol type="number">
             <?php while ($dataMedicine = mysqli_fetch_assoc($medicine)) { ?>
             <li>
                 <div class="row mt-4">
                     <div class="col col-sm-6"><?php echo $dataMedicine['medicine_name']; ?></div>
                     <div class="col col-sm-3"><?php echo $dataMedicine['dosage']; ?></div>
-                    <div class="col col-sm-3"><?php echo $dataMedicine['duration']; ?></div>
+                    <div class="col col-sm-3">For: <?php echo $dataMedicine['duration']; ?></div>
                 </div>
             </li>
             <?php } ?>
@@ -155,17 +168,20 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <hr class="border">
         <?php if($dataPatient['refer_to']!=""){?>
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?></div>
+            <div class="col-col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?>
+            </div>
         </div>
         <?php }
         if($dataPatient['advice']!=""){?>
 
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Advice Given: </strong><?php echo $dataPatient['advice'] ?></div>
+            <div class="col-col-sm-12"> <strong class="mr-1">Advice Given: </strong><?php echo $dataPatient['advice'] ?>
+            </div>
         </div>
-        <?php } if($dataPatient['follow_up']!="0000-00-00"){?>
+        <?php } if($dataPatient['follow_upD']!="" && $dataPatient['follow_upW']!="" ){?>
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Follow up: </strong> <?php echo $dataPatient['follow_up'] ?></div>
+            <div class="col-col-sm-12"> <strong class="mr-1">Follow up: </strong>After
+                <?php echo $dataPatient['follow_upD']." ".$dataPatient['follow_upW']." " ?></div>
         </div>
         <?php } 
     } ?>

@@ -3,7 +3,7 @@ include('../db_conn/dbConn.php');
 function getUsers()
 {
     $sql = "SELECT count(*) FROM users";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     while ($row = $result->fetch_assoc()) {
         $count = $row['count(*)'];  
     }
@@ -12,7 +12,7 @@ function getUsers()
 function getPatients()
 {
     $sql = "SELECT count(*) FROM patient_details";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     while ($row = $result->fetch_assoc()) {
         $count = $row['count(*)'];  
     }
@@ -21,7 +21,7 @@ function getPatients()
 function getPrescribedPatient()
 {
     $sql = "SELECT count(*) FROM prescription WHERE status='prescribed'";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     while ($row = $result->fetch_assoc()) {
         $count = $row['count(*)'];  
     }
@@ -29,7 +29,7 @@ function getPrescribedPatient()
 }
 function getDocCount(){
     $sql = "SELECT count(*) FROM doctors";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     while ($row = $result->fetch_assoc()) {
         $count = $row['count(*)'];  
     }
@@ -37,7 +37,7 @@ function getDocCount(){
 }
 function getDocPatient($doc){
     $sql = "SELECT count(*) FROM prescription WHERE doc_id='$doc' AND `status`='prescribed'";
-    $result = mysqli_query($GLOBALS['conn'], $sql);
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     while ($row = $result->fetch_assoc()) {
         $count = $row['count(*)'];  
     }
