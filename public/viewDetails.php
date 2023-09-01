@@ -29,9 +29,11 @@ if (isset($_POST['check_in'])) {
     $pHeight = $_POST['height'];
     $pWeight = $_POST['weight'];
     $pBP = $_POST['blood_pressure'];
+    $spo2 = $_POST['spo2'];
+    $pulse = $_POST['pulse'];
     $attendingDoc = $_POST['attending_doctor'];
     if($attendingDoc!=""){
-        patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc);
+        patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attendingDoc);
     }
     header("location:../public/viewDetails.php?patient_id=$pId");
 }

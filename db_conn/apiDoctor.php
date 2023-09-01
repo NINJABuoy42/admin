@@ -14,7 +14,7 @@ function fetchWaitingPatient(){
 }
 
 function updatePrescription(){
-    $pSql="UPDATE `prescription` SET `clinical_presentation`='{$_POST['clinicalPresentation']}',`note`='{$_POST['note']}',`refer_to`='{$_POST['referTo']}',`advice`='{$_POST['advice']}',`follow_upD`='{$_POST['follow_upD']}',`follow_upW`='{$_POST['follow_upW']}',`height`='{$_POST['height']}',`weight`='{$_POST['weight']}',`blood_pressure`='{$_POST['blood_pressure']}',`status`='prescribed' WHERE `prescription_id`='{$_POST['prescription_id']}' AND `patient_id`='{$_POST['patient_id']}' ";
+    $pSql="UPDATE `prescription` SET `clinical_presentation`='{$_POST['clinicalPresentation']}',`investigation`='{$_POST['investigation']}',`refer_to`='{$_POST['referTo']}',`advice`='{$_POST['advice']}',`follow_upD`='{$_POST['follow_upD']}',`follow_upW`='{$_POST['follow_upW']}',`height`='{$_POST['height']}',`weight`='{$_POST['weight']}',`blood_pressure`='{$_POST['blood_pressure']}',`status`='prescribed' WHERE `prescription_id`='{$_POST['prescription_id']}' AND `patient_id`='{$_POST['patient_id']}' ";
     mysqli_query($GLOBALS['conn'],$pSql) or die("SQL query failed");
     $prescription_id=$_POST['prescription_id'];
     $patient_id=$_POST['patient_id'];

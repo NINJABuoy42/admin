@@ -19,16 +19,24 @@
                             <input autocomplete="off" type="text" class="form-control" id="pName" name="pName" value="<?php echo $patientDetail["fullName"]; ?>" readonly>
                         </div>
                         <div class="col-md-6">
-                            <label for="height" class="form-label">Height</label>
+                            <label for="blood_pressure" class="form-label">Blood Pressure(mmHH)</label>
+                            <input autocomplete="off" type="text" class="form-control" id="blood_pressure" name="blood_pressure">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="pulse" class="form-label">Pulse(bpm)</label>
+                            <input autocomplete="off" type="text" class="form-control" id="pulse" name="pulse">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="spo2" class="form-label">Oxygen  saturation(SpO<sub>2</sub> &#37;)</label>
+                            <input autocomplete="off" type="text" class="form-control" id="spo2" name="spo2">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="height" class="form-label">Height(cm)</label>
                             <input autocomplete="off" type="text" class="form-control" id="height" name="height">
                         </div>
                         <div class="col-md-6">
-                            <label for="weight" class="form-label">Weight</label>
+                            <label for="weight" class="form-label">Weight(kg)</label>
                             <input autocomplete="off" type="text" class="form-control" id="weight" name="weight">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="blood_pressure" class="form-label">Blood Pressure</label>
-                            <input autocomplete="off" type="text" class="form-control" id="blood_pressure" name="blood_pressure">
                         </div>
 
                         <div class="col-md-6">

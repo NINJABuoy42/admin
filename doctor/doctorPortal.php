@@ -154,14 +154,18 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                                         <div class="input-group-append">
                                                             <select id="insDosage" class="form-control"
                                                                 name="insDosage">
+                                                                <option value="">Choose</option>
+                                                                <option value="SOS">SOS</option>
                                                                 <option value="Daily">Daily</option>
                                                                 <option value="Weekly">Weekly</option>
-                                                                <option value="Necessary">Necessary</option>
                                                             </select>
                                                         </div>
 
                                                     </div>
                                                     <select id="insType" class="form-control" name="insType">
+                                                        <option value="">Choose</option>
+                                                        <option value="SOS">SOS</option>
+                                                        <option value="Anytime">Anytime</option>
                                                         <option value="Before Meal">Before Meal</option>
                                                         <option value="After Meal">After Meal</option>
                                                         <option value="Morning">Morning</option>
@@ -175,7 +179,6 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                                         <option value="Night">Night</option>
                                                         <option value="Night Before Meal">Night Before Meal</option>
                                                         <option value="Night After Meal">Night After Meal</option>
-                                                        <option value="Anytime">Anytime</option>
                                                     </select>
                                                 </td>
                                                 <td class="w-25">
@@ -217,6 +220,11 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                         </div>
 
                         <div class="col-md-12">
+                            <label for="investigation" class="form-label">Investigations:</label>
+                            <input type="text" class="form-control" id="investigation" name="investigation"
+                                value="<?php echo $dataPatient['investigation'] ?>">
+                        </div>
+                        <div class="col-md-12">
                             <label for="referTo" class="form-label">Refer To:</label>
                             <input autocomplete="off" type="text" class="form-control" id="referTo" name="referTo"
                                 value="<?php echo $dataPatient['refer_to'] ?>">
@@ -229,12 +237,17 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                         <div class="col-md-3">
                             <label for="followUP" class="form-label">Next Follow-up</label>
                             <div class="input-group-append">
-                                <input autocomplete="off" type="text" class="form-control" id="follow_upD" name="follow_upD" value="<?php echo $dataPatient['follow_upD'] ?>">
+                                <input autocomplete="off" type="text" class="form-control" id="follow_upD"
+                                    name="follow_upD" value="<?php echo $dataPatient['follow_upD'] ?>">
                                 <select id="follow_upW" class="form-control" name="follow_upW">
                                     <option selected value="">Select</option>
-                                    <option value="Day" <?php if($dataPatient['follow_upW']=="Day"){echo "selected";} ?>>Day</option>
-                                    <option value="Week" <?php if($dataPatient['follow_upW']=="Week"){echo "selected";} ?>>Week</option>
-                                    <option value="Month" <?php if($dataPatient['follow_upW']=="Month"){echo "selected";} ?>>Month</option>
+                                    <option value="Day"
+                                        <?php if($dataPatient['follow_upW']=="Day"){echo "selected";} ?>>Day</option>
+                                    <option value="Week"
+                                        <?php if($dataPatient['follow_upW']=="Week"){echo "selected";} ?>>Week</option>
+                                    <option value="Month"
+                                        <?php if($dataPatient['follow_upW']=="Month"){echo "selected";} ?>>Month
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -259,11 +272,15 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <script>
         $(document).ready(function() {
             $("#add").on('click', (e) => {
+                let dosage = "";
+                if($('#medDuration').val()!=""){
+                    dosage= $('#medDuration').val() + "x" + $('#insDuration').val();
+                }
                 // console.log("add");
                 html = `<tr>
                                     <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='medName[]' value='${$('#medName').val()}'></td>
                                     <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDosage[]' value='${$('#medDosage').val()} x ${$('#insDosage').val()} | ${$('#insType').val()}'></td>
-                                    <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDuration[]' value='${$('#medDuration').val()} x ${$('#insDuration').val()}'></td>
+                                    <td class="w-25"><input autocomplete="off" type="text" class="form-control input" name='medDuration[]' value='${dosage}'></td>
                                     <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove();">REM</button></td>
                                 </tr>`;
                 $('#medName').val('');
@@ -284,6 +301,6 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 $('#diagnosisF').val("");
                 $("#medDiagnosis").append(fieldHtml);
             })
-           
+
         })
         </script>

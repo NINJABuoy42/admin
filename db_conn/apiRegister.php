@@ -33,7 +33,7 @@ function getDoctors()
     return $result;
 }
 
-function patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc)
+function patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attendingDoc)
 {
     $query = "SELECT COUNT(*) FROM prescription";
     $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
@@ -58,7 +58,7 @@ function patientCheckIn($pBP, $pWeight, $pHeight, $pId, $attendingDoc)
     }
 
 
-    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `doc_id`,`height`, `weight`, `blood_pressure`,`status`,`visit_date`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$docName}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','checked_in',NOW())";
+    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `doc_id`,`height`, `weight`, `blood_pressure`,`pulse`,`spo2`,`status`,`visit_date`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$docName}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','{$pulse}','{$spo2}','checked_in',NOW())";
     if (mysqli_query($GLOBALS['conn'], $sql)) {
         header("LOCATION:viewDetails.php?patient_id={$pId}");
     }
