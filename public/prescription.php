@@ -52,7 +52,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         text-align: center;
     }
     #rx{
-        font-size: 4rem;
+        font-size: 3rem;
     }
     </style>
 </head>
