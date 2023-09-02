@@ -143,13 +143,13 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 <strong>Diagnosis: </strong>
             </div>
             <div class="col col-sm-10">
-                <ol type="number">
+                <ul type="number">
                     <?php while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) { ?>
                     <li>
                         <?php echo $dataDiagnosis['diagnosis']; ?>
                     </li>
                     <?php } ?>
-                </ol>
+                </ul>
             </div>
         </div>
         <br>
