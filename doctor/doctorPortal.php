@@ -30,6 +30,8 @@ if (isset($_POST['save'])) {
 }
 $diagnosis = getDiagnosis($_GET['prescription_id'], $_GET['patient_id']);
 $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
+$clinicalPresentation = getClinicalPresentation($_GET['prescription_id'], $_GET['patient_id']);
+$investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id']);
 ?>
 
 <body id="page-top">
@@ -63,18 +65,28 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                     <input autocomplete="off" type="text" class="form-control" id="name"
                                         value="<?php echo $dataPatient['name'] ?>" name="name" readonly>
                                 </div>
-
-                                <div class="col-md-4">
-                                    <label for="blood_pressure" class="form-label">Blood Pressure(in mmHH)</label>
+                                
+                                <div class="col-md-3">
+                                    <label for="blood_pressure" class="form-label">B/P(in mmHH)</label>
                                     <input autocomplete="off" type="text" class="form-control" id="blood_pressure"
                                         value="<?php echo $dataPatient['blood_pressure'] ?>" name="blood_pressure">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <label for="pulse" class="form-label">Pulse(in bpm)</label>
+                                    <input autocomplete="off" type="text" class="form-control" 
+                                        value="<?php echo $dataPatient['pulse'] ?>" name="pulse">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="spo2" class="form-label">SpO<sub>2</sub>(in %)</label>
+                                    <input autocomplete="off" type="text" class="form-control" 
+                                        value="<?php echo $dataPatient['spo2'] ?>" name="spo2">
+                                </div>
+                                <div class="col-md-2">
                                     <label for="height" class="form-label">Height(in cms)</label>
-                                    <input autocomplete="off" type="text" class="form-control" id="name"
+                                    <input autocomplete="off" type="text" class="form-control" 
                                         value="<?php echo $dataPatient['height'] ?>" name="height">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <label for="weight" class="form-label">Weight(in kgs)</label>
                                     <input autocomplete="off" type="text" class="form-control" id="weight"
                                         value="<?php echo $dataPatient['weight'] ?>" name="weight">
@@ -96,7 +108,20 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                     <ul type="number_format" id="clinicalRep">
                                         <!-- clinical presentations fields adds here -->
                                         <!-- php server data adds here  -->
-
+                                        <?php while ($dataClinicalPresentation = mysqli_fetch_assoc($clinicalPresentation)) { ?>
+                                        <li>
+                                            <div class="input-group mb-3">
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="clinicalRep[]"
+                                                    value='<?php echo $dataClinicalPresentation['clinical_presentation']; ?>'>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-danger"  type="button"
+                                                        onclick="this.closest('li').remove();"><i
+                                                            class="fas fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <?php } ?>
                                         <!-- php server data closes here  -->
                                     </ul>
                                 </div>
@@ -116,7 +141,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
-                                    <ol type="number_format" id="medDiagnosis">
+                                    <ul type="number_format" id="medDiagnosis">
                                         <!-- diagnosis/provisional diagnosis adds here -->
                                         <!-- php server data adds here  -->
                                         <?php while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) { ?>
@@ -134,7 +159,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                                         </li>
                                         <?php } ?>
                                         <!-- php server data closes here  -->
-                                    </ol>
+                                    </ul>
                                 </div>
                                 <!-- dianosis/provisional diagnosis ends here  -->
 
@@ -249,7 +274,20 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                             <ul id="investigations">
                                 <!-- investigations adds here -->
                                 <!-- php server data adds here  -->
-
+                                <?php while ($dataInvestigation = mysqli_fetch_assoc($investigation)) { ?>
+                                        <li>
+                                            <div class="input-group mb-3">
+                                                <input autocomplete="off" type="text" class="form-control"
+                                                    name="investigations[]"
+                                                    value='<?php echo $dataInvestigation['investigation']; ?>'>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-danger" id="addField" type="button"
+                                                        onclick="this.closest('li').remove();"><i
+                                                            class="fas fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <?php } ?>
                                 <!-- php server data closes here  -->
                             </ul>
                         </div>
