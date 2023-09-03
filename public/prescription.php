@@ -2,7 +2,7 @@
 // include("./includes/header.php");
 require('../db_conn/dbConn.php');
 include('../db_conn/apiDoctor.php');
-// include('./db_conn/user.php');
+
 
 if (!isset($_GET['prescription_id'])) {
     header('location:204.php');
