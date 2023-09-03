@@ -10,6 +10,8 @@ if (!isset($_GET['prescription_id'])) {
 $dataPatients = getPrescriptiontDetails($_GET['prescription_id'], $_GET['patient_id']);
 $diagnosis = getDiagnosis($_GET['prescription_id'], $_GET['patient_id']);
 $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
+$clinicalPresentation = getClinicalPresentation($_GET['prescription_id'], $_GET['patient_id']);
+$investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id']);
 
 ?>
 
@@ -24,25 +26,18 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
 
 
     }
-
-
-
-
     .docSign {
         width: 100%;
         text-align: end;
-        margin-top: 200px;
         padding-right: 4rem;
         margin-bottom: 2rem;
     }
-
     .btn {
         width: 80vw;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
     button {
         margin: 1rem auto;
     }
@@ -116,8 +111,17 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         </div>
         <hr class="border  border-dark">
         <div class="row">
-            <div class="col col-sm-8 text-break">
-                <strong>Clinical Presentation: </strong><?php echo $dataPatient['clinical_presentation'] ?>
+            <div class="col col-sm-2 text-break">
+                <strong>Clinical Presentation: </strong>
+            </div>
+            <div class="col col-sm-6">
+                <ul type="number">
+                    <?php while ($dataClinicalPresentation = mysqli_fetch_assoc($clinicalPresentation)) { ?>
+                    <li>
+                        <?php echo $dataClinicalPresentation['clinical_presentation']; ?>
+                    </li>
+                    <?php } ?>
+                </ul>
             </div>
             <div class="col col-md-4  border-left-dark px-4">
                 <?php if($dataPatient['blood_pressure']!=""){ ?>
@@ -143,13 +147,13 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
                 <strong>Diagnosis: </strong>
             </div>
             <div class="col col-sm-10">
-                <ol type="number">
+                <ul type="number">
                     <?php while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) { ?>
                     <li>
                         <?php echo $dataDiagnosis['diagnosis']; ?>
                     </li>
                     <?php } ?>
-                </ol>
+                </ul>
             </div>
         </div>
         <br>
@@ -157,27 +161,35 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <div class="row">
         <span id="rx"><strong>&#8478;</strong></span>
         </div>
-        <br>
         <ol type="number">
             <?php while ($dataMedicine = mysqli_fetch_assoc($medicine)) { ?>
             <li>
-                <div class="row mt-4">
-                    <div class="col col-sm-6"><?php echo $dataMedicine['medicine_name']; ?></div>
-                    <div class="col col-sm-3"><?php echo $dataMedicine['dosage']; ?></div>
+                <div class="row mt-1">
+                    <div class="col col-sm-5"><?php echo $dataMedicine['medicine_name']; ?></div>
+                    <div class="col col-sm-5"><?php echo $dataMedicine['dosage']; ?></div>
                     <?php if($dataMedicine['duration']!=""){ ?>
-                    <div class="col col-sm-3">For: <?php echo $dataMedicine['duration']; ?></div>
+                    <div class="col col-sm-2">For: <?php echo $dataMedicine['duration']; ?></div>
                     <?php } ?>
                 </div>
             </li>
             <?php } ?>
         </ol>
         <hr class="border">
-        <?php if($dataPatient['investigation']!=""){?>
+        <?php if(isset($investigation)):?>
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Investigations: </strong><?php echo $dataPatient['investigation'];?>
+            <div class="col-sm-2"> <strong class="mr-1">Investigations: </strong>
+            </div>
+            <div class="col-sm-8">
+                <ul type="number">
+                    <?php while ($dataInvestigation = mysqli_fetch_assoc($investigation)) : ?>
+                    <li>
+                        <?php echo $dataInvestigation['investigation']; ?>
+                    </li>
+                    <?php endwhile ?>
+                </ul>
             </div>
         </div>
-        <?php } ?>
+        <?php endif ?>
         <br>
         <?php if($dataPatient['refer_to']!=""){?>
         <div class="row">
@@ -188,7 +200,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         <?php } if($dataPatient['advice']!=""){ ?>
 
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Advice Given: </strong><?php echo $dataPatient['advice'] ?>
+            <div class="col-sm-12"> <strong class="mr-1">Advice Given: </strong><?php echo $dataPatient['advice'] ?>
             </div>
         </div>
         <?php } if($dataPatient['follow_upD']!="" && $dataPatient['follow_upW']!="" ){?>
@@ -198,10 +210,7 @@ $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
         </div>
         <?php } 
     } ?>
-
-
-
-
+    <br>
         <div class="docSign">
             <strong><span>Signature/Seal</span></strong>
         </div>
