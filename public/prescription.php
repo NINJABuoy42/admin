@@ -1,5 +1,5 @@
 <?php
-// hello from web
+
 require('../db_conn/dbConn.php');
 include('../db_conn/apiDoctor.php');
 
