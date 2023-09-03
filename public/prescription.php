@@ -10,6 +10,7 @@ if (!isset($_GET['prescription_id'])) {
 $dataPatients = getPrescriptiontDetails($_GET['prescription_id'], $_GET['patient_id']);
 $diagnosis = getDiagnosis($_GET['prescription_id'], $_GET['patient_id']);
 $medicine = getMedicine($_GET['prescription_id'], $_GET['patient_id']);
+// hello from ninja
 
 ?>
 
