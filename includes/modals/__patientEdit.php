@@ -38,7 +38,7 @@
                             <label for="maritialStatus" class="form-label">Maritial Status</label>
                             <select id="maritialStatus" class="form-control" name="maritialStatus">
                                     <option value="Single" <?php if($patientDetail["maritialStatus"]=='Single'){echo 'selected';} ?> >Single</option>
-                                    <option value="Un-married" <?php if($patientDetail["maritialStatus"]=='Un-married'){echo 'selected';} ?> >Un Married</option>
+                                    <option value="Married" <?php if($patientDetail["maritialStatus"]=='Married'){echo 'selected';} ?> >Married</option>
                                     <option value="Other" <?php if($patientDetail["maritialStatus"]=='Other'){echo 'selected';} ?> >Other</option>
                             </select>
                         </div>

@@ -175,28 +175,27 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
             <?php } ?>
         </ol>
         <hr class="border">
-        <?php if(isset($investigation)):?>
+        <?php if($investigation!=""){?>
         <div class="row">
             <div class="col-sm-2"> <strong class="mr-1">Investigations: </strong>
             </div>
             <div class="col-sm-8">
                 <ul type="number">
-                    <?php while ($dataInvestigation = mysqli_fetch_assoc($investigation)) : ?>
+                    <?php while ($dataInvestigation = mysqli_fetch_assoc($investigation)){ ?>
                     <li>
                         <?php echo $dataInvestigation['investigation']; ?>
                     </li>
-                    <?php endwhile ?>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
-        <?php endif ?>
+        <?php } ?>
         <br>
         <?php if($dataPatient['refer_to']!=""){?>
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?>
+            <div class="col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?>
             </div>
         </div>
-        <br>
         <?php } if($dataPatient['advice']!=""){ ?>
 
         <div class="row">
@@ -205,7 +204,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
         </div>
         <?php } if($dataPatient['follow_upD']!="" && $dataPatient['follow_upW']!="" ){?>
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Follow up: </strong>After
+            <div class="col-sm-12"> <strong class="mr-1">Follow up: </strong>After
                 <?php echo $dataPatient['follow_upD']." ".$dataPatient['follow_upW']." " ?></div>
         </div>
         <?php } 
