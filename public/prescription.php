@@ -193,10 +193,9 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
         <br>
         <?php if($dataPatient['refer_to']!=""){?>
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?>
+            <div class="col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?>
             </div>
         </div>
-        <br>
         <?php } if($dataPatient['advice']!=""){ ?>
 
         <div class="row">
@@ -205,7 +204,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
         </div>
         <?php } if($dataPatient['follow_upD']!="" && $dataPatient['follow_upW']!="" ){?>
         <div class="row">
-            <div class="col-col-sm-12"> <strong class="mr-1">Follow up: </strong>After
+            <div class="col-sm-12"> <strong class="mr-1">Follow up: </strong>After
                 <?php echo $dataPatient['follow_upD']." ".$dataPatient['follow_upW']." " ?></div>
         </div>
         <?php } 
