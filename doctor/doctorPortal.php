@@ -46,24 +46,30 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                         <div class="card-body ">
                             <!-- Multi Columns Form -->
                             <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) { ?>
-                            <form class="row g-3 form-group"
+                            <form class="row g-3 form-group" 
                                 method="<?php if($dataPatient['doc_id']==$_SESSION['user_id']){echo 'POST';} ?>">
+                                <button type="submit" disabled style="display: none" aria-hidden="true"></button>
                                 <h5 class="card-title col-md-12">Diagnosis/Prescription </h5>
-                                <div class="col-md-4">
+                                <div class="col-sm-3">
                                     <label for="prescription_id" class="form-label">Prescription ID</label>
                                     <input autocomplete="off" type="text" class="form-control" id="prescription_id"
                                         value="<?php echo $dataPatient['prescription_id'] ?>" name="prescription_id"
                                         readonly>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-3">
                                     <label for="patient_id" class="form-label">Patient ID</label>
                                     <input autocomplete="off" type="text" class="form-control" id="patient_id"
                                         value="<?php echo $dataPatient['patient_id'] ?>" name="patient_id" readonly>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-3">
                                     <label for="name" class="form-label">Name</label>
                                     <input autocomplete="off" type="text" class="form-control" id="name"
                                         value="<?php echo $dataPatient['name'] ?>" name="name" readonly>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input autocomplete="off" type="text" class="form-control" id="age"
+                                        value="<?php echo $dataPatient['age'] ?>" name="age" readonly>
                                 </div>
                                 
                                 <div class="col-md-3">
@@ -97,7 +103,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                     </label>
                                     <div class="input-group mb-3">
                                         <input autocomplete="off" type="text" class="form-control"
-                                            id="clinicalPresentation" placeholder="Clinical Presentation here...">
+                                            id="clinicalPresentation" placeholder="Clinical Presentation here..."  accesskey="q">
                                         <div class="input-group-append">
                                             <button class="btn btn-success" id="addClinicalPresentation"
                                                 type="button"><i class="fas fa-plus"></i></button>
@@ -133,10 +139,10 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                     </label>
                                     <div class="input-group mb-3">
                                         <input autocomplete="off" type="text" class="form-control" id="diagnosisF"
-                                            placeholder="Diagnosis/Provisional Diagnosis here...">
+                                            placeholder="Diagnosis/Provisional Diagnosis here..." accesskey="w">
                                         <div class="input-group-append">
                                             <button class="btn btn-success" id="addField" type="button"><i
-                                                    class="fas fa-plus"></i></button>
+                                                    class="fas fa-plus" ></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +184,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                             <tr>
                                                 <td class="w-50"><input autocomplete="off" type="text"
                                                         class="form-control input" id="medName"
-                                                        placeholder="Medicine name here..."></td>
+                                                        placeholder="Medicine name here..." accesskey="a"></td>
 
                                                 <td class="w-25">
                                                     <div class="input-group mb-3">
@@ -230,7 +236,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                                     </div>
                                                 </td>
                                 </div>
-                                <th class="w-5"><button type="button" class="btn btn-success" id="add">ADD</button></th>
+                                <th class="w-5"><button type="button" class="btn btn-success" id="add" >ADD</button></th>
                                 </tr>
                                 <!-- php server data adds here  -->
                                 <?php while ($dataMedicine = mysqli_fetch_assoc($medicine)) {?>
@@ -263,7 +269,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                             </label>
                             <div class="input-group mb-3">
                                 <input autocomplete="off" type="text" class="form-control" id="investigation"
-                                    placeholder="Investigation here...">
+                                    placeholder="Investigation here..." accesskey="s">
                                 <div class="input-group-append">
                                     <button class="btn btn-success" id="addInvestigation" type="button"><i
                                             class="fas fa-plus"></i></button>
