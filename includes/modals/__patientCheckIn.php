@@ -9,6 +9,8 @@
             </div>
             <form action="viewDetails.php" class="form-group" method="POST">
                 <div class="modal-body">
+                <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
                     <div class="row ">
                         <div class="col-md-6">
                             <label for="pId" class="form-label">Patient Id</label>
@@ -46,6 +48,16 @@
                                 $doctors = getDoctors();
                                 while ($doctor = mysqli_fetch_assoc($doctors)) { ?>
                                     <option value="<?php echo $doctor["user_id"]; ?>" selected><?php echo $doctor["Name"]; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="serviceType" class="form-label">Service</label>
+                            <select id="serviceType" class="form-control" name="serviceType">
+                                <?php
+                               $services = getServices();
+                                while ($service = mysqli_fetch_assoc($services)) { ?>
+                                    <option value="<?php echo $service["serviceType"]; ?>"><?php echo $service["serviceType"]; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

@@ -33,7 +33,7 @@ function getDoctors()
     return $result;
 }
 
-function patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attendingDoc)
+function patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attendingDoc,$serviceType)
 {
     $query = "SELECT COUNT(*) FROM prescription";
     $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
@@ -56,9 +56,13 @@ function patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attending
     while ($rowDoc = $docs->fetch_assoc()) { 
         $docName = $rowDoc['Name'];
     }
-
-
-    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `doc_id`,`height`, `weight`, `blood_pressure`,`pulse`,`spo2`,`status`,`visit_date`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$docName}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','{$pulse}','{$spo2}','checked_in',NOW())";
+    $querySer ="SELECT * FROM services WHERE serviceType = '$serviceType'";
+    $resultSer = mysqli_query($GLOBALS['conn'], $querySer) or die("SQL query failed");
+    while ($rowSer = $resultSer->fetch_assoc()) { 
+        $service = $rowSer['serviceType'];
+        $amount = $rowSer['fees'];
+    }
+    $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `doc_id`,`height`, `weight`, `blood_pressure`,`pulse`,`spo2`,`status`,`visit_date`,`service`,`amount`,`amtStatus`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$docName}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','{$pulse}','{$spo2}','checked_in',NOW(),'{$service}','{$amount}','paid')";
     if (mysqli_query($GLOBALS['conn'], $sql)) {
         header("LOCATION:viewDetails.php?patient_id={$pId}");
     }
@@ -68,5 +72,12 @@ function patientEdit($pId,$pName,$age,$gender,$phone,$mstatus,$state,$district,$
     $sql="UPDATE `patient_details` SET `fullName`='{$pName}',`age`='{$age}',`gender`='{$gender}',`phoneNumber`='{$phone}',`maritialStatus`='{$mstatus}',`state`='{$state}',`district`='{$district}',`pinCode`='{$pin}',`address`='{$address}' WHERE patienId = '{$pId}';";
     mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
     header("LOCATION:viewDetails.php?patient_id={$pId}");
+}
+
+function getServices()
+{
+    $query = "SELECT * FROM services WHERE `status`='available' ";
+    $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    return $result;
 }
 ?>
