@@ -70,15 +70,16 @@ $portal = "Invoice";
                                     <div class="col-md-12">
                                     <table class="table">
                                         <thead>
-                                            <th>Service Description</th>
-                                            <th>Sub Total</th>
+                                            <th class='w-75'>Service Description</th>
+                                            <th class='w-25'>Sub Total</th>
+                                            <th class='w-15'></th>
                                         </thead>
                                         <tbody id="invoiceBody">
                                         </tbody>
                                         <footer>
                                             <tr>
-                                                <td>Total</td>
-                                                <td></td>
+                                                <td class="text-right">Total: </td>
+                                                <td><input type="text" name="total" id="total" class="form-control"></td>
                                             </tr>
                                         </footer>
                                     </table>
@@ -96,13 +97,23 @@ $portal = "Invoice";
                 html = `<tr>
                                     <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='serviceType[]' value='${$('#serviceType').val()}'></td>
                                     <td class="w-15"><input autocomplete="off" type="text" class="form-control input" name='subtotal[]' value='${$('#serviceType').find(':selected').data('id')}'></td>
-                                    <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove();">X</button></td>
+                                    <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove(); total();">X</button></td>
                                 </tr>`;
-                $('#medName').val('');
-                $('#medDosage').val('');
-                $('#medDuration').val('');
+
                 $('#invoiceBody').append(html);
-                console.log($('#serviceType').find(':selected').data('id'));
-                console.log($('#serviceType').val());
+                // console.log(parseInt($('#serviceType').find(':selected').data('id')));
+                // console.log($('#serviceType').val());
+                total();
             })
+
+            function total(){
+                let sum = document.getElementsByName('subtotal[]');
+            let total=0;
+            for(let i = 0;i< sum.length;i++){
+                var amt = sum[i].value
+                total = +(total) + +(amt) ;
+            }
+            console.log(total);
+            $('#total').val(total);
+        }
             </script>
