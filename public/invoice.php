@@ -32,22 +32,46 @@ $portal = "Invoice";
                                     <?php if(isset($patient_id) && isset($prescription_id)): ?>
                                     <div class="col-sm-6">
                                         <label for="prescription_id" class="form-label">Prescription ID</label>
-                                        <input autocomplete="off" type="text" class="form-control" id="prescription_id"
+                                        <input autocomplete="off" type="text" class="form-control"
+                                            name="prescription_id" id="prescription_id"
                                             value="<?php echo $prescription_id ;?>" readonly>
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="patient_id" class="form-label">Patient ID</label>
                                         <input autocomplete="off" type="text" class="form-control" id="patient_id"
-                                            value="<?php echo $patient_id ;?>" readonly>
+                                            value="<?php echo $patient_id ;?>" name="patient_id" readonly>
                                     </div>
                                     <?php endif; ?>
                                     <div class="col-sm-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input autocomplete="off" type="text" class="form-control" id="name">
+                                        <input autocomplete="off" type="text" class="form-control" id="name"
+                                            name="name">
                                     </div>
                                     <div class="col-sm-3">
                                         <label for="age" class="form-label">Age</label>
-                                        <input autocomplete="off" type="text" class="form-control" id="age">
+                                        <input autocomplete="off" type="text" class="form-control" id="age" name="age">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <input autocomplete="off" type="text" class="form-control" id="gender"
+                                            name="gender">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="phone" class="form-label">Phone No.</label>
+                                        <input autocomplete="off" type="text" class="form-control" id="phone"
+                                            name="phone">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input autocomplete="off" type="text" class="form-control" id="address"
+                                            name="address">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="reffer" class="form-label">Reffered By</label>
+                                        <input autocomplete="off" type="text" class="form-control" id="reffer"
+                                            name="reffer">
                                     </div>
                                 </div>
                                 <br>
@@ -74,26 +98,28 @@ $portal = "Invoice";
 
                                 </div>
 
-                                    <hr>
-                                    <div class="row">
-                                    <div class="col-md-12">
-                                        <table class="table">
-                                            <thead>
-                                                <th class='w-75'>Service Description</th>
-                                                <th class='w-25'>Sub Total</th>
-                                                <th class='w-15'></th>
-                                            </thead>
-                                            <tbody id="invoiceBody">
-                                            </tbody>
-                                            <footer>
-                                                <tr>
-                                                    <td class="text-right">Total: </td>
-                                                    <td><input type="text" name="total" id="total" class="form-control">
-                                                    </td>
-                                                </tr>
-                                            </footer>
-                                        </table>
-                                    </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-8 text-left"><h5><strong>Service Description</strong></h5></div>
+                                    <div class="col-sm-2 text-center"><h5><strong> Fees</strong></h5></div>
+                                    <div class="col-sm-1 text-center">#</div>
+                                </div>
+                                <hr>
+                                <div id="invoiceBody">
+                                </div>
+                                <hr>
+                                <div class="row amt mb-1" style="display: none;">
+                                    <div class="col-sm-8 text-right">TOTAL:</div>
+                                    <div class="col-sm-2 text-center"><input autocomplete="off" type="text" class="form-control input" name='total' id="total" value="0" readonly></div>
+                                </div>
+                                <div class="row amt mb-1" style="display: none;">
+                                    <div class="col-sm-8 text-right">DISCOUNT:</div>
+                                    <div class="col-sm-2 text-center"><input autocomplete="off" type="text" class="form-control input" name='discount' id="discount" value="0"></div>
+                                </div>
+
+                                <div class="row amt" style="display: none;">
+                                    <div class="col-sm-8 text-right">NET AMOUNT:</div>
+                                    <div class="col-sm-2 text-center"><input autocomplete="off" type="text" class="form-control input" name='netAmt' id="netAmt" value="0" readonly></div>                                  
                                 </div>
                             </div>
                         </div>
@@ -107,20 +133,23 @@ $portal = "Invoice";
                 theme: "bootstrap"
             });
             $("#serviceType").on('change', (e) => {
-                if($('#serviceType').val()!=""){
-                    html = `<tr>
-                                        <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='serviceType[]' value='${$('#serviceType').val()}'></td>
-                                        <td class="w-15"><input autocomplete="off" type="text" class="form-control input" name='subtotal[]' value='${$('#serviceType').find(':selected').data('id')}'></td>
-                                        <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove(); total();">X</button></td>
-                                    </tr>`;
-    
+                if ($('#serviceType').val() != "") {
+                    html = `<div class="row mb-2">
+                                        <div class="col-sm-8 text-center"><input autocomplete="off" type="text" class="form-control input" name='serviceType[]' value='${$('#serviceType').val()}' readonly></div>
+                                        <div class="col-sm-2 text-center"><input autocomplete="off" type="text" class="form-control input" name='subtotal[]' value='${$('#serviceType').find(':selected').data('id')}' readonly></div>
+                                        <div class="col-sm-1 text-center"><button type="button" class="btn btn-danger" onclick="this.closest('.row').remove(); total();">X</button></div>
+                                    </div> `;
+
                     $('#invoiceBody').append(html);
                     // console.log(parseInt($('#serviceType').find(':selected').data('id')));
                     // console.log($('#serviceType').val());
                     total();
+                    
                 }
             })
-
+            $('#discount').on('keyup',()=>{
+                total();
+            });
             function total() {
                 let sum = document.getElementsByName('subtotal[]');
                 let total = 0;
@@ -128,7 +157,9 @@ $portal = "Invoice";
                     var amt = sum[i].value
                     total = +(total) + +(amt);
                 }
-                console.log(total);
+                // console.log(total);
                 $('#total').val(total);
+                $('#netAmt').val(+(total) - +(($('#discount').val() / 100)) * +(total));
+                $('.amt').show();
             }
             </script>

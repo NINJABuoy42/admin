@@ -117,7 +117,6 @@ $portal = "Doctors Dashboard";
                                                 <tr>
                                                     <th>Prescription ID</th>
                                                     <th>Doctor</th>
-                                                    <th>Name</th>
                                                     <th>Service</th>
                                                     <th>Amt/Status</th>
                                                     <th>Visit Date</th>
@@ -125,13 +124,13 @@ $portal = "Doctors Dashboard";
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php while ($pateintD = mysqli_fetch_assoc($patientHistory)) {
-                                                    // include('./includes/modals/__deleteModal.php');
+                                                <?php
+                                                    include('../includes/modals/__prescriptionEdit.php');
+                                                 while ($pateintD = mysqli_fetch_assoc($patientHistory)) {
                                                 ?>
                                                     <tr>
                                                         <td><?php echo $pateintD['prescription_id'] ?></td>
                                                         <td><?php echo $pateintD['attending_doctor'] ?></td>
-                                                        <td><?php echo $pateintD['name'] ?></td>
                                                         <td><?php echo $pateintD['service'] ?></td>
                                                         <td>&#8377; <?php echo $pateintD['amount'] ?>/- | <span class="badge badge-pill badge-success"><?php echo $pateintD['amtStatus'] ?></span></td>
                                                         <td><?php echo $pateintD['visit_date'] ?></td>

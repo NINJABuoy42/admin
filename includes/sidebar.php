@@ -71,6 +71,10 @@
                     <i class="fas fa-file-prescription" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Prescription</span>
                 </a>
+                <a class="nav-link collapsed" href="../public/invoice.php" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-file-alt" style="font-size: 20px;"></i>
+                    <span style="font-size: 15px;">Invoice</span>
+                </a>
             </li>
     <?php
             break;
