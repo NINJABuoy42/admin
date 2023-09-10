@@ -21,6 +21,10 @@
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../img/favicon.png">
+    <link rel="stylesheet" href="../css/select2.min.css">
+    <link rel="stylesheet" href="../css/select2-bootstrap.min.css">
+    
+  
 
     <title><?php echo $title; ?></title>
 </head>

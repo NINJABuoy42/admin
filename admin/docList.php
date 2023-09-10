@@ -67,88 +67,98 @@ $docList= fetchDocs();
                         <div class="card-body">
                             <div class="col-xl-12">
                                 <form action="" method="POST">
-                                <label for="diagnosis" class="form-label">Doctor List
-                                </label>
-                                <div class="input-group mb-3">
-                                    <select id="docList" class="form-control" name="docName">
-                                    <option value="">SELECT...</option>
-                                        <?php while ($doc = mysqli_fetch_assoc($doctors)) { ?>
-                                        <option value="<?php echo $doc['user_id'] ?>"><?php echo $doc['fullName'] ?></option>
-                                        <?php }?>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-success" name="addDoc" type="submit"><i
-                                                class="fas fa-plus"></i></button>
+                                    <label for="diagnosis" class="form-label">Doctor List
+                                    </label>
+                                    <div class="input-group mb-3">
+                                        <select id="docList" class="form-control" name="docName">
+                                            <option value="">SELECT...</option>
+                                            <?php while ($doc = mysqli_fetch_assoc($doctors)) { ?>
+                                            <option value="<?php echo $doc['user_id'] ?>"><?php echo $doc['fullName'] ?>
+                                            </option>
+                                            <?php }?>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success" name="addDoc" type="submit"><i
+                                                    class="fas fa-plus"></i></button>
 
-                                    </div>
-                                    </form>
+                                        </div>
+                                </form>
 
-                                </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>RegNo</th>
-                                            <th>Qualification</th>
-                                            <th>Current</th>
-                                            <th>Email</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php while ($doc = mysqli_fetch_assoc($docList)) {
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>RegNo</th>
+                                        <th>Qualification</th>
+                                        <th>Current</th>
+                                        <th>Email</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($doc = mysqli_fetch_assoc($docList)) {
                                             include('../includes/modals/__deleteModal.php');
                                             include('../includes/modals/__docEdit.php');
                                         ?>
-                                        <tr>
-                                            <td><?php echo $doc['Name'] ?></td>
-                                            <td><?php echo $doc['regNo'] ?></td>
-                                            <td><?php echo $doc['qualifications'] ?></td>
-                                            <td><?php echo $doc['current'] ?></td>
-                                            <td><?php echo $doc['email'] ?></td>
-                                            <td class="d-flex justify-content-around">
-                                                <button type="click" class="edit btn btn-info"
-                                                    data-user_id="<?php echo $doc['user_id'] ?>"
-                                                    data-fullName="<?php echo $doc['Name'] ?>" data-toggle="modal"
-                                                    data-target="#docEdit">
-                                                    <i class="fas fa-edit"></i>
-                                                    <button type="click " class="del btn btn-danger"
-                                                        data-id="<?php echo $doc['user_id'] ?>" data-toggle="modal"
-                                                        data-target="#deleteModal">
-                                                        <i class="fas fa-trash"></i></button>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td><?php echo $doc['Name'] ?></td>
+                                        <td><?php echo $doc['regNo'] ?></td>
+                                        <td><?php echo $doc['qualifications'] ?></td>
+                                        <td><?php echo $doc['current'] ?></td>
+                                        <td><?php echo $doc['email'] ?></td>
+                                        <td class="d-flex justify-content-around">
+                                            <button type="click" class="edit btn btn-info"
+                                                data-user_id="<?php echo $doc['user_id'] ?>"
+                                                data-fullName="<?php echo $doc['Name'] ?>"
+                                                data-qual="<?php echo $doc['qualifications'] ?>"
+                                                data-current="<?php echo $doc['current'] ?>"
+                                                data-email="<?php echo $doc['email'] ?>"
+                                                data-regNo="<?php echo $doc['regNo'] ?>"
+                                                data-toggle="modal"
+                                                data-target="#docEdit">
+                                                <i class="fas fa-edit"></i>
+                                                <button type="click " class="del btn btn-danger"
+                                                    data-id="<?php echo $doc['user_id'] ?>" data-toggle="modal"
+                                                    data-target="#deleteModal">
+                                                    <i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
 
-                                        <?php } ?>
+                                    <?php } ?>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
-
                     </div>
-                    <?php
+
+                </div>
+                <?php
                     include('../includes/footer.php');
                     ?>
 
-                </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
+            <!-- /.container-fluid -->
 
         </div>
+        <!-- End of Main Content -->
+
+    </div>
     </div>
     <script>
-    $(".del").on("click",function(e){
-        $("#deleteRecord").attr('href','docList.php?delete='+$(this).attr('data-id'));
+    $(".del").on("click", function(e) {
+        $("#deleteRecord").attr('href', 'docList.php?delete=' + $(this).attr('data-id'));
         // console.log($(this).attr('data-id'));
     })
-    $(".edit").on("click",function(e){
+    $(".edit").on("click", function(e) {
         $("#user_id").val($(this).attr('data-user_id'));
         $("#Name").val($(this).attr('data-fullName'));
+        $("#regNo").val($(this).attr('data-regNo'));
+        $("#qualification").val($(this).attr('data-qual'));
+        $("#current").val($(this).attr('data-current'));
+        $("#email").val($(this).attr('data-email'));
         // console.log($(this).attr('data-id'));
     })
-</script>
+    </script>

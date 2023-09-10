@@ -49,40 +49,50 @@ $portal = "Invoice";
                                         <label for="age" class="form-label">Age</label>
                                         <input autocomplete="off" type="text" class="form-control" id="age">
                                     </div>
-                                    <div class="col-xl-6">
-
-                                        <label for="service" class="form-label">Service</label>
-                                        <div class="input-group mb-3">
-                                            <select id="serviceType" class="form-control" name="serviceType">
-                                                <?php
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label for="serviceType">Service Type</label>
+                                        <select id="serviceType" class="form-control" name="serviceType">
+                                            <option value="">Select Service....</option>
+                                            <option value="">Other</option>
+                                            <?php
                                $services = getServices();
                                 while ($service = mysqli_fetch_assoc($services)) { ?>
-                                                <option data-id="<?php echo $service["fees"]; ?>" value="<?php echo $service["serviceType"]; ?>">
-                                                    <?php echo $service["serviceType"]; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            <div class="input-group-append">
-                                                <button class="btn btn-success" id="addService" type="button"><i
-                                                        class="fas fa-plus"></i></button>
-                                            </div>
-                                        </div>
+                                            <option data-id="<?php echo $service["fees"]; ?>"
+                                                value="<?php echo $service["serviceType"]; ?>">
+                                                <?php echo $service["serviceType"]; ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
+                                    <!-- <div class="col-sm-4">
+
+                                        <button class="btn btn-success" id="addService" type="button"><i
+                                                class="fas fa-plus"></i></button>
+                                    </div> -->
+
+                                </div>
+
+                                    <hr>
+                                    <div class="row">
                                     <div class="col-md-12">
-                                    <table class="table">
-                                        <thead>
-                                            <th class='w-75'>Service Description</th>
-                                            <th class='w-25'>Sub Total</th>
-                                            <th class='w-15'></th>
-                                        </thead>
-                                        <tbody id="invoiceBody">
-                                        </tbody>
-                                        <footer>
-                                            <tr>
-                                                <td class="text-right">Total: </td>
-                                                <td><input type="text" name="total" id="total" class="form-control"></td>
-                                            </tr>
-                                        </footer>
-                                    </table>
+                                        <table class="table">
+                                            <thead>
+                                                <th class='w-75'>Service Description</th>
+                                                <th class='w-25'>Sub Total</th>
+                                                <th class='w-15'></th>
+                                            </thead>
+                                            <tbody id="invoiceBody">
+                                            </tbody>
+                                            <footer>
+                                                <tr>
+                                                    <td class="text-right">Total: </td>
+                                                    <td><input type="text" name="total" id="total" class="form-control">
+                                                    </td>
+                                                </tr>
+                                            </footer>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -93,27 +103,32 @@ $portal = "Invoice";
                 </div>
             </div>
             <script>
-                $("#addService").on('click', (e) => {
-                html = `<tr>
-                                    <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='serviceType[]' value='${$('#serviceType').val()}'></td>
-                                    <td class="w-15"><input autocomplete="off" type="text" class="form-control input" name='subtotal[]' value='${$('#serviceType').find(':selected').data('id')}'></td>
-                                    <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove(); total();">X</button></td>
-                                </tr>`;
-
-                $('#invoiceBody').append(html);
-                // console.log(parseInt($('#serviceType').find(':selected').data('id')));
-                // console.log($('#serviceType').val());
-                total();
+            $('#serviceType').select2({
+                theme: "bootstrap"
+            });
+            $("#serviceType").on('change', (e) => {
+                if($('#serviceType').val()!=""){
+                    html = `<tr>
+                                        <td class="w-50"><input autocomplete="off" type="text" class="form-control input" name='serviceType[]' value='${$('#serviceType').val()}'></td>
+                                        <td class="w-15"><input autocomplete="off" type="text" class="form-control input" name='subtotal[]' value='${$('#serviceType').find(':selected').data('id')}'></td>
+                                        <td class="w-5"><button type="button" class="btn btn-danger" onclick="this.closest('tr').remove(); total();">X</button></td>
+                                    </tr>`;
+    
+                    $('#invoiceBody').append(html);
+                    // console.log(parseInt($('#serviceType').find(':selected').data('id')));
+                    // console.log($('#serviceType').val());
+                    total();
+                }
             })
 
-            function total(){
+            function total() {
                 let sum = document.getElementsByName('subtotal[]');
-            let total=0;
-            for(let i = 0;i< sum.length;i++){
-                var amt = sum[i].value
-                total = +(total) + +(amt) ;
+                let total = 0;
+                for (let i = 0; i < sum.length; i++) {
+                    var amt = sum[i].value
+                    total = +(total) + +(amt);
+                }
+                console.log(total);
+                $('#total').val(total);
             }
-            console.log(total);
-            $('#total').val(total);
-        }
             </script>

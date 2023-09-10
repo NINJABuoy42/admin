@@ -80,4 +80,17 @@ function getServices()
     $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
     return $result;
 }
+function getAllServices()
+{
+    $query = "SELECT * FROM services";
+    $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    return $result;
+}
+function addService($serviceType,$fees){
+    $query = "INSERT INTO `services`(`serviceType`, `fees`) VALUES ('{$serviceType}','{$fees}')";
+    $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    header("LOCATION:services.php");
+
+}
+
 ?>

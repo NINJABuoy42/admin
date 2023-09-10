@@ -29,6 +29,10 @@
                     <i class="fas fa-search" style="font-size: 20px;"></i>
                     <span style="font-size: 15px;">Search</span>
                 </a>
+                <a class="nav-link collapsed" href="../admin/services.php" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-list" style="font-size: 20px;"></i>
+                    <span style="font-size: 15px;">Services List</span>
+                </a>
             </li>
         <?php
             break;
