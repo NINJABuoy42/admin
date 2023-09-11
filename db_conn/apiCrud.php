@@ -7,8 +7,8 @@ function deleteID($tableName,$id,$returnLocation){
     header("LOCATION:".$returnLocation);
 }
 
-function editService($id,$serviceType,$fees,$status){
-    $query = "UPDATE services SET `serviceType`='$serviceType',`fees`='$fees',`status`='$status' WHERE id=$id";
+function editService($id,$serviceType,$fees,$status,$category){
+    $query = "UPDATE services SET `serviceType`='$serviceType',`fees`='$fees',`status`='$status',`category`='$category' WHERE id=$id";
     mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed") ;
     header("LOCATION:../admin/services.php");
 }

@@ -74,7 +74,7 @@ function patientEdit($pId,$pName,$age,$gender,$phone,$mstatus,$state,$district,$
     header("LOCATION:viewDetails.php?patient_id={$pId}");
 }
 
-function getServices()
+function getStatsServices()
 {
     $query = "SELECT * FROM services WHERE `status`='available' ";
     $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
@@ -82,7 +82,13 @@ function getServices()
 }
 function getAllServices()
 {
-    $query = "SELECT * FROM services";
+    $query = "SELECT * FROM services ";
+    $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
+    return $result;
+}
+function getStatCatServices($category)
+{
+    $query = "SELECT * FROM services WHERE category='$category' AND status='available'";
     $result = mysqli_query($GLOBALS['conn'], $query) or die("SQL query failed");
     return $result;
 }

@@ -1,7 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:../login.php');
+    header('location:../public/login.php');
+    die;
+}
+if ($_SESSION['role']!='admin') {
+    header('location:../public/index.php');
     die;
 }
 $user = $_SESSION['user'];
@@ -27,7 +31,8 @@ if(isset($_POST['editService'])){
     $serviceType=$_POST['service_type'];
     $fees=$_POST['fee'];
     $status=$_POST['stats'];
-    editService($id,$serviceType,$fees,$status);
+    $category=$_POST['category'];
+    editService($id,$serviceType,$fees,$status,$category);
 }
 ?>
 
@@ -88,6 +93,7 @@ if(isset($_POST['editService'])){
                                         <tr>
                                             <th class="w-50">Service Description</th>
                                             <th class="25">Fees</th>
+                                            <th class="25">Category</th>
                                             <th class="25">Status</th>
                                             <th class="w-5">Actions</th>
                                         </tr>
@@ -100,6 +106,7 @@ if(isset($_POST['editService'])){
                                         <tr>
                                             <td><?php echo $service['serviceType'];?></td>
                                             <td>&#8377; <?php echo $service['fees'];?>/-</td>
+                                            <td><?php echo $service['category'];?></td>
                                             <td><?php echo $service['status'];?></td>
                                             
 

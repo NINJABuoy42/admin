@@ -15,11 +15,20 @@
                             <label for="service_type" class="form-label">Service Type</label>
                             <input autocomplete="off" type="text" class="form-control" id="service_type" name="service_type" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="fee" class="form-label">Fees</label>
                             <input autocomplete="off" type="number" class="form-control" id="fee" name="fee" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label for="category" class="form-label">Category</label>
+                            <select name="category" id="category" class="form-control">
+                                <option value="Registration">Registation</option>
+                                <option value="Services">Services</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-4">
                             <label for="stats" class="form-label">Status</label>
                             <select name="stats" id="stats" class="form-control">
                                 <option value="Available">Available</option>

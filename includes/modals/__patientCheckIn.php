@@ -55,7 +55,7 @@
                             <label for="serviceType" class="form-label">Service</label>
                             <select id="serviceType" class="form-control" name="serviceType">
                                 <?php
-                               $services = getServices();
+                               $services = getCatServices('Registration');
                                 while ($service = mysqli_fetch_assoc($services)) { ?>
                                     <option value="<?php echo $service["serviceType"]; ?>"><?php echo $service["serviceType"]; ?></option>
                                 <?php } ?>
