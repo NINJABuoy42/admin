@@ -30,7 +30,7 @@ if(isset($_POST['save'])){
     $total= $_POST['total'];
     $discount= $_POST['discount'];
     $net= $_POST['netAmt'];
-        newInvoice($name,$age,$phone,$address,$gender,$reffer,$serviceType,$fees, $total,$discount,$net);
+        newInvoice($name,$age,$phone,$address,$gender,$reffer,$serviceType,$fees, $total,$discount,$net,$user);
     }
 
 }
