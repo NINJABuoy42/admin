@@ -9,6 +9,7 @@ function newInvoice($name,$age,$phone,$address,$gender,$reffer,$serviceType,$fee
         $sql="INSERT INTO `invoice_details`(`invoice_id`, `serviceType`, `fees`) VALUES ('$invoice_id','$value','$fees[$key]')";
         mysqli_query($GLOBALS['conn'],$sql);
     }
+    return $invoice_id;
 }
 
 function fetchInovice(){
@@ -18,6 +19,22 @@ function fetchInovice(){
         return $result;
     }
 
+}
+function fetchSIngleInovice($id){
+    $sql = "SELECT * FROM invoice WHERE invoice_id='$id'";
+    $result = mysqli_query($GLOBALS['conn'], $sql)  or die("SQL query failed");
+    if($result){
+        return $result;
+    }
+
+}
+
+function fetchInvoiceDetails($id){
+    $sql = "SELECT * FROM invoice_details WHERE invoice_id='$id'";
+    $result = mysqli_query($GLOBALS['conn'], $sql)  or die("SQL query failed");
+    if($result){
+        return $result;
+    }
 }
 
 ?>

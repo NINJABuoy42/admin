@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['status'])) {
-    header('location:login.php');
+    header('location:../public/login.php');
     die;
 }
 
@@ -30,7 +30,10 @@ if(isset($_POST['save'])){
     $total= $_POST['total'];
     $discount= $_POST['discount'];
     $net= $_POST['netAmt'];
-        newInvoice($name,$age,$phone,$address,$gender,$reffer,$serviceType,$fees, $total,$discount,$net,$user);
+        $result =newInvoice($name,$age,$phone,$address,$gender,$reffer,$serviceType,$fees, $total,$discount,$net,$user);
+        if(isset($result)){
+            echo "<script>window.open('../public/invoicePrint.php?invoice_id={$result}','_blank','width=800,height=700')</script>";
+        }
     }
 
 }

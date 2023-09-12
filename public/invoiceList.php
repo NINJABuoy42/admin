@@ -66,14 +66,9 @@ $invoices = fetchInovice();
                                             <td><?php echo $invoice['receivedBy'] ?></td>
                                             <td>&#8377;  <?php echo $invoice['net'] ?></td>
                                             <td class="d-flex justify-content-around">
-
-                                                <a class="btn btn-info"
-                                                    href="../doctor/doctorPortal.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "><i
-                                                        class="fas fa-edit"></i></a>
-
                                                 <a class="btn btn-secondary"
-                                                    href="prescription.php?prescription_id=<?php echo $prescription['prescription_id'].'&patient_id='.$prescription['patient_id'] ?> "
-                                                    onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i
+                                                    href="invoicePrint.php?invoice_id=<?php echo $invoice['invoice_id'] ?> "
+                                                    onclick="window.open(this.href,'_blank','width=800,height=700'); return false;"><i
                                                         class="fas fa-print"></i></a>
                                             </td>
                                         </tr>
