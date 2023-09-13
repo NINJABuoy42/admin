@@ -44,10 +44,18 @@ include('../db_conn/user.php');
                             </a>
                         </div>
                         <div class=" btn card border-left-info d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">
-                            <a class="btn" href="#">
+                            <a class="btn" href="../admin/docList.php">
                                 <div class=" card-body col-auto">
                                     <i class="fas fa-user-md fa-6x text-info"></i>
                                     <div class="col-auto text-lg font-weight-bold text-info text-uppercase mb-1">DOCTOR LIST</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class=" btn card border-left-primary d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">
+                            <a class="btn" href="../public/invoiceList.php">
+                                <div class=" card-body col-auto">
+                                    <i class="fas fa-list fa-6x text-primary"></i>
+                                    <div class="col-auto text-lg font-weight-bold text-primary text-uppercase mb-1">INVOICE LIST</div>
                                 </div>
                             </a>
                         </div>

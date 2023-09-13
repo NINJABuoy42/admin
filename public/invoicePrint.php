@@ -20,11 +20,12 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+        font-size: large;
     }
 
     body {
         padding: 2rem;
-        width: 800px;
+        width: 100vw;
         height: 100vh;
         color: black;
     }
@@ -57,6 +58,9 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
         align-items: center;
         justify-content: center;
     }
+    .row{
+        font-size: large;
+    }
     footer{
         bottom: 0;
     }
@@ -77,10 +81,10 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
     <?php while ($invoice = mysqli_fetch_assoc($invoices)) { ?>
     <hr class="border ">
     <div class="row text-left ">
-        <div class="col-sm-8 ">
+        <div class="col-sm-9 ">
             <strong>Invocie #: </strong><?php echo $invoice['invoice_id'] ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <strong>Date: </strong><?php echo date("d-M-Y", strtotime($invoice['date'])) ?>
         </div>
     </div>
@@ -105,16 +109,16 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
     <hr class="border">
     <br>
     <div class="row ml-2">
-        <div class="col-sm-8 "><strong>Service Description</strong></div>
-        <div class="col-sm-4 text-left"><strong>Sub Total</strong></div>
+        <div class="col-sm-9 "><strong>Service Description</strong></div>
+        <div class="col-sm-3 text-left"><strong>Sub Total</strong></div>
     </div>
     <hr>
     <ol type="1" class="ml-3">
     <?php while ($detail = mysqli_fetch_assoc($details)) { ?>
         <li class="mb-1">
             <div class="row ">
-                <div class="col-sm-8 "><?php echo $detail['serviceType'] ?></div>
-                <div class="col-sm-4 text-left">&#8377;  <?php echo $detail['fees'] ?></div>
+                <div class="col-sm-9 "><?php echo $detail['serviceType'] ?></div>
+                <div class="col-sm-3 text-left">&#8377;  <?php echo $detail['fees'] ?></div>
             </div>
         </li>
         <?php } ?>
@@ -122,17 +126,17 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
     <hr class="border">
     <div class="footer">
         <div class="row">
-            <div class="col-sm-8 text-right "><strong>Total :</strong></div>
-            <div class="col-sm-4 text-left"><strong>&#8377; <?php echo $invoice['total'] ?></strong></div>
+            <div class="col-sm-9 text-right "><strong>Total :</strong></div>
+            <div class="col-sm-3 text-left"><strong>&#8377; <?php echo $invoice['total'] ?></strong></div>
         </div>
         <div class="row">
-            <div class="col-sm-8 text-right "><strong>Discount(%):</strong></div>
-            <div class="col-sm-4 text-left"><strong> <?php echo $invoice['discount'] ?>%</strong></div>
+            <div class="col-sm-9 text-right "><strong>Discount(%):</strong></div>
+            <div class="col-sm-3 text-left"><strong> <?php echo $invoice['discount'] ?>%</strong></div>
         </div>
         <br>
         <div class="row">
-            <div class="col-sm-8 text-right "><strong>Net Amount :</strong></div>
-            <div class="col-sm-4 text-left"><h5><strong>&#8377;  <?php echo $invoice['net'] ?></strong></h5></div>
+            <div class="col-sm-9 text-right "><strong>Net Amount :</strong></div>
+            <div class="col-sm-3 text-left"><h5><strong>&#8377;  <?php echo $invoice['net'] ?></strong></h5></div>
         </div>
     </div>
     <?php } ?>

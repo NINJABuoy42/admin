@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
                     <!-- Nested Row within Card Body -->
                     <div class="row">
                         <div class="col-md-6 p-5 d-flex justify-content-center align-items-center">
-                            <img src="../img/amkus1.png" style="width:300px;" alt="">
+                            <img src="../img/amkus.png" style="width:300px;" alt="">
                         </div>
                         <div class="col-md-6">
                             <div class="p-5">

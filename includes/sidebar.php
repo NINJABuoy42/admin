@@ -35,6 +35,19 @@
             <span style="font-size: 15px;">Services List</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-receipt" style="font-size: 20px;"></i>
+            <span style="font-size: 15px;">Invoice</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <!-- <a class="collapse-item" href="../register/invoice.php">Generate Invoice</a> -->
+                <a class="collapse-item" href="../public/invoiceList.php">Invoice List</a>
+            </div>
+        </div>
+    </li>
     <?php
             break;
         case 'doctor':
