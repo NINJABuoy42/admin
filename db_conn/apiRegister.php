@@ -62,6 +62,8 @@ function patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attending
         $service = $rowSer['serviceType'];
         $amount = $rowSer['fees'];
     }
+    require('../db_conn/apiInvoice.php');
+    newInvoice($pName, $pAge,$phone,$pAddress,$pGender,"",$service,$amount,"","",$amount,$user,'registration');
     $sql = "INSERT INTO `prescription`(`prescription_id`, `patient_id`,`name`, `age`, `gender`, `phone`, `address`, `attending_doctor`, `doc_id`,`height`, `weight`, `blood_pressure`,`pulse`,`spo2`,`status`,`visit_date`,`service`,`amount`,`amtStatus`) VALUES ('{$newPID}','{$pId}','{$pName}','{$pAge}','{$pGender}','{$phone}','{$pAddress}','{$docName}','{$attendingDoc}','{$pHeight}','{$pWeight}','{$pBP}','{$pulse}','{$spo2}','checked_in',NOW(),'{$service}','{$amount}','paid')";
     if (mysqli_query($GLOBALS['conn'], $sql)) {
         header("LOCATION:viewDetails.php?patient_id={$pId}");

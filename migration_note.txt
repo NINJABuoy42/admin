@@ -1,1 +1,2 @@
 delete 'notes' field from prescription
+added 'billType' field in invoice details
