@@ -76,7 +76,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
     </div>
     <hr class="border">
     <div class="text-center">
-        <h2><strong>INVOICE</strong></h2>
+        <h2><strong>MONEY RECEIPT</strong></h2>
     </div>
     <?php while ($invoice = mysqli_fetch_assoc($invoices)) { ?>
     <hr class="border ">
@@ -125,6 +125,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
     </ol>
     <hr class="border">
     <div class="footer">
+        <?php if($invoice['discount']!=0){ ?>
         <div class="row">
             <div class="col-sm-9 text-right "><strong>Total :</strong></div>
             <div class="col-sm-3 text-left"><strong>&#8377; <?php echo $invoice['total'] ?></strong></div>
@@ -133,6 +134,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
             <div class="col-sm-9 text-right "><strong>Discount(%):</strong></div>
             <div class="col-sm-3 text-left"><strong> <?php echo $invoice['discount'] ?>%</strong></div>
         </div>
+        <?php } ?>
         <br>
         <div class="row">
             <div class="col-sm-9 text-right "><strong>Net Amount :</strong></div>

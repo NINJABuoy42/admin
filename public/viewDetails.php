@@ -155,8 +155,8 @@ $portal = "Doctors Dashboard";
                                     </div>
                                 </div>
                             </section>
-                            <?php } ?>
-                    </main>
+                        </main>
+                        <?php } ?>
                 <?php
                 include('../includes/footer.php'); ?>
                 </div>
