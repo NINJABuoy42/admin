@@ -126,7 +126,7 @@ $portal = "Doctors Dashboard";
                                             <tbody>
                                                 <?php
                                                  while ($pateintD = mysqli_fetch_assoc($patientHistory)) {
-                                                     include('../includes/modals/__prescriptionEdit.php');
+                                                    //  include('../includes/modals/__prescriptionEdit.php');
                                                 ?>
                                                     <tr>
                                                         <td><?php echo $pateintD['prescription_id'] ?></td>
