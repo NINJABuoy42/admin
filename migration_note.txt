@@ -1,2 +1,2 @@
-delete 'notes' field from prescription
+delete 'notes' field from prescription before exporting data
 added 'billType' field in invoice details
