@@ -106,7 +106,7 @@ if(isset($_POST['save'])){
                                             <label for="serviceType">Service Type</label>
                                             <select id="serviceType" class="form-control" name="serviceType">
                                                 <option value="">Select Service....</option>
-                                                <option value="">Other</option>
+                                                <!-- <option value="">Other</option> -->
                                                 <?php
                                $services = getStatCatServices('Services');
                                 while ($service = mysqli_fetch_assoc($services)) { ?>
@@ -179,7 +179,7 @@ if(isset($_POST['save'])){
                     html = `<div class="row mb-2">
                                         <div class="col-sm-8 text-center"><input autocomplete="off" type="text" class="form-control input" name='serviceType[]' value='${$('#serviceType').val()}' readonly></div>
                                         <div class="col-sm-2 text-center"><input autocomplete="off" type="text" class="form-control input" name='subtotal[]' value='${$('#serviceType').find(':selected').data('id')}' readonly></div>
-                                        <div class="col-sm-1 text-center"><button type="button" class="btn btn-danger" onclick="this.closest('.row').remove(); total();">X</button></div>
+                                        <div class="col-sm-1 text-center"><button type="button" class="rem btn btn-danger " onclick="this.closest('.row').remove();">X</button></div>
                                     </div> `;
 
                     $('#invoiceBody').append(html);
@@ -192,7 +192,9 @@ if(isset($_POST['save'])){
             $('#discount').on('keyup', () => {
                 total();
             });
-
+            $(document).on('click',".rem",()=>{
+                total();
+            });
             function total() {
                 let sum = document.getElementsByName('subtotal[]');
                 let total = 0;

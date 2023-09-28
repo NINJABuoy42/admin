@@ -92,18 +92,24 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
 
     <br>
     <div class="row">
-        <div class="col-sm-4">
-            <strong>Name: </strong><?php echo $invoice['name'] ?> | <?php echo $invoice['age'] ?> | <?php echo $invoice['gender'] ?>
+        <div class="col-sm-6">
+            <strong>Name: </strong><?php echo $invoice['name'] ?> | <?php echo $invoice['gender'] ?>
+        </div>
+        <div class="col-sm-2">
+            <strong>Age: </strong><?php echo $invoice['age'] ?>
         </div>
         <div class="col-sm-4">
             <strong>Phone No: </strong><?php echo $invoice['phoneNumber'] ?>
         </div>
-        <div class="col-sm-4">
-            <strong>Reffered By: </strong><?php echo $invoice['refferBy'] ?>
-        </div>
+        
         <div class="col-sm-8">
             <strong>Address: </strong><?php echo $invoice['address'] ?>
         </div>
+        <?php if($invoice['refferBy']!=""){?>
+        <div class="col-sm-4">
+            <strong>Reffered By: </strong><?php echo $invoice['refferBy'] ?>
+        </div>
+        <?php } ?>
 
     </div>
     <hr class="border">
