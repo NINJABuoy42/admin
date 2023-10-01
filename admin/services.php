@@ -9,8 +9,8 @@ if ($_SESSION['role']!='admin') {
     die;
 }
 $user = $_SESSION['user'];
-$title = 'Doctors List';
-$portal = 'Details';
+$title = 'Service List';
+$portal = 'Services';
 require '../includes/header.php';
 include('../db_conn/apiRegister.php');
 include('../db_conn/apiCrud.php');

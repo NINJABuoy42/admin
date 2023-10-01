@@ -103,7 +103,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
         </div>
         
         <div class="col-sm-4">
-            <strong>Phone No: </strong><?php echo $invoice['phoneNumber'] ?>
+            <strong>Phone No: </strong>+91<?php echo $invoice['phoneNumber'] ?>
         </div>
         
         <div class="col-sm-8">

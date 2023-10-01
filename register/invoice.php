@@ -31,8 +31,8 @@ if(isset($_POST['save'])){
     $discount= $_POST['discount'];
     $net= $_POST['netAmt'];
     $billType='service';
-        $result =newInvoice($name,$age,$phone,$address,$gender,$reffer,$serviceType,$fees, $total,$discount,$net,$user);
-        if(isset($result)){
+        $result = newInvoice($name,$age,$phone,$address,$gender,$reffer,$serviceType,$fees, $total,$discount,$net,$user);
+        if($result != ""){
             echo "<script>window.open('../public/invoicePrint.php?invoice_id={$result}','_blank','width=800,height=700')</script>";
         }
     }
@@ -54,19 +54,6 @@ if(isset($_POST['save'])){
                                     <button type="submit" disabled style="display: none" aria-hidden="true"></button>
 
                                     <div class="row">
-                                        <?php if(isset($patient_id) && isset($prescription_id)): ?>
-                                        <div class="col-sm-6">
-                                            <label for="prescription_id" class="form-label">Prescription ID</label>
-                                            <input autocomplete="off" type="text" class="form-control"
-                                                name="prescription_id" id="prescription_id"
-                                                value="<?php echo $prescription_id ;?>" readonly>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="patient_id" class="form-label">Patient ID</label>
-                                            <input autocomplete="off" type="text" class="form-control" id="patient_id"
-                                                value="<?php echo $patient_id ;?>" name="patient_id" readonly>
-                                        </div>
-                                        <?php endif; ?>
                                         <div class="col-sm-3">
                                             <label for="name" class="form-label">Name</label>
                                             <input autocomplete="off" type="text" class="form-control" id="name"
@@ -74,17 +61,25 @@ if(isset($_POST['save'])){
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="age" class="form-label">Age</label>
-                                            <input autocomplete="off" type="text" class="form-control" id="age"
+                                            <input autocomplete="off" type="number" class="form-control" id="age"
                                                 name="age" required>
                                         </div>
                                         <div class="col-sm-3">
                                             <label for="gender" class="form-label">Gender</label>
-                                            <input autocomplete="off" type="text" class="form-control" id="gender"
-                                                name="gender" required>
+                                            <select id="gender" class="form-control" name="gender" required>
+                                                <option value="">Select Gender....</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
+                                                <!-- <option value="">Other</option> -->
+                                                
+                                            </select>
+                                            <!-- <input autocomplete="off" type="text" class="form-control" id="gender"
+                                                name="gender" required> -->
                                         </div>
                                         <div class="col-sm-3">
-                                            <label for="phone" class="form-label">Phone No.</label>
-                                            <input autocomplete="off" type="text" class="form-control" id="phone"
+                                            <label for="phone" class="form-label">Phone No.(without +91)</label>
+                                            <input autocomplete="off" type="number" class="form-control" id="phone"
                                                 name="phone">
                                         </div>
                                     </div>

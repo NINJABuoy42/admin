@@ -34,6 +34,10 @@
             <i class="fas fa-list" style="font-size: 20px;"></i>
             <span style="font-size: 15px;">Services List</span>
         </a>
+        <a class="nav-link collapsed" href="../admin/report.php" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-list" style="font-size: 20px;"></i>
+            <span style="font-size: 15px;">Report</span>
+        </a>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
