@@ -76,7 +76,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
     </div>
     <hr class="border">
     <div class="text-center">
-        <h2><strong>MONEY RECEIPT</strong></h2>
+        <h1><strong>MONEY RECEIPT</strong></h1>
     </div>
     <?php while ($invoice = mysqli_fetch_assoc($invoices)) { ?>
     <hr class="border ">
@@ -92,12 +92,16 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
 
     <br>
     <div class="row">
-        <div class="col-sm-6">
-            <strong>Name: </strong><?php echo $invoice['name'] ?> | <?php echo $invoice['gender'] ?>
+        <div class="col-sm-4">
+            <strong>Name: </strong><?php echo $invoice['name'] ?>
         </div>
         <div class="col-sm-2">
-            <strong>Age: </strong><?php echo $invoice['age'] ?>
+            <strong>Age: </strong><?php echo $invoice['age'] ?> Y
         </div>
+        <div class="col-sm-2">
+            <strong>Gender: </strong><?php echo $invoice['gender'] ?>
+        </div>
+        
         <div class="col-sm-4">
             <strong>Phone No: </strong><?php echo $invoice['phoneNumber'] ?>
         </div>
