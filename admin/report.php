@@ -142,7 +142,7 @@ if (isset($_POST['view'])) {
                                                             } elseif (isset($report['yearY'])) {
                                                                 echo $report['yearY'];
                                                             }
-                                                            ?>&service=<?php echo $report['billType']; ?>&year=<?php echo $report['year']; ?>"
+                                                            ?>&service=<?php echo $report['billType']; ?>&year=<?php echo $report['year']; ?>&net=<?php echo $report['total']; ?>"
                                                             onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i
                                                                 class="fas fa-print"></i></a></td>
                                                 </tr>
