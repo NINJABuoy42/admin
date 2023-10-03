@@ -89,11 +89,11 @@ if(isset($_POST['save'])){
                                             <input autocomplete="off" type="text" class="form-control" id="address"
                                                 name="address">
                                         </div>
-                                        <div class="col-sm-4">
+                                        <!-- <div class="col-sm-4">
                                             <label for="reffer" class="form-label">Reffered By</label>
                                             <input autocomplete="off" type="text" class="form-control" id="reffer"
                                                 name="reffer">
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <br>
                                     <div class="row">
