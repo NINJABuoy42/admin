@@ -122,7 +122,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
                     </tr>
                 <?php } ?>
             </tbody>
-            <footer>
+            <tfooter>
                 <tr>
                     <td class="text-right"><strong>Net Amount :</strong></td>
                     <td class="text-center">
@@ -131,10 +131,19 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
                             </strong></h5>
                     </td>
                 </tr>
-            </footer>
+            </tfooter>
         </table>
     <?php } ?>
     <div class="btn text-center mt-3 col-md-12">
         <button type="button" onclick="window.print()" id="checkin" class="btn btn-primary">Print</button>
     </div>
+    <footer class="text-center mt-5">
+        <strong><span><em>PLEASE BRING THIS RECEIPT ON YOUR NEXT VISIT TO COLLECT THE REPORT</em></span></strong>
+    </footer>
 </body>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        window.print();
+    })
+</script>

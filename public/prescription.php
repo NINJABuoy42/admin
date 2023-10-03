@@ -219,3 +219,9 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
         </div>
 
 </body>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        window.print();
+    })
+</script>
