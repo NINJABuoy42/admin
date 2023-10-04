@@ -1,0 +1,11 @@
+@page{
+    size:3.5in 5in;
+    margin:0;
+}
+
+#checkin{
+    display: none;
+}
+#heading{
+    display: block;
+}

@@ -50,6 +50,22 @@ include('../includes/header.php');
                                 </div>
                             </a>
                         </div>
+                        <div class=" btn card border-left-secondary d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">
+                            <a class="btn" href="../register/invoice.php">
+                                <div class=" card-body col-auto">
+                                    <i class="fas fa-receipt fa-6x text-secondary"></i>
+                                    <div class="col-auto text-lg font-weight-bold text-secondary text-uppercase mb-1">GENERATE INVOICE</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class=" btn card border-left-primary d-flex align-items-center col-xl-3 col-md-6 mb-4  mr-4">
+                            <a class="btn" href="../public/invoiceList.php">
+                                <div class=" card-body col-auto">
+                                    <i class="fas fa-list fa-6x text-primary"></i>
+                                    <div class="col-auto text-lg font-weight-bold text-primary text-uppercase mb-1">INVOICE LIST</div>
+                                </div>
+                            </a>
+                        </div>
 
 
                     </div>

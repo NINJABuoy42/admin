@@ -2,12 +2,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete user?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Selecteed?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Delete" below if you really want to delete user.</div>
+            <div class="modal-body">Select "Delete" below if you really want to delete the Selection.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-danger" id="deleteRecord" href="">Delete</a>

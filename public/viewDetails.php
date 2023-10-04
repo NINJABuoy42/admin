@@ -24,6 +24,7 @@ $patient_id = $_GET['patient_id'];
 $patientDetails = viewPatientDetail($patient_id);
 $patientHistory = viewPatientHistory($patient_id);
 
+
 if (isset($_POST['check_in'])) {
     $pId = $_POST['pId'];
     $pHeight = $_POST['height'];
@@ -32,8 +33,9 @@ if (isset($_POST['check_in'])) {
     $spo2 = $_POST['spo2'];
     $pulse = $_POST['pulse'];
     $attendingDoc = $_POST['attending_doctor'];
+    $serviceType = $_POST['serviceType'];
     if($attendingDoc!=""){
-        patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attendingDoc);
+        patientCheckIn($pBP, $pWeight, $pHeight,$pulse, $spo2, $pId, $attendingDoc,$serviceType);
     }
     header("location:../public/viewDetails.php?patient_id=$pId");
 }
@@ -115,19 +117,22 @@ $portal = "Doctors Dashboard";
                                                 <tr>
                                                     <th>Prescription ID</th>
                                                     <th>Doctor</th>
-                                                    <th>Name</th>
+                                                    <th>Service</th>
+                                                    <th>Amt/Status</th>
                                                     <th>Visit Date</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php while ($pateintD = mysqli_fetch_assoc($patientHistory)) {
-                                                    // include('./includes/modals/__deleteModal.php');
+                                                <?php
+                                                 while ($pateintD = mysqli_fetch_assoc($patientHistory)) {
+                                                    //  include('../includes/modals/__prescriptionEdit.php');
                                                 ?>
                                                     <tr>
                                                         <td><?php echo $pateintD['prescription_id'] ?></td>
                                                         <td><?php echo $pateintD['attending_doctor'] ?></td>
-                                                        <td><?php echo $pateintD['name'] ?></td>
+                                                        <td><?php echo $pateintD['service'] ?></td>
+                                                        <td>&#8377; <?php echo $pateintD['amount'] ?>/- | <span class="badge badge-pill badge-success"><?php echo $pateintD['amtStatus'] ?></span></td>
                                                         <td><?php echo $pateintD['visit_date'] ?></td>
                                                         <td class="d-flex justify-content-around">
                                                             <a class="btn btn-secondary" href="prescription.php?prescription_id=<?php echo $pateintD['prescription_id'].'&patient_id='.$pateintD['patient_id'] ?> " onclick="window.open(this.href, '_blank', 'width=975,height=700'); return false;"><i class="fas fa-print"></i></a>
@@ -150,8 +155,8 @@ $portal = "Doctors Dashboard";
                                     </div>
                                 </div>
                             </section>
-                    </main>
-                <?php } ?>
+                        </main>
+                        <?php } ?>
                 <?php
                 include('../includes/footer.php'); ?>
                 </div>

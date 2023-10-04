@@ -31,6 +31,8 @@ $portal="Registration Dashboard";
         <div class="card-body ">
           <!-- Multi Columns Form -->
           <form class="row g-3 form-group" action="../db_conn/api/insertPatientRecord.php" method="POST">
+          <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
             <h5 class="card-title col-md-12">Patient's Details</h5>
             <div class="col-md-4">
               <label for="fullName" class="form-label">Full Name</label>

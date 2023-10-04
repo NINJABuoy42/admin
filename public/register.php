@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="row">
                         <!-- <div class = "col-lg-5 d-none d-lg-block bg-register-image"></div> -->
                         <div class="col-lg-6 p-2 d-flex justify-content-center align-items-center">
-                            <img src="../img/amkus1.png" style="width:300px;" alt="">
+                            <img src="../img/amkus.png" style="width:300px;" alt="">
                         </div>
                         <div class="col-lg-6">
                             <div class="p-5">

@@ -9,7 +9,7 @@ function getPrescriptiontDetails($prescription_id,$patientId){
 function fetchWaitingPatient(){
     $user=$_SESSION['user'];
     $sql = "SELECT * FROM prescription WHERE status='checked_in' AND `doc_id` = '{$_SESSION['user_id']}'";
-    $prescription = mysqli_query($GLOBALS['conn'], $sql);
+    $prescription = mysqli_query($GLOBALS['conn'], $sql)  or die("SQL query failed");
     return $prescription;
 }
 
@@ -19,19 +19,19 @@ function updatePrescription(){
     $prescription_id=$_POST['prescription_id'];
     $patient_id=$_POST['patient_id'];
     $sqlD="DELETE FROM `diagnosis` WHERE prescription_id ='{$prescription_id}' ";
-    mysqli_query($GLOBALS['conn'],$sqlD);
+    mysqli_query($GLOBALS['conn'],$sqlD)  or die("SQL query failed");
     if(isset($_POST['diagnosis'])!=''){
         foreach($_POST['diagnosis'] as $key => $value){
             $sql="INSERT INTO `diagnosis`(`prescription_id`,`patient_id`,`diagnosis`) VALUES ('{$prescription_id}','{$patient_id}','$value')";
-            mysqli_query($GLOBALS['conn'],$sql);
+            mysqli_query($GLOBALS['conn'],$sql)  or die("SQL query failed");
         }
     }
     $sqlC="DELETE FROM `clinical_presentation` WHERE prescription_id ='{$prescription_id}' ";
-    mysqli_query($GLOBALS['conn'],$sqlC);
+    mysqli_query($GLOBALS['conn'],$sqlC)  or die("SQL query failed");
     if(isset($_POST['clinicalRep'])!=''){
         foreach($_POST['clinicalRep'] as $key => $value){
             $sql="INSERT INTO `clinical_presentation`(`prescription_id`,`patient_id`,`clinical_presentation`) VALUES ('{$prescription_id}','{$patient_id}','$value')";
-            mysqli_query($GLOBALS['conn'],$sql);
+            mysqli_query($GLOBALS['conn'],$sql)  or die("SQL query failed");;
         }
     }
     $sqlI="DELETE FROM `investigation` WHERE prescription_id ='{$prescription_id}' ";
@@ -39,17 +39,17 @@ function updatePrescription(){
     if(isset($_POST['investigations'])!=''){
         foreach($_POST['investigations'] as $key => $value){
             $sql="INSERT INTO `investigation`(`prescription_id`,`patient_id`,`investigation`) VALUES ('{$prescription_id}','{$patient_id}','$value')";
-            mysqli_query($GLOBALS['conn'],$sql);
+            mysqli_query($GLOBALS['conn'],$sql)  or die("SQL query failed");
         }
     }
     $sqlM="DELETE FROM `medicine` WHERE prescription_id ='{$prescription_id}' ";
-    mysqli_query($GLOBALS['conn'],$sqlM);
+    mysqli_query($GLOBALS['conn'],$sqlM)  or die("SQL query failed");
     if (isset($_POST['medName'])!='') {
         $medDosage = $_POST['medDosage'];
         $medDuration = $_POST['medDuration'];
         foreach ($_POST['medName'] as $key => $value) {
             $query = "INSERT INTO `medicine`(`prescription_id`,`patient_id`,`medicine_name`,`dosage`, `duration`) VALUES ('{$_POST['prescription_id']}','{$_POST['patient_id']}','$value','$medDosage[$key]','$medDuration[$key]')";
-            mysqli_query($GLOBALS['conn'], $query);
+            mysqli_query($GLOBALS['conn'], $query)  or die("SQL query failed");
         }
     }
     header('location:patientWaitingList.php');
