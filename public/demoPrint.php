@@ -75,7 +75,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
                     <td >
                     <strong>Date: </strong><?php echo date("d-M-Y", strtotime($invoice['date'])) ?>
                     </td>
-                    <td>
+                    <td class="text-break">
                         <strong>Name: </strong>
                         <?php echo $invoice['name'] ?>
                     </td>
@@ -93,13 +93,10 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
                         <strong>Phone No: </strong>+91
                         <?php echo $invoice['phoneNumber'] ?>
                     </td>
-                    <td colspan="2">
+                    <td colspan="2" class="text-break">
                         <strong>Address: </strong>
                         <?php echo $invoice['address'] ?>
                     </td>
-                </tr>
-                <tr>
-                    
                 </tr>
             </tbody>
         </table>
