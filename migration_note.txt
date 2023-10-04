@@ -1,2 +1,7 @@
 delete 'notes' field from prescription before exporting data
 added 'billType' field in invoice details
+
+clinical presentation = q
+provisional diagnosis = w
+medicine = a
+investigation = s

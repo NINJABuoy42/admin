@@ -98,17 +98,18 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                         value="<?php echo $dataPatient['weight'] ?>" name="weight">
                                 </div>
                                 <!-- clinical presentations starts here -->
-                                <div class="col-xl-12">
+                                <div class="col-xl-12 mt-3">
                                     <label for="clinicalPresentation" class="form-label">Clinical Presentation
                                     </label>
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mb-0">
                                         <input autocomplete="off" type="text" class="form-control"
                                             id="clinicalPresentation" placeholder="Clinical Presentation here..."  accesskey="q">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-success" id="addClinicalPresentation"
+                                            <div class="input-group-append">
+                                                <button class="btn btn-success" id="addClinicalPresentation"
                                                 type="button"><i class="fas fa-plus"></i></button>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <small id="clinicalHelp" class="form-text text-success mb-2">Press (Alt + q) to jump to above field.</small>
                                 </div>
                                 <div class="col-xl-12">
                                     <ul type="number_format" id="clinicalRep">
@@ -116,7 +117,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                         <!-- php server data adds here  -->
                                         <?php while ($dataClinicalPresentation = mysqli_fetch_assoc($clinicalPresentation)) { ?>
                                         <li>
-                                            <div class="input-group mb-3">
+                                            <div class="input-group">
                                                 <input autocomplete="off" type="text" class="form-control"
                                                     name="clinicalRep[]"
                                                     value='<?php echo $dataClinicalPresentation['clinical_presentation']; ?>'>
@@ -134,10 +135,10 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                 <!-- clinial presentation ends here -->
 
                                 <!-- diagnosis/provisonal diagnosis starts here -->
-                                <div class="col-xl-12">
+                                <div class="col-xl-12 mt-2">
                                     <label for="diagnosis" class="form-label">Diagnosis/Provisional Diagnosis
                                     </label>
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mb-0">
                                         <input autocomplete="off" type="text" class="form-control" id="diagnosisF"
                                             placeholder="Diagnosis/Provisional Diagnosis here..." accesskey="w">
                                         <div class="input-group-append">
@@ -145,6 +146,8 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                                     class="fas fa-plus" ></i></button>
                                         </div>
                                     </div>
+                                    <small id="digonoisHelp" class="form-text text-success mb-2">Press (Alt + w) to jump to above field.</small>
+
                                 </div>
                                 <div class="col-xl-12">
                                     <ul type="number_format" id="medDiagnosis">
@@ -184,7 +187,10 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                             <tr>
                                                 <td class="w-50"><input autocomplete="off" type="text"
                                                         class="form-control input" id="medName"
-                                                        placeholder="Medicine name here..." accesskey="a"></td>
+                                                        placeholder="Medicine name here..." accesskey="a">
+                                                        <small id="digonoisHelp" class="form-text text-success">Press (Alt + a) to jump to above field.</small>
+                                                    </td>
+
 
                                                 <td class="w-25">
                                                     <div class="input-group mb-3">
@@ -267,7 +273,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                         <div class="col-xl-12">
                             <label for="investigation" class="form-label">Investigations
                             </label>
-                            <div class="input-group mb-3">
+                            <div class="input-group mt-2">
                                 <input autocomplete="off" type="text" class="form-control" id="investigation"
                                     placeholder="Investigation here..." accesskey="s">
                                 <div class="input-group-append">
@@ -275,6 +281,8 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                                             class="fas fa-plus"></i></button>
                                 </div>
                             </div>
+                            <small id="digonoisHelp" class="form-text text-success mb-2">Press (Alt + s) to jump to above field.</small>
+
                         </div>
                         <div class="col-xl-12">
                             <ul id="investigations">
