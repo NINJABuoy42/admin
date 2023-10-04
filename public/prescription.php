@@ -22,7 +22,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
     <style>
     body {
         padding: 3rem;
-        height: 842px;
+        height: 11.5in;
 
 
     }
@@ -30,14 +30,8 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
         width: 100%;
         text-align: end;
         padding-right: 4rem;
-        margin-bottom: 2rem;
-    }
-    .btn {
-        width: 80vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        margin-bottom: 1rem;
+    }    
     button {
         margin: 1rem auto;
     }
@@ -48,6 +42,15 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
     }
     #rx{
         font-size: 3rem;
+    }
+    .btn{
+        width: 80%;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left:0;
+        /* margin-left: 4rem;
+        margin-right: 4rem; */
     }
     </style>
 </head>
@@ -71,7 +74,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
                         <?php }?>
                     </div>
                 </td>
-                <td colspan="6">
+                <td colspan="6" class="float-right" >
                     <img src="../img/head.jpg" width="500">
                 </td>
             </tr>
@@ -205,7 +208,9 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
         <?php } if($dataPatient['follow_upD']!="" && $dataPatient['follow_upW']!="" ){?>
         <div class="row">
             <div class="col-sm-12"> <strong class="mr-1">Follow up: </strong>After
-                <?php echo $dataPatient['follow_upD']." ".$dataPatient['follow_upW']." " ?></div>
+                <?php
+                 echo $dataPatient['follow_upD']." ".$dataPatient['follow_upW']." ";
+                  ?></div>
         </div>
         <?php } 
     } ?>
@@ -219,9 +224,9 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
         </div>
 
 </body>
-<script src="../vendor/jquery/jquery.min.js"></script>
+<!-- <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         window.print();
     })
-</script>
+</script> -->
