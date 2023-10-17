@@ -11,7 +11,10 @@ include('../includes/header.php');
 // include('./db_conn/user.php');
 include('../db_conn/apiInvoice.php');
 $invoices = fetchInovice();
-
+if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+    receiptDelete($id);
+}
 ?>
 
 <body id="page-top">
@@ -56,6 +59,8 @@ $invoices = fetchInovice();
                                     <tbody>
                                         <?php while ($invoice = mysqli_fetch_assoc($invoices)) {
                                             include('../includes/modals/__deleteModal.php');
+                                         include('../includes/modals/__editReceipt.php');
+
 
                                             
                                         ?>
@@ -66,6 +71,13 @@ $invoices = fetchInovice();
                                             <td><?php echo $invoice['receivedBy'] ?></td>
                                             <td>&#8377;  <?php echo $invoice['net'] ?></td>
                                             <td class="d-flex justify-content-around">
+                                            <button type="click " class="del btn btn-danger"
+                                                         data-toggle="modal"
+                                                         data-id="<?php echo $invoice['invoice_id'] ?>"
+                                                         data-table='services'
+                                                        data-target="#deleteModal">
+                                                        <i class="fas fa-trash"></i></button>
+                                                    
                                                 <a class="btn btn-secondary"
                                                     href="demoPrint.php?invoice_id=<?php echo $invoice['invoice_id'] ?> "
                                                     onclick="window.open(this.href,'_blank','width=800,height=700'); return false;"><i
@@ -97,6 +109,15 @@ $invoices = fetchInovice();
     $('#dataTable').dataTable({
         "ordering": false
     });
+    $(".del").on("click", function(e) {
+        $("#deleteRecord").attr('href','invoiceList.php?delete='+ $(this).attr('data-id'));
+        // console.log($(this).attr('data-id'));
+    })
+    $(".edit").on("click", function(e) {
+        $("#receiptId").val($(this).data('id'));
+        $("#name").val($(this).attr('data-name'));
+        $("#amount").val($(this).attr('data-amount'));
+    })
     </script>
 
     <!-- End of Content Wrapper -->

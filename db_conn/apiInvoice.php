@@ -55,4 +55,16 @@ function fetchInvoiceDetails($id)
     }
 }
 
+function receiptDelete($id)
+{
+    $sql = "DELETE FROM `invoice_details` WHERE invoice_id='$id'";
+    $result = mysqli_query($GLOBALS['conn'], $sql) or die("SQL query failed");
+    if ($result) {
+        $sqlI = "DELETE FROM `invoice` WHERE invoice_id='$id'";
+        $resultI = mysqli_query($GLOBALS['conn'], $sqlI) or die("SQL query failed");
+        if($resultI){
+            header('location:../public/invoiceList.php');
+        }
+    }
+}
 ?>

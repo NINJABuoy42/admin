@@ -27,7 +27,7 @@ if (isset($_GET['delete'])) {
 }
 if(isset($_POST['editService'])){
     $id = $_POST['user_id'];
-    echo $id;
+    // echo $id;
     $serviceType=$_POST['service_type'];
     $fees=$_POST['fee'];
     $status=$_POST['stats'];

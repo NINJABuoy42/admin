@@ -32,7 +32,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
         }
 
         td {
-            padding: 10px;
+            padding: 5px;
         }
 
         /* td,th{
@@ -68,12 +68,13 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
                     </td>
                 </tr>
                 <tr>
-                    <td >
+                    <td>
                         <strong>Receipt #: </strong>
                         <?php echo $invoice['invoice_id'] ?>
                     </td>
-                    <td >
-                    <strong>Date: </strong><?php echo date("d-M-Y", strtotime($invoice['date'])) ?>
+                    <td>
+                        <strong>Date: </strong>
+                        <?php echo date("d-M-Y", strtotime($invoice['date'])) ?>
                     </td>
                     <td class="text-break">
                         <strong>Name: </strong>
@@ -118,8 +119,27 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
                         </td>
                     </tr>
                 <?php } ?>
+               
             </tbody>
             <tfooter>
+                <?php if ($invoice['discount'] != 0) { ?>
+                    <tr>
+                    <td class="text-right"><strong>Total :</strong></td>
+                    <td class="text-center">
+                        <h5><strong>&#8377;
+                                <?php echo $invoice['total'] ?>
+                            </strong></h5>
+                    </td>
+                </tr>
+                    <tr>
+                    <td class="text-right"><strong>Discount(%):</strong></td>
+                    <td class="text-center">
+                        <h5><strong>
+                                <?php echo $invoice['discount'] ?>%
+                            </strong></h5>
+                    </td>
+                </tr>
+                <?php } ?>
                 <tr>
                     <td class="text-right"><strong>Net Amount :</strong></td>
                     <td class="text-center">
@@ -140,7 +160,7 @@ $details = fetchInvoiceDetails($_GET['invoice_id'])
 </body>
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
-    $(document).ready(function () {
-        window.print();
-    })
+    // $(document).ready(function () {
+    //     window.print();
+    // })
 </script>
