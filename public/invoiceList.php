@@ -71,13 +71,14 @@ if (isset($_GET['delete'])) {
                                             <td><?php echo $invoice['receivedBy'] ?></td>
                                             <td>&#8377;  <?php echo $invoice['net'] ?></td>
                                             <td class="d-flex justify-content-around">
+                                                <?php if($_SESSION['role']=='admin'){?>
                                             <button type="click " class="del btn btn-danger"
                                                          data-toggle="modal"
                                                          data-id="<?php echo $invoice['invoice_id'] ?>"
                                                          data-table='services'
                                                         data-target="#deleteModal">
                                                         <i class="fas fa-trash"></i></button>
-                                                    
+                                                    <?php } ?>
                                                 <a class="btn btn-secondary"
                                                     href="demoPrint.php?invoice_id=<?php echo $invoice['invoice_id'] ?> "
                                                     onclick="window.open(this.href,'_blank','width=800,height=700'); return false;"><i
