@@ -83,6 +83,10 @@ if (isset($_GET['delete'])) {
                                                     href="demoPrint.php?invoice_id=<?php echo $invoice['invoice_id'] ?> "
                                                     onclick="window.open(this.href,'_blank','width=800,height=700'); return false;"><i
                                                         class="fas fa-print"></i></a>
+                                                <a class="btn btn-success"
+                                                    href="tPrint.php?invoice_id=<?php echo $invoice['invoice_id'] ?> "
+                                                    onclick="window.open(this.href,'_blank','width=800,height=700'); return false;">
+                                                    <i class="fas fa-file-powerpoint"></i></a>
                                             </td>
                                         </tr>
 
