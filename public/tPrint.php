@@ -19,7 +19,7 @@ $width = 3.5;
 $pdf->SetY(20);
 $pdf->SetFont('Courier', 'B', 9);
 $pdf->MultiCell(54, 5, 'MONEY RECEIPT', 'TB', 'C', false);
-$pdf->SetFont('Courier', 'B',7);
+$pdf->SetFont('Courier', 'B',7.5);
 
 while ($invoice = mysqli_fetch_assoc($invoices)) {
     $pdf->Cell(30, 4, '#:' . $invoice['invoice_id'], 0, 0, 'L');
@@ -30,8 +30,8 @@ while ($invoice = mysqli_fetch_assoc($invoices)) {
     // $pdf->Line(2, 29, 56, 29);
     $pdf->Ln(1);
     $pdf->Cell(54, $width, 'NAME: ' . $invoice['name'], 0, 1, 'L');
-    $pdf->Cell(20, $width, 'AGE: ' . $invoice['age'] . '|' . $invoice['gender'], 0, 0, 'L');
-    $pdf->Cell(34, $width, 'Ph No.:+91' . $invoice['phoneNumber'], 0, 1, 'R');
+    $pdf->Cell(20, $width, 'AGE:' . $invoice['age'] . '|' . $invoice['gender'], 0, 0, 'L');
+    $pdf->Cell(34, $width, 'P No.:+91' . $invoice['phoneNumber'], 0, 1, 'R');
     $pdf->MultiCell(54, $width, 'ADDRESS: ' . $invoice['address'], '', 'L', false);
     $pdf->MultiCell(54, $width, 'REFERRED BY: ' . $invoice['refferBy'], '', 'L', false);
 
@@ -41,8 +41,10 @@ while ($invoice = mysqli_fetch_assoc($invoices)) {
     // $pdf->Line(2, 46.5, 56, 46.5);
     $pdf->Ln(1);
     // $pdf->SetFont('Arial','B',7);
+$pdf->SetFont('Courier', 'B',8);
+    
     $pdf->Cell(44, $width, 'SERVICE DESCRIPTION', 0, 0, 'L');
-    $pdf->Cell(10, $width, 'AMOUNT', 0, 1, 'R');
+    $pdf->Cell(10, $width, 'AMOUNT(Rs.)', 0, 1, 'R');
     $xSer = $pdf->GetX();
     $ySer = $pdf->GetY();
     $pdf->Line(2, $ySer, 56, $ySer);
@@ -50,23 +52,23 @@ while ($invoice = mysqli_fetch_assoc($invoices)) {
 
     while ($detail = mysqli_fetch_assoc($details)) {
         $pdf->Cell(44, $width, $detail['serviceType'], 0, 0, 'L');
-        $pdf->Cell(10, $width, 'Rs. ' . $detail['fees'], 0, 1, 'R');
+        $pdf->Cell(10, $width,$detail['fees'], 0, 1, 'R');
     }
     $xAmt = $pdf->GetX();
     $yAmt = $pdf->GetY();
     $pdf->Line(2, $yAmt, 56, $yAmt);
     if ($invoice['discount'] != 0) {
-        $pdf->Cell(44, $width, 'SUB TOTAL : ', 0, 0, 'R');
-        $pdf->Cell(10, $width, 'Rs. ' . $invoice['total'], 0, 1, 'R');
-        $pdf->Cell(44, $width, '(-)DISCOUNT : ', 0, 0, 'R');
-        $pdf->Cell(10, $width, $invoice['discount'] . '%', 0, 1, 'R');
+        $pdf->Cell(40, $width, 'SUB TOTAL : ', 0, 0, 'R');
+        $pdf->Cell(14, $width, 'Rs. ' . $invoice['total'], 0, 1, 'R');
+        $pdf->Cell(40, $width, '(-)DISCOUNT : ', 0, 0, 'R');
+        $pdf->Cell(14, $width, $invoice['discount'] . '%', 0, 1, 'R');
         $xDis = $pdf->GetX();
         $yDis = $pdf->GetY();
         $pdf->Line(2, $yDis, 56, $yDis);
     }
     $pdf->SetFont('Courier', 'B', 10);
-    $pdf->Cell(40, $width, 'NET AMOUNT: ', 0, 0, 'R');
-    $pdf->Cell(14, $width, 'Rs.' . $invoice['net'], 0, 1, 'R');
+    $pdf->Cell(30, $width, 'NET AMOUNT: ', 0, 0, 'R');
+    $pdf->Cell(24, $width, 'Rs.' . $invoice['net'], 0, 1, 'R');
     
     $xNet = $pdf->GetX();
     $yNet = $pdf->GetY();
@@ -75,6 +77,9 @@ while ($invoice = mysqli_fetch_assoc($invoices)) {
     $pdf->SetFont('Courier', 'BI', 6);
     $pdf->MultiCell(54, $width,'KINDLY BRING THIS RECEIPT ALONG WITH YOU ON YOUR NEXT VISIT..', '', 'C', false);
     $pdf->Cell(54, $width, 'THANK YOU!!', 1, 1, 'C');
+    $pdf->Ln(3);
+
+
 
 
 
