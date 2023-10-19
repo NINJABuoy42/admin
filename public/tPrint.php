@@ -43,8 +43,8 @@ while ($invoice = mysqli_fetch_assoc($invoices)) {
     // $pdf->SetFont('Arial','B',7);
 $pdf->SetFont('Courier', 'B',8);
     
-    $pdf->Cell(44, $width, 'SERVICE DESCRIPTION', 0, 0, 'L');
-    $pdf->Cell(10, $width, 'AMOUNT(Rs.)', 0, 1, 'R');
+    $pdf->Cell(44, $width, 'Service Desc.', 0, 0, 'L');
+    $pdf->Cell(10, $width, 'Amt(Rs.)', 0, 1, 'R');
     $xSer = $pdf->GetX();
     $ySer = $pdf->GetY();
     $pdf->Line(2, $ySer, 56, $ySer);
