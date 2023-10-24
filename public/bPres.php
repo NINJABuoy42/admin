@@ -29,8 +29,11 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
     .docSign {
         width: 100%;
         text-align: end;
-        padding-right: 4rem;
-        margin-bottom: 1rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 6rem;
+        margin-bottom: 8rem;
     }    
     button {
         margin: 1rem auto;
@@ -39,6 +42,11 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
     footer {
         width: 100%;
         text-align: center;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left:0;
+        margin-bottom: 1rem;
     }
     #rx{
         font-size: 3rem;
@@ -59,9 +67,6 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
 
 
     <?php while ($dataPatient = mysqli_fetch_assoc($dataPatients)) {
-        if($dataPatient['status']!='prescribed'){
-            header('location:bPres.php?prescription_id='.$_GET['prescription_id'].'&patient_id='.$_GET['patient_id']);
-        }
         $getDoc = fetchDocs($dataPatient['doc_id']); ?>
     <div>
         <table width="100%" height="fit-content">
@@ -116,19 +121,7 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
             </div>
         </div>
         <hr class="border  border-dark">
-        <div class="row">
-            <div class="col col-sm-2 text-break">
-                <strong>Clinical Presentation: </strong>
-            </div>
-            <div class="col col-sm-6">
-                <ul type="number">
-                    <?php while ($dataClinicalPresentation = mysqli_fetch_assoc($clinicalPresentation)) { ?>
-                    <li>
-                        <?php echo $dataClinicalPresentation['clinical_presentation']; ?>
-                    </li>
-                    <?php } ?>
-                </ul>
-            </div>
+        <div class="row justify-content-end">
             <div class="col col-md-4  border-left-dark px-4">
                 <?php if($dataPatient['blood_pressure']!=""){ ?>
                 <div class="row"><strong class="mr-1">Blood Pressure:</strong><?php echo $dataPatient['blood_pressure'] ?> mmHH</div>
@@ -148,75 +141,8 @@ $investigation = getInvestigation($_GET['prescription_id'], $_GET['patient_id'])
             </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col col-sm-2">
-                <strong>Diagnosis: </strong>
-            </div>
-            <div class="col col-sm-10">
-                <ul type="number">
-                    <?php while ($dataDiagnosis = mysqli_fetch_assoc($diagnosis)) { ?>
-                    <li>
-                        <?php echo $dataDiagnosis['diagnosis']; ?>
-                    </li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <!-- <hr class="border"> -->
-        <div class="row">
-        <span id="rx"><strong>&#8478;</strong></span>
-        </div>
-        <ol type="number">
-            <?php while ($dataMedicine = mysqli_fetch_assoc($medicine)) { ?>
-            <li>
-                <div class="row mt-1">
-                    <div class="col col-sm-5"><?php echo $dataMedicine['medicine_name']; ?></div>
-                    <div class="col col-sm-5"><?php echo $dataMedicine['dosage']; ?></div>
-                    <?php if($dataMedicine['duration']!=""){ ?>
-                    <div class="col col-sm-2">For: <?php echo $dataMedicine['duration']; ?></div>
-                    <?php } ?>
-                </div>
-            </li>
-            <?php } ?>
-        </ol>
-        <hr class="border">
-        <?php if($investigation!=""){?>
-        <div class="row">
-            <div class="col-sm-2"> <strong class="mr-1">Investigations: </strong>
-            </div>
-            <div class="col-sm-8">
-                <ul type="number">
-                    <?php while ($dataInvestigation = mysqli_fetch_assoc($investigation)){ ?>
-                    <li>
-                        <?php echo $dataInvestigation['investigation']; ?>
-                    </li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-        <?php } ?>
-        <br>
-        <?php if($dataPatient['refer_to']!=""){?>
-        <div class="row">
-            <div class="col-sm-12"> <strong class="mr-1">Refer To: </strong><?php echo $dataPatient['refer_to'];?>
-            </div>
-        </div>
-        <?php } if($dataPatient['advice']!=""){ ?>
-
-        <div class="row">
-            <div class="col-sm-12"> <strong class="mr-1">Advice Given: </strong><?php echo $dataPatient['advice'] ?>
-            </div>
-        </div>
-        <?php } if($dataPatient['follow_upD']!="" && $dataPatient['follow_upW']!="" ){?>
-        <div class="row">
-            <div class="col-sm-12"> <strong class="mr-1">Follow up: </strong>After
-                <?php
-                 echo $dataPatient['follow_upD']." ".$dataPatient['follow_upW']." ";
-                  ?></div>
-        </div>
         <?php } 
-    } ?>
+    ?>
     <br>
         <div class="docSign">
             <strong><span>Signature/Seal</span></strong>
